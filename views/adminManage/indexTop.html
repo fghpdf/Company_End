@@ -1,0 +1,142 @@
+<%- include header.html %>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span3">
+      <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+          <div class="container-fluid">
+            <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+            <a href="#" class="brand">空净产品后台管理平台</a>
+            <div class="nav-collapse collapse navbar-responsive-collapse">
+              <ul class="nav">
+                <li class="active">
+                  <a href="adminManage/indexTop">主页</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li>
+                  <a href="#">管理员账户管理</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li>
+                  <a href="#">用户账户管理</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li>
+                  <a href="#">APP首页管理</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li>
+                  <a href="#">推送管理</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li>
+                  <a href="#">社交管理</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li>
+                  <a href="#">设备管理</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li>
+                  <a href="#">商城管理</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li>
+                  <a href="#">操作日志</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="span9">
+      <div class="page-header">
+        <h1>
+          你好<small><%= adminAccount %></small>
+        </h1>
+      </div>
+      <div id="operateStatus"></div>
+      <table id="adminTable" class="table table-hover table-striped">
+        <thead>
+        <tr>
+          <th>
+            序号
+          </th>
+          <th>
+            账号
+          </th>
+          <th>
+            等级
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="success">
+          <td>
+            <%= adminList[0].id %>
+          </td>
+          <td>
+            <%= adminList[0].adminAccount %>
+          </td>
+          <td>
+            <% if(adminList[0].isTopLevel){ %>
+            <%= '顶级管理员' %>
+            <% } else { %>
+            <%= '次级管理员' %>
+            <% } %>
+          </td>
+          <td>
+            <a href="#" role="button" class="btn btn-inverse disabled">删除</a>
+          </td>
+        </tr>
+        <% for(var num = 1; adminList[num] !== undefined; num = num + 1) { %>
+        <tr class="info">
+          <td><%= adminList[num].id %></td>
+          <td><%= adminList[num].adminAccount %></td>
+          <td><% if(adminList[num].isTopLevel){ %>
+            <%= '顶级管理员' %>
+            <% } else { %>
+            <%= '次级管理员' %>
+            <% } %></td>
+          <td>
+            <a href="#modal-container-check" role="button" class="btn btn-danger" data-toggle="modal">删除</a>
+            <div id="modal-container-check" class="modal hide fade" role="dialog" aria-labelledby="checkModalLabel" aria-hidden="true">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h3>
+                  危险操作，请注意
+                </h3>
+              </div>
+              <div class="modal-body">
+                <p>
+                  此操作将删除该管理员，谨慎操作！
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+                <button id="sureDelete" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">确认</button>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <% } %>
+        </tbody>
+      </table>
+      <a href="register" role="button" class="btn btn-info" target="_blank">添加二级管理员</a>
+    </div>
+  </div>
+</div>
+<%- include footer.html %>
