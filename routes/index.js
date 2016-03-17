@@ -33,10 +33,11 @@ router.get('/loginSec', function(req, res, next) {
 * */
 router.post('/loginTop', function(req, res, next){
   console.log(req.body);
-  var adminAccountPromise = null;
-  adminAccountPromise = new model.Admin({adminAccount: req.body.adminAccount}).fetch();
+  var companyEmailPromise = null;
+  //bookshelfjs提供的方法，可以通过表单提交的字段查找数据库，这里做一个重复用户名查询
+  companyEmailPromise = new model.Admin({companyEmail: req.body.companyEmail}).fetch();
 
-  adminAccountPromise.then(function(model_fetch) {
+  companyEmailPromise.then(function(model_fetch) {
     var isTopLevel = model_fetch.get('isTopLevel');
     console.log(isTopLevel);
     if(!isTopLevel) {
@@ -66,10 +67,10 @@ router.post('/loginTop', function(req, res, next){
 
 router.post('/loginSec', function(req, res, next){
   console.log(req.body);
-  var adminAccountPromise = null;
-  adminAccountPromise = new model.Admin({adminAccount: req.body.adminAccount}).fetch();
+  var companyEmailPromise = null;
+  companyEmailPromise = new model.Admin({companyEmail: req.body.companyEmail}).fetch();
 
-  adminAccountPromise.then(function(model_fetch) {
+  companyEmailPromise.then(function(model_fetch) {
     var isTopLevel = model_fetch.get('isTopLevel');
     console.log(isTopLevel);
     if(isTopLevel) {
@@ -102,21 +103,27 @@ router.get('/register', function(req, res, next) {
   res.render('register', {title: '注册'});
 });
 
+/*次级管理员注册时，将企业信息写死，企业信息自动上传至数据库
+* 提高用户体验
+* */
 router.post('/register', function(req, res, next) {
   var admin = req.body;
-  var adminAccountPromise = null;
-  adminAccountPromise = new model.Admin({adminAccount: admin.adminAccount}).fetch();
+  var companyEmailPromise = null;
+  companyEmailPromise = new model.Admin({companyEmail: admin.companyEmail}).fetch();
 
-  return adminAccountPromise.then(function(model_fetch) {
+  return companyEmailPromise.then(function(model_fetch) {
     if(model_fetch) {
       res.render('register', {title: '注册', errorMessage: '该邮箱已被注册！'});
     } else {
-      var password = admin.adminPassword;
+      var password = admin.companyPassword;
       var hash = bcrypt.hashSync(password);
 
       var registerUser = new model.Admin({
-        adminAccount: admin.adminAccount,
-        adminPassword: hash
+        companyEmail: admin.companyEmail,
+        companyPassword: hash,
+        companyName: '杭州氦氪科技有限公司',
+        companyAddress: '求是大厦',
+        companyTel: '400-820-8820'
       });
 
       registerUser.save().then(function(model_fetch){

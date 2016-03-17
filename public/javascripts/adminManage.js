@@ -1,9 +1,9 @@
 $(document).ready(function () {
   $("button#sureDelete").click(function() {
-      var adminAccountDelete = $(this).parent().parent().parent().parent().children().eq(1).text();
+      var deleteAdminEmail = $(this).parent().parent().parent().parent().children().eq(1).text();
       $.ajax({
           data: {
-              adminAccountDelete: adminAccountDelete
+              deleteAdminEmail: deleteAdminEmail
           },
           url:'/adminManage/deleteAdmin',
           type: 'POST',

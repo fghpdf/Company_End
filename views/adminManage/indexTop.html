@@ -61,11 +61,14 @@
           </div>
         </div>
       </div>
+      <p><%= adminList[0].companyName %></p>
+      <p><%= adminList[0].companyAddress %></p>
+      <p><%= adminList[0].companyTel %></p>
     </div>
     <div class="span9">
       <div class="page-header">
         <h1>
-          你好<small><%= adminAccount %></small>
+          你好<small><%= companyEmail %></small>
         </h1>
       </div>
       <div id="operateStatus"></div>
@@ -81,6 +84,9 @@
           <th>
             等级
           </th>
+          <th>
+            操作
+          </th>
         </tr>
         </thead>
         <tbody>
@@ -89,7 +95,7 @@
             <%= adminList[0].id %>
           </td>
           <td>
-            <%= adminList[0].adminAccount %>
+            <%= adminList[0].companyEmail %>
           </td>
           <td>
             <% if(adminList[0].isTopLevel){ %>
@@ -105,7 +111,7 @@
         <% for(var num = 1; adminList[num] !== undefined; num = num + 1) { %>
         <tr class="info">
           <td><%= adminList[num].id %></td>
-          <td><%= adminList[num].adminAccount %></td>
+          <td><%= adminList[num].companyEmail %></td>
           <td><% if(adminList[num].isTopLevel){ %>
             <%= '顶级管理员' %>
             <% } else { %>

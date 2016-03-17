@@ -21,22 +21,28 @@ var model = require('./database/model');
 var app = express();
 
 
-
+/*本地登录验证，passport提供的方法
+* passport默认username和userpassword
+* 所以需要Field更改成自己使用的字段
+* 不过passport依然在function中使用username和userpassword
+* 就当是username = companyEmail
+*      userpassword = companyPassword
+* */
 passport.use(new LocalStrategy({
-  usernameField: 'adminAccount',
-  passwordField: 'adminPassword'
+  usernameField: 'companyEmail',
+  passwordField: 'companyPassword'
 },
     function (username, password, done) {
       console.log(username, password);
       new model.Admin({
-        adminAccount: username
+        companyEmail: username
       }).fetch().then(function(data){
         var admin = data;
         if (admin === null) {
           return done(null, false, {message: '此账号不存在'});
         } else {
           admin = data.toJSON();
-          if (!bcrypt.compareSync(password, admin.adminPassword)) {
+          if (!bcrypt.compareSync(password, admin.companyPassword)) {
             return done(null, false, {message: '密码错误'});
           } else {
             return done(null ,admin);
@@ -46,11 +52,11 @@ passport.use(new LocalStrategy({
     }));
 
 passport.serializeUser(function(user, done){
-  done(null, user.adminAccount);
+  done(null, user.companyEmail);
 });
 
 passport.deserializeUser(function(username, done) {
-  new model.Admin({adminAccount: username}).fetch().then(function(user) {
+  new model.Admin({companyEmail: username}).fetch().then(function(user) {
     done(null, user);
   });
 });

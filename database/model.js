@@ -1,7 +1,7 @@
 var db = require('./db').db;
 
 var Admin = db.Model.extend({
-    tableName: 'admin',
+    tableName: 'company',
     idAttribute: 'id'
 });
 
@@ -10,7 +10,7 @@ var Admin = db.Model.extend({
 });*/
 
 
-
+//因为是企业的管理员来登录，并且有顶级管理员管理之类的，所以使用admin
 module.exports = {
     Admin: Admin
 };
