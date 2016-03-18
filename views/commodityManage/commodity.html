@@ -66,9 +66,6 @@
           </div>
         </div>
       </div>
-      <p><%= adminList[0].companyName %></p>
-      <p><%= adminList[0].companyAddress %></p>
-      <p><%= adminList[0].companyTel %></p>
     </div>
     <div class="span9">
       <div class="page-header">
@@ -81,72 +78,35 @@
         <thead>
         <tr>
           <th>
-            序号
+            商品名
           </th>
           <th>
-            账号
+            单价
           </th>
           <th>
-            等级
+            库存
           </th>
           <th>
-            操作
+            售出数量
+          </th>
+          <th>
+            图片链接
           </th>
         </tr>
         </thead>
         <tbody>
+        <% for(var num = 0; commodityList[num] !== undefined; num = num + 1) { %>
         <tr class="success">
-          <td>
-            <%= adminList[0].id %>
-          </td>
-          <td>
-            <%= adminList[0].companyEmail %>
-          </td>
-          <td>
-            <% if(adminList[0].isTopLevel){ %>
-            <%= '顶级管理员' %>
-            <% } else { %>
-            <%= '次级管理员' %>
-            <% } %>
-          </td>
-          <td>
-            <a href="#" role="button" class="btn btn-inverse disabled">删除</a>
-          </td>
-        </tr>
-        <% for(var num = 1; adminList[num] !== undefined; num = num + 1) { %>
-        <tr class="info">
-          <td><%= adminList[num].id %></td>
-          <td><%= adminList[num].companyEmail %></td>
-          <td><% if(adminList[num].isTopLevel){ %>
-            <%= '顶级管理员' %>
-            <% } else { %>
-            <%= '次级管理员' %>
-            <% } %></td>
-          <td>
-            <a href="#modal-container-check" role="button" class="btn btn-danger" data-toggle="modal">删除</a>
-            <div id="modal-container-check" class="modal hide fade" role="dialog" aria-labelledby="checkModalLabel" aria-hidden="true">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h3>
-                  危险操作，请注意
-                </h3>
-              </div>
-              <div class="modal-body">
-                <p>
-                  此操作将删除该管理员，谨慎操作！
-                </p>
-              </div>
-              <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
-                <button id="sureDelete" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">确认</button>
-              </div>
-            </div>
-          </td>
+          <td><%= commodityList[num].commodityName %></td>
+          <td><%= commodityList[num].commodityPrice %></td>
+          <td><%= commodityList[num].commodityStock %></td>
+          <td><%= commodityList[num].commoditySold %></td>
+          <td><%= commodityList[num].commodityImg %></td>
         </tr>
         <% } %>
         </tbody>
       </table>
-      <a href="register" role="button" class="btn btn-info" target="_blank">添加二级管理员</a>
+      <a href="#" role="button" class="btn btn-info" target="_blank">添加商品</a>
     </div>
   </div>
 </div>

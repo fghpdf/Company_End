@@ -20,6 +20,9 @@
     "express-session": "*",
     "mysql": "*",
     "express-flash": "latest",
-    "knex": "latest"
+    "knex": "latest",
+    "ejs": "latest",
+    "async": "latest",
+    "step": "latest"
   }
 }

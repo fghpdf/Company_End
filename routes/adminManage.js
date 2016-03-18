@@ -3,7 +3,15 @@ var router = express.Router();
 
 var model = require('../database/model');
 
+router.all('/', isLoggedIn);
+router.all('/indexTop', isLoggedIn);
+router.all('/deleteAdmin', isLoggedIn);
+
 /*这里需要查询数据库，显示管理员列表 */
+router.get('/indexTop', function(req, res, next) {
+    res.redirect('/');
+});
+
 router.get('/', function(req, res, next) {
     var companyEmail = req.session.passport.user;
     var adminList = model.Admin.query();
@@ -28,5 +36,13 @@ router.post('/deleteAdmin', function(req, res, next) {
         });
     })
 });
+
+function isLoggedIn(req, res, next) {
+    if(req.isAuthenticated()){
+        return next();
+    } else {
+        res.redirect('/login');
+    }
+}
 
 module.exports = router;

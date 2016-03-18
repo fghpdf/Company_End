@@ -15,6 +15,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var adminManage = require('./routes/adminManage');
+var commodityManage = require('./routes/commodityManage');
 
 var model = require('./database/model');
 
@@ -82,6 +83,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/adminManage', adminManage);
+app.use('/commodityManage', commodityManage);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

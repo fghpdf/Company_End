@@ -9,6 +9,7 @@ var model = require('../database/model');
 //对访问进行拦截，若没有登陆，则不能进入项目管理页面
 router.all('/', isLoggedIn);
 router.all('/adminManage', isLoggedIn);
+router.all('/commodityManage', isLoggedIn);
 
 router.get('/', function(req, res, next) {
   res.redirect('/adminManage');
