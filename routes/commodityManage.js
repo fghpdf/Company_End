@@ -6,13 +6,19 @@ var model = require('../database/model');
 var url = require('url');
 var async = require('async');
 
+var multer = require('multer');
+var upload = require('./multerUtil');
+//var upload = multer({ dest: 'public/images'});
+
+
 router.all('/', isLoggedIn);
 router.all('/purchase', isLoggedIn);
 router.all('/detailQuery', isLoggedIn);
+router.all('/commodityAdd', isLoggedIn);
 
 /*这里需要查询数据库，显示商品列表列表 */
 router.get('/commodity', function(req, res, next) {
-    res.redirect('/');
+    res.redirect('/commodityManage/');
 });
 
 //显示商品列表
@@ -52,6 +58,40 @@ router.post('/detailQuery', function(req, res, next) {
     res.json({success: true,purchaseId: purchaseId});
 });
 
+router.get('/commodityAdd', function(req, res, next) {
+    res.render('commodityManage/commodityAdd', {title: '添加商品'});
+});
+
+//商品上传
+router.post('/commodityAdd', function(req, res, next) {
+    var companyEmail = req.session.passport.user;
+    upload(req, res, function(err) {
+        if(err) {
+            console.log(err);
+            res.redirect(303, 'error');
+        } else {
+            var commodity = req.body;
+            var commodityNamePromise = new model.Commodity({ commodityName: commodity.commodityName}).fetch();
+
+            return commodityNamePromise.then(function(model_fetch) {
+                if(model_fetch) {
+                    res.render('commodityManage/commodityAdd', {title: '添加商品', errorMessage: '该商品已存在！'});
+                } else {
+                    var addCommodity = new model.Commodity({
+                        commodityName: commodity.commodityName,
+                        commodityPrice: commodity.commodityPrice,
+                        commodityStock: commodity.commodityStock,
+                        commodityImg: req.file.path
+                    });
+                    addCommodity.save().then(function(model_fetch) {
+                        console.log('model_fetch_save:', model_fetch);
+                        res.redirect(303, 'commodity');
+                    })
+                }
+            });
+        }
+    });
+});
 
 //用defray中的commodityId来查找commodity的数据
 function  commodityQuery(commodityId) {

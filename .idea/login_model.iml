@@ -17,5 +17,6 @@
     <orderEntry type="library" name="cookie-parser-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="express-session-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="pathjs-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="multer-DefinitelyTyped" level="application" />
   </component>
 </module>
