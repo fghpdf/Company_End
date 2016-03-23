@@ -10,6 +10,14 @@ var storage = multer.diskStorage({
     }
 });
 
-var upload = multer({ storage: storage}).single('commodityImages');
+var commodityUpload = multer({ storage: storage}).single('commodityImages');
+var startUpload = multer({ storage: storage}).single('startImages');
+var guideUpload = multer({ storage: storage}).array('guideImages');
+var carouselUpload = multer({ storage: storage}).array('carouselImages');
 
-module.exports = upload;
+module.exports = {
+    commodityUpload: commodityUpload,
+    startUpload: startUpload,
+    guideUpload: guideUpload,
+    carouselUpload: carouselUpload
+};

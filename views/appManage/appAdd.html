@@ -1,0 +1,33 @@
+<%- include header.html %>
+<div class="container-fluid" id="LG">
+  <div class="row-fluid">
+    <div class="span12">
+      <h3 class="text-center">
+        厂家平台
+      </h3>
+      <form class="form-horizontal" method="post" action="appAdd">
+        <% if(typeof(errorMessage) !== 'undefined') {%>
+        <span><%= errorMessage %></span>
+        <% } %>
+        <div class="control-group">
+          <label class="control-label" for="appName">App名称</label>
+          <div class="controls">
+            <input id="appName" type="text" name="appName" placeholder="请输入文字" required="required" />
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="appInfo">App描述</label>
+          <div class="controls">
+            <input id="appInfo" type="text" name="appInfo" placeholder="请输入文字" required="required" />
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn" value="submit">提交</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include footer.html %>

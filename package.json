@@ -25,6 +25,8 @@
     "passport": "*",
     "passport-local": "*",
     "serve-favicon": "~2.3.0",
-    "step": "latest"
+    "step": "latest",
+    "shortid": "latest",
+    "shortid": "latest"
   }
 }

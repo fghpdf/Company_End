@@ -8,9 +8,8 @@ var async = require('async');
 
 var multer = require('multer');
 var upload = require('./multerUtil');
-//var upload = multer({ dest: 'public/images'});
 
-
+//拦截二级域名
 router.all('/', isLoggedIn);
 router.all('/purchase', isLoggedIn);
 router.all('/detailQuery', isLoggedIn);
@@ -55,7 +54,7 @@ router.get('/detail', function(req, res, next) {
 //处理ajax请求，查看订单细节
 router.post('/detailQuery', function(req, res, next) {
     var purchaseId = req.body.purchaseId;
-    res.json({success: true,purchaseId: purchaseId});
+    res.json({ success: true, purchaseId: purchaseId});
 });
 
 router.get('/commodityAdd', function(req, res, next) {
@@ -64,8 +63,7 @@ router.get('/commodityAdd', function(req, res, next) {
 
 //商品上传
 router.post('/commodityAdd', function(req, res, next) {
-    var companyEmail = req.session.passport.user;
-    upload(req, res, function(err) {
+    upload.commodityUpload(req, res, function(err) {
         if(err) {
             console.log(err);
             res.redirect(303, 'error');

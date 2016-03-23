@@ -12,10 +12,17 @@ var logger = require('morgan');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
+//要将路由的文件引入，添加模块时，需要在这引入路由文件，在下面
+//有路由方向的控制。添加模块时，必须修改的文件有：
+//app.js
+//views/
+//routes/
+//database/model.js
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var adminManage = require('./routes/adminManage');
 var commodityManage = require('./routes/commodityManage');
+var appManage = require('./routes/appManage');
 
 var model = require('./database/model');
 
@@ -67,8 +74,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('.html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
-
-
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -80,10 +85,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//决定链接的路由方向，添加模块时需要在这添加路由方向
 app.use('/', routes);
 app.use('/users', users);
 app.use('/adminManage', adminManage);
 app.use('/commodityManage', commodityManage);
+app.use('/appManage', appManage);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

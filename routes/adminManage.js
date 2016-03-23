@@ -3,6 +3,7 @@ var router = express.Router();
 
 var model = require('../database/model');
 
+//拦截二级域名
 router.all('/', isLoggedIn);
 router.all('/indexTop', isLoggedIn);
 router.all('/deleteAdmin', isLoggedIn);
