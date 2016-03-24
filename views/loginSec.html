@@ -3,22 +3,25 @@
   <div class="row-fluid">
     <div class="span12">
       <h3 class="text-center">
-        自动打包平台
+        厂家平台
       </h3>
       <form class="form-horizontal" method="post" action="/loginSec">
         <% if(typeof(errorMessage) !== 'undefined') {%>
           <span><%= errorMessage %></span>
         <% } %>
         <div class="control-group">
-          <label class="control-label" for="companyEmail">账号</label>
+          <span>二级管理员登录</span>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="adminEmail">账号</label>
           <div class="controls">
-            <input id="companyEmail" type="email" name="companyEmail" placeholder="请输入您的账号" required="required"/>
+            <input id="adminEmail" type="email" name="adminEmail" placeholder="请输入您的账号" required="required"/>
           </div>
         </div>
         <div class="control-group">
-          <label class="control-label" for="companyPassword">密码</label>
+          <label class="control-label" for="adminPassword">密码</label>
           <div class="controls">
-            <input id="companyPassword" type="password" name="companyPassword" placeholder="请输入您的密码" required="required"/>
+            <input id="adminPassword" type="password" name="adminPassword" placeholder="请输入您的密码" required="required"/>
           </div>
         </div>
         <div class="control-group">

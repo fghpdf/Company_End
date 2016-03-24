@@ -2,7 +2,7 @@ var db = require('./db').db;
 
 //管理员的表
 var Admin = db.Model.extend({
-    tableName: 'company',
+    tableName: 'admin',
     idAttribute: 'id'
 });
 
@@ -41,6 +41,11 @@ var Carousel = db.Model.extend({
     idAttribute: 'id'
 });
 
+var Mobile = db.Model.extend({
+    tableName: 'mobile_info',
+    idAttribute: 'id'
+});
+
 /*new Admin({'adminAccount': 'qxx'}).fetch().then(function(model) {
     console.log(model.get('isTopLevel'));
 });*/
@@ -61,5 +66,6 @@ module.exports = {
     App: App,
     Start: Start,
     Guide: Guide,
-    Carousel: Carousel
+    Carousel: Carousel,
+    Mobile: Mobile
 };

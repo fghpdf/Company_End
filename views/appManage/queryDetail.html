@@ -74,26 +74,32 @@
         </h1>
       </div>
       <div id="operateStatus"></div>
+      <% if(typeof(errorMessage) !== 'undefined') {%>
+      <span><%= errorMessage %></span>
+      <% } else { %>
       <table id="adminTable" class="table table-hover table-striped">
         <thead>
         <tr>
           <th>
-            物品名称
+            系统版本
           </th>
           <th>
-            价格
+            地理位置
           </th>
           <th>
-            购买数量
+            手机型号
           </th>
         </tr>
         </thead>
         <tbody>
+        <% for(var num = 0; mobileInfoList[num] !== undefined; num = num + 1) { %>
         <tr class="info">
-          <td><%= detailList[0].name %></td>
-          <td><%= detailList[0].price %></td>
-          <td><%= detailList[0].number %></td>
+          <td><%= mobileInfoList[num].mobileVersion %></td>
+          <td><%= mobileInfoList[num].mobileLocation %></td>
+          <td><%= mobileInfoList[num].mobileModels %></td>
         </tr>
+        <% } %>
+        <% } %>
         </tbody>
       </table>
     </div>

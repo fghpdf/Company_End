@@ -1,5 +1,5 @@
 {
-  "name": "app9d",
+  "name": "hekr_end",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -26,7 +26,6 @@
     "passport-local": "*",
     "serve-favicon": "~2.3.0",
     "step": "latest",
-    "shortid": "latest",
     "shortid": "latest"
   }
 }

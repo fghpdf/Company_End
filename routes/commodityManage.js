@@ -22,32 +22,30 @@ router.get('/commodity', function(req, res, next) {
 
 //显示商品列表
 router.get('/', function(req, res, next) {
-    var companyEmail = req.session.passport.user;
+    var adminEmail = req.session.passport.user;
     var commodityList = model.Commodity.query();
     commodityList.select().then(function(model_fetch) {
-        console.log(model_fetch);
-        console.log(companyEmail);
-        res.render('commodityManage/commodity', { title: '商品管理', companyEmail: companyEmail, commodityList: model_fetch});
+        res.render('commodityManage/commodity', { title: '商品管理', adminEmail: adminEmail, commodityList: model_fetch});
     });
 });
 
 //显示订单列表
 router.get('/purchase', function(req, res, next) {
-    var companyEmail = req.session.passport.user;
+    var adminEmail = req.session.passport.user;
     var purchaseList = model.Purchase.query();
     purchaseList.select().then(function(model_fetch) {
         console.log(model_fetch);
-        res.render('commodityManage/purchase', { title: '订单管理', companyEmail: companyEmail, purchaseList: model_fetch});
+        res.render('commodityManage/purchase', { title: '订单管理', adminEmail: adminEmail, purchaseList: model_fetch});
     });
 });
 
 //显示订单细节列表
 router.get('/detail', function(req, res, next) {
-    var companyEmail = req.session.passport.user;
+    var adminEmail = req.session.passport.user;
     var purchaseId = url.parse(req.url, true).query.purchaseId;
     detailListCreate(purchaseId, function(detailList) {
         console.log(detailList);
-        res.render('commodityManage/detail', {title: '订单详情', companyEmail: companyEmail, detailList: detailList});
+        res.render('commodityManage/detail', {title: '订单详情', adminEmail: adminEmail, detailList: detailList});
     });
 });
 

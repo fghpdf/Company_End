@@ -33,38 +33,46 @@ var app = express();
 * passport默认username和userpassword
 * 所以需要Field更改成自己使用的字段
 * 不过passport依然在function中使用username和userpassword
-* 就当是username = companyEmail
-*      userpassword = companyPassword
+* 就当是username = adminEmail
+*      userpassword = adminPassword
 * */
 passport.use(new LocalStrategy({
-  usernameField: 'companyEmail',
-  passwordField: 'companyPassword'
+  usernameField: 'adminEmail',
+  passwordField: 'adminPassword'
 },
     function (username, password, done) {
       console.log(username, password);
       new model.Admin({
-        companyEmail: username
+        adminEmail: username
       }).fetch().then(function(data){
         var admin = data;
         if (admin === null) {
           return done(null, false, {message: '此账号不存在'});
         } else {
           admin = data.toJSON();
-          if (!bcrypt.compareSync(password, admin.companyPassword)) {
+          if (!bcrypt.compareSync(password, admin.adminPassword)) {
             return done(null, false, {message: '密码错误'});
           } else {
-            return done(null ,admin);
+            //由于model中设置的admin的表的idAttribute是id，所以先用email找出id，再用id去更新登录时间
+            var loginAdminPromise = new model.Admin({ adminEmail: username}).fetch();
+            loginAdminPromise.then(function(model_getId) {
+              var loginId = model_getId.get('id');
+              var date = new Date();
+              new model.Admin({ id: loginId}).save({adminLoginDate: date}, {patch:true}).then(function() {
+                return done(null ,admin);
+              })
+            })
           }
         }
       })
     }));
 
 passport.serializeUser(function(user, done){
-  done(null, user.companyEmail);
+  done(null, user.adminEmail);
 });
 
 passport.deserializeUser(function(username, done) {
-  new model.Admin({companyEmail: username}).fetch().then(function(user) {
+  new model.Admin({adminEmail: username}).fetch().then(function(user) {
     done(null, user);
   });
 });

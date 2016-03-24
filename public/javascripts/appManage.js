@@ -81,5 +81,27 @@ $(document).ready(function () {
         });
     });
 
+    //查看详情
+    $("button#queryDetail").click(function() {
+        var appId = $(this).parent().parent().children().eq(0).text();
+        $.ajax({
+            data: {
+                appId: appId
+            },
+            url:'/appManage/getAppId',
+            type:'POST',
+            success: function(data) {
+                if (data.success) {
+                    location.href = '/appManage/queryDetail?appId=' + data.appId;
+                } else {
+                    alert("appId获取失败");
+                }
+            },
+            error: function() {
+                alert("出现错误");
+            }
+        });
+    });
+
 
 });

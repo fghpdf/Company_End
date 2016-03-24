@@ -9,30 +9,47 @@ var url = require('url');
 var upload = require('./multerUtil');
 
 //拦截二级域名
-router.all('/', isLoggedIn);
-router.all('/appAdd', isLoggedIn);
-router.all('/startAdd', isLoggedIn);
+router.all('/', isTopLoggedIn);
+router.all('/appAdd', isTopLoggedIn);
+router.all('/startAdd', isTopLoggedIn);
+router.all('/guideAdd', isTopLoggedIn);
+router.all('/carouselAdd', isTopLoggedIn);
 
 //显示app列表
 router.get('/', function(req, res, next) {
-    var companyEmail = req.session.passport.user;
+    var adminEmail = req.session.passport.user;
     var appList = model.App.query();
     appList.select().then(function(model_fetch) {
-        res.render('appManage/app', {title: 'App管理', companyEmail: companyEmail, appList: model_fetch});
+        res.render('appManage/app', {title: 'App管理', adminEmail: adminEmail, appList: model_fetch});
     });
 });
 
 router.get('/app', function(req, res, next) {
-    var companyEmail = req.session.passport.user;
+    var adminEmail = req.session.passport.user;
     var appList = model.App.query();
     appList.select().then(function(model_fetch) {
-        res.render('appManage/app', {title: 'App管理', companyEmail: companyEmail, appList: model_fetch});
+        res.render('appManage/app', {title: 'App管理', adminEmail: adminEmail, appList: model_fetch});
     });
 });
 
 //显示添加app页面
 router.get('/appAdd', function(req, res, next) {
     res.render('appManage/appAdd', {title: 'App添加'});
+});
+
+//显示app详情页面
+router.get('/queryDetail', function(req, res, next) {
+    var adminEmail = req.session.passport.user;
+    var appId = url.parse(req.url, true).query.appId;
+    var mobilePromise = new model.Mobile({ appId: appId}).fetch();
+
+    mobilePromise.then(function(model_fetch) {
+        if(model_fetch) {
+            res.render('appManage/queryDetail', { title: 'app详情', adminEmail: adminEmail, mobileInfoList: model_fetch});
+        } else {
+            res.render('appManage/queryDetail', { title: 'app详情', adminEmail: adminEmail, errorMessage: '此App尚未有用户使用'});
+        }
+    });
 });
 
 //添加app, id用shortid生成
@@ -202,6 +219,78 @@ router.post('/carouselAdd/:appId', function (req, res, next) {
     });
 });
 
+//和IOS对接，给予图片链接
+router.get('/getImagesUrl', function(req, res, next) {
+    var appId = url.parse(req.url, true).query.appId;
+    var appType = url.parse(req.url, true).query.appType;
+    if(appType === 'guide') {
+        var guideAppIdPromise = new model.Guide({ appId: appId}).fetch();
+        guideAppIdPromise.then(function(model_guide) {
+            if(model_guide) {
+                var guideImagesUrl = model_guide.get('guideContent');
+                res.json({success: true, guideImagesUrl: guideImagesUrl});
+            } else {
+                res.json({success: false, errorMessage: 'can`t find this appId'});
+            }
+        });
+    } else if(appType === 'start') {
+        var startAppIdPromise = new model.Start({ appId: appId}).fetch();
+        startAppIdPromise.then(function(model_start) {
+            if(model_start) {
+                var startImagesUrl = model_start.get('startContent');
+                res.json({success: true, startImagesUrl: startImagesUrl});
+            } else {
+                res.json({success: false, errorMessage: 'can`t find this appId'});
+            }
+        });
+    } else if(appType === 'carousel') {
+        var carouselAppIdPromise = new model.Carousel({ appId: appId}).fetch();
+        carouselAppIdPromise.then(function(model_carousel) {
+            if(model_carousel) {
+                var carouselImagesUrl = model_carousel.get('carouselContent');
+                res.json({success: true, carouselImagesUrl: carouselImagesUrl});
+            } else {
+                res.json({success: false, errorMessage: 'can`t find this appId'});
+            }
+        });
+    } else {
+        res.json({success: false, errorMessage: 'can`t find this type'});
+    }
+});
+
+//和IOS对接，接收app发来的系统版本，地理位置和手机型号信息
+router.get('/sendMobileInfo', function (req, res, next) {
+    var appId = url.parse(req.url, true).query.appId;
+    var mobileVersion = url.parse(req.url, true).query.version;
+    var mobileLocation = url.parse(req.url, true).query.location;
+    var mobileModels = url.parse(req.url, true).query.models;
+    var appIdPromise = new model.Mobile({appId: appId}).fetch();
+
+    appIdPromise.then(function (model_fetch) {
+        if (model_fetch) {
+            var id = model_fetch.get('id');
+            new model.Mobile({id: id}).save({
+                mobileVersion: mobileVersion,
+                mobileLocation: mobileLocation,
+                mobileModels: mobileModels
+            }, {
+                patch: true
+            }).then(function (model_save) {
+                res.json({success: true});
+            })
+        } else {
+            new model.Guide({
+                mobileVersion: mobileVersion,
+                mobileLocation: mobileLocation,
+                mobileModels: mobileModels,
+                appId: appId
+            }).save().then(function (model_save) {
+                res.json({success: true});
+            })
+        }
+    })
+});
+
 //回调避免同步,把多个文件路径合成一个以;相隔的字符串
 function getContent(files, callback) {
     var content = [];
@@ -211,6 +300,25 @@ function getContent(files, callback) {
     }
     content = content.join(";");
     callback(content);
+}
+
+//判断一级管理员登录
+function isTopLoggedIn(req, res, next) {
+    if(!req.session.passport) {
+        res.render('loginTop', {title: '一级管理员登登录', errorMessage: '您尚未登陆，请使用一级管理员账号登录'});
+    } else {
+        var adminEmail = req.session.passport.user;
+        new model.Admin({adminEmail: adminEmail}).fetch().then(function(model_getLevel) {
+            var adminLevel = model_getLevel.get('Level');
+            if(req.isAuthenticated() && adminLevel === '1') {
+                return next();
+            } else if(req.isAuthenticated()) {
+                res.render('loginTop', {title: '一级管理员登登录', errorMessage: '您无权查看此页面，请使用一级管理员账号登录'});
+            } else {
+                res.render('loginTop', {title: '一级管理员登登录', errorMessage: '您尚未登陆，请使用一级管理员账号登录'});
+            }
+        });
+    }
 }
 
 function isLoggedIn(req, res, next) {
