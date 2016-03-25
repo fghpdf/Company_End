@@ -13,12 +13,12 @@
             <a href="/login" class="brand">空净产品后台管理平台</a>
             <div class="nav-collapse collapse navbar-responsive-collapse">
               <ul class="nav">
-                <li class="active">
+                <li>
                   <a href="/adminManage/indexTop">主页</a>
                 </li>
               </ul>
               <ul class="nav">
-                <li>
+                <li class="active">
                   <a href="/adminManage">管理员账户管理</a>
                 </li>
               </ul>
@@ -44,7 +44,7 @@
               </ul>
               <ul class="nav">
                 <li>
-                  <a href="#">设备管理</a>
+                  <a href="/hardwareManage">设备管理</a>
                 </li>
               </ul>
               <ul class="nav">
@@ -116,21 +116,28 @@
         <tr class="info">
           <td><%= adminList[num].adminName %></td>
           <td><%= adminList[num].adminEmail %></td>
-          <td><%= adminList[0].adminCreateDate %></td>
-          <td><%= adminList[0].adminLoginDate %></td>
-          <td><% if(adminList[0].Level === '1'){ %>
+          <td><%= adminList[num].adminCreateDate %></td>
+          <td><%= adminList[num].adminLoginDate %></td>
+          <td><% if(adminList[num].Level === '1'){ %>
             <%= '一级管理员' %>
-            <% } else if(adminList[0] === '2') { %>
+            <% } else if(adminList[num].Level === '2') { %>
             <%= '二级管理员' %>
             <% } %></td>
-          <td>
-            <a href="#" role="button" class="btn btn-danger" data-toggle="modal">删除</a>
+          <td><% if(adminList[0].adminEmail === adminEmail){ %>
+            <a href="#" role="button" class="btn btn-danger">删除</a>
+            <% } else { %>
+            <a href="#" role="button" class="btn btn-inverse disabled">删除</a>
+            <% } %>
           </td>
         </tr>
         <% } %>
         </tbody>
       </table>
+      <% if(adminList[0].adminEmail === adminEmail){ %>
       <a href="/register" role="button" class="btn btn-info" target="_blank">添加二级管理员</a>
+      <% } else { %>
+      <a href="#" role="button" class="btn btn-info disabled">添加二级管理员</a>
+      <% } %>
     </div>
   </div>
 </div>

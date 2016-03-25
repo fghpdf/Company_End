@@ -23,6 +23,7 @@ var users = require('./routes/users');
 var adminManage = require('./routes/adminManage');
 var commodityManage = require('./routes/commodityManage');
 var appManage = require('./routes/appManage');
+var hardwareManage = require('./routes/hardwareManage');
 
 var model = require('./database/model');
 
@@ -83,7 +84,7 @@ app.engine('.html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -99,6 +100,7 @@ app.use('/users', users);
 app.use('/adminManage', adminManage);
 app.use('/commodityManage', commodityManage);
 app.use('/appManage', appManage);
+app.use('/hardwareManage', hardwareManage);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

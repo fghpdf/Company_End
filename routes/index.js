@@ -7,9 +7,12 @@ var model = require('../database/model');
 
 /* GET home page. */
 //对访问进行拦截，若没有登陆，则不能进入管理员管理页面
-router.all('/', isTopLoggedIn);
-router.all('/adminManage', isTopLoggedIn);
+router.all('/', isLoggedIn);
+router.all('/adminManage', isLoggedIn);
 router.all('/commodityManage', isLoggedIn);
+router.all('/appManage', isTopLoggedIn);
+router.all('/register', isTopLoggedIn);
+router.all('/hardwareManage', isTopLoggedIn);
 
 router.get('/', function(req, res, next) {
   res.redirect('/adminManage');
@@ -131,10 +134,17 @@ router.post('/register', function(req, res, next) {
   });
 });
 
+//登出
+router.get('/logout', function (req, res) {
+  req.logout();
+  res.redirect('/login');
+});
+
+
 //判断一级管理员登录
 function isTopLoggedIn(req, res, next) {
   if(!req.session.passport) {
-    res.render('loginTop', {title: '一级管理员登登录', errorMessage: '您尚未登陆，请使用一级管理员账号登录'});
+    res.render('login', {title: '一级管理员登登录', errorMessage: '您尚未登陆，请使用一级管理员账号登录'});
   } else {
     var adminEmail = req.session.passport.user;
     new model.Admin({adminEmail: adminEmail}).fetch().then(function(model_getLevel) {
@@ -142,9 +152,9 @@ function isTopLoggedIn(req, res, next) {
       if(req.isAuthenticated() && adminLevel === '1') {
         return next();
       } else if(req.isAuthenticated()) {
-        res.render('loginTop', {title: '一级管理员登登录', errorMessage: '您无权查看此页面，请使用一级管理员账号登录'});
+        res.render('login', {title: '一级管理员登登录', errorMessage: '您无权查看此页面，请使用一级管理员账号登录'});
       } else {
-        res.render('loginTop', {title: '一级管理员登登录', errorMessage: '您尚未登陆，请使用一级管理员账号登录'});
+        res.render('login', {title: '一级管理员登登录', errorMessage: '您尚未登陆，请使用一级管理员账号登录'});
       }
     });
   }

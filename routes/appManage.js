@@ -41,9 +41,10 @@ router.get('/appAdd', function(req, res, next) {
 router.get('/queryDetail', function(req, res, next) {
     var adminEmail = req.session.passport.user;
     var appId = url.parse(req.url, true).query.appId;
-    var mobilePromise = new model.Mobile({ appId: appId}).fetch();
+    var mobilePromise = new model.Mobile().where('appId', '=', appId).query().select();
 
     mobilePromise.then(function(model_fetch) {
+        console.log(model_fetch);
         if(model_fetch) {
             res.render('appManage/queryDetail', { title: 'app详情', adminEmail: adminEmail, mobileInfoList: model_fetch});
         } else {
@@ -262,9 +263,12 @@ router.get('/getImagesUrl', function(req, res, next) {
 router.get('/sendMobileInfo', function (req, res, next) {
     var appId = url.parse(req.url, true).query.appId;
     var mobileVersion = url.parse(req.url, true).query.version;
+    console.log(mobileVersion);
     var mobileLocation = url.parse(req.url, true).query.location;
     var mobileModels = url.parse(req.url, true).query.models;
     var appIdPromise = new model.Mobile({appId: appId}).fetch();
+    console.log(mobileLocation);
+
 
     appIdPromise.then(function (model_fetch) {
         if (model_fetch) {
@@ -279,7 +283,7 @@ router.get('/sendMobileInfo', function (req, res, next) {
                 res.json({success: true});
             })
         } else {
-            new model.Guide({
+            new model.Mobile({
                 mobileVersion: mobileVersion,
                 mobileLocation: mobileLocation,
                 mobileModels: mobileModels,
@@ -305,7 +309,7 @@ function getContent(files, callback) {
 //判断一级管理员登录
 function isTopLoggedIn(req, res, next) {
     if(!req.session.passport) {
-        res.render('loginTop', {title: '一级管理员登登录', errorMessage: '您尚未登陆，请使用一级管理员账号登录'});
+        res.render('login', {title: '一级管理员登登录', errorMessage: '您尚未登陆，请使用一级管理员账号登录'});
     } else {
         var adminEmail = req.session.passport.user;
         new model.Admin({adminEmail: adminEmail}).fetch().then(function(model_getLevel) {
@@ -313,9 +317,9 @@ function isTopLoggedIn(req, res, next) {
             if(req.isAuthenticated() && adminLevel === '1') {
                 return next();
             } else if(req.isAuthenticated()) {
-                res.render('loginTop', {title: '一级管理员登登录', errorMessage: '您无权查看此页面，请使用一级管理员账号登录'});
+                res.render('login', {title: '一级管理员登登录', errorMessage: '您无权查看此页面，请使用一级管理员账号登录'});
             } else {
-                res.render('loginTop', {title: '一级管理员登登录', errorMessage: '您尚未登陆，请使用一级管理员账号登录'});
+                res.render('login', {title: '一级管理员登登录', errorMessage: '您尚未登陆，请使用一级管理员账号登录'});
             }
         });
     }
