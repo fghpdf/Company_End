@@ -75,7 +75,10 @@
       </div>
       <div id="operateStatus"></div>
       <% if(typeof(errorMessage) !== 'undefined') {%>
-      <span><%= errorMessage %></span>
+      <div class="alert alert-danger">
+        <h4>提示!</h4>
+        <strong>警告!</strong> <%= errorMessage %>
+      </div>
       <% } else { %>
       <table id="adminTable" class="table table-hover table-striped">
         <thead>

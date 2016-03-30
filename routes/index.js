@@ -11,7 +11,6 @@ router.all('/', isLoggedIn);
 router.all('/adminManage', isLoggedIn);
 router.all('/commodityManage', isLoggedIn);
 router.all('/appManage', isTopLoggedIn);
-router.all('/register', isTopLoggedIn);
 router.all('/hardwareManage', isTopLoggedIn);
 
 router.get('/', function(req, res, next) {
@@ -95,41 +94,6 @@ router.post('/loginSec', function(req, res, next){
       })(req, res, next);
     } else {
       return res.render('loginSec', {title: '次级管理员登陆', errorMessage: '您不是次级管理员'});
-    }
-  });
-});
-
-
-router.get('/register', function(req, res, next) {
-  res.render('register', {title: '注册'});
-});
-
-/*次级管理员注册时，将企业信息写死，企业信息自动上传至数据库
-* 提高用户体验
-* */
-router.post('/register', function(req, res, next) {
-  var admin = req.body;
-  var adminEmailPromise = null;
-  adminEmailPromise = new model.Admin({adminEmail: admin.adminEmail}).fetch();
-
-  return adminEmailPromise.then(function(model_fetch) {
-    if(model_fetch) {
-      res.render('register', {title: '注册', errorMessage: '该邮箱已被注册！'});
-    } else {
-      var password = admin.adminPassword;
-      var hash = bcrypt.hashSync(password);
-      var registerUser = new model.Admin({
-        adminName: admin.adminName,
-        adminEmail: admin.adminEmail,
-        adminPassword: hash
-      });
-      registerUser.save().then(function(model_fetch){
-        if(req.isAuthenticated()) {
-          res.redirect(303, '/adminManage/');
-        } else {
-          res.render('login', {title: '登录'});
-        }
-      });
     }
   });
 });

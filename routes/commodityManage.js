@@ -191,6 +191,9 @@ router.post('/purchasePay', function(req, res, next) {
             //不允许重复支付订单
             if(purchaseStatus === 1) {
                 res.json({ success: false, errorMessage: '此订单已经支付'});
+                //不允许支付已经取消的订单
+            } else if(purchaseStatus === 2 || purchaseStatus === 3) {
+                res.json({ success: false, errorMessage: '此订单已经取消'});
             } else {
                 payPurchase.save({
                     purchaseFinishDate: new Date(),
@@ -206,6 +209,63 @@ router.post('/purchasePay', function(req, res, next) {
             res.json({ success: false, errorMessage: '此订单不存在！'});
         }
     });
+});
+
+//订单取消api
+router.post('/purchaseCancel', function(req, res, next) {
+    var purchaseId = req.body.purchaseId;
+    var cancelType = req.body.cancelType;
+    //2为用户取消
+    if(cancelType === 2 || cancelType === '2') {
+        var cancelPurchaseUser = new model.Purchase({ id: purchaseId});
+        cancelPurchaseUser.fetch().then(function(model_fetch) {
+            if(model_fetch) {
+                var purchaseStatus = model_fetch.get('purchaseStatus');
+                //不允许取消已经支付的订单
+                if(purchaseStatus === 1) {
+                    res.json({ success: false, errorMessage: '此订单已经支付'});
+                    //不允许重复取消订单
+                } else if(purchaseStatus === 2 || purchaseStatus === 3) {
+                    res.json({ success: false, errorMessage: '此订单已经取消'});
+                } else {
+                    cancelPurchaseUser.save({
+                        purchaseFinishDate: new Date(),
+                        purchaseStatus: 2
+                    }).then(function(result) {
+                        res.json({ success: true, purchase: result});
+                    });
+                }
+            } else {
+                res.json({ success: false, errorMessage: '此订单不存在！'});
+            }
+        });
+        //3为系统取消
+    } else if(cancelType === 3 || cancelType === '3') {
+        var cancelPurchaseSys = new model.Purchase({ id: purchaseId});
+        cancelPurchaseSys.fetch().then(function(model_fetch) {
+            if(model_fetch) {
+                var purchaseStatus = model_fetch.get('purchaseStatus');
+                //不允许取消已经支付的订单
+                if(purchaseStatus === 1) {
+                    res.json({ success: false, errorMessage: '此订单已经支付'});
+                    //不允许重复取消订单
+                } else if(purchaseStatus === 2 || purchaseStatus === 3) {
+                    res.json({ success: false, errorMessage: '此订单已经取消'});
+                } else {
+                    cancelPurchaseSys.save({
+                        purchaseFinishDate: new Date(),
+                        purchaseStatus: 3
+                    }).then(function(result) {
+                        res.json({ success: true, purchase: result});
+                    });
+                }
+            } else {
+                res.json({ success: false, errorMessage: '此订单不存在！'});
+            }
+        })
+    } else {
+        res.json({ success: false, errorMessage: 'type类型不对'});
+    }
 });
 
 

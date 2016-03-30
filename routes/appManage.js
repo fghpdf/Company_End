@@ -266,33 +266,14 @@ router.get('/sendMobileInfo', function (req, res, next) {
     console.log(mobileVersion);
     var mobileLocation = url.parse(req.url, true).query.location;
     var mobileModels = url.parse(req.url, true).query.models;
-    var appIdPromise = new model.Mobile({appId: appId}).fetch();
-    console.log(mobileLocation);
-
-
-    appIdPromise.then(function (model_fetch) {
-        if (model_fetch) {
-            var id = model_fetch.get('id');
-            new model.Mobile({id: id}).save({
-                mobileVersion: mobileVersion,
-                mobileLocation: mobileLocation,
-                mobileModels: mobileModels
-            }, {
-                patch: true
-            }).then(function (model_save) {
-                res.json({success: true});
-            })
-        } else {
-            new model.Mobile({
-                mobileVersion: mobileVersion,
-                mobileLocation: mobileLocation,
-                mobileModels: mobileModels,
-                appId: appId
-            }).save().then(function (model_save) {
-                res.json({success: true});
-            })
-        }
-    })
+    new model.Mobile({
+        mobileVersion: mobileVersion,
+        mobileLocation: mobileLocation,
+        mobileModels: mobileModels,
+        appId: appId
+    }).save().then(function (model_save) {
+        res.json({success: true});
+    });
 });
 
 //回调避免同步,把多个文件路径合成一个以;相隔的字符串

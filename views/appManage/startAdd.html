@@ -7,7 +7,10 @@
       </h3>
       <form id="startAddForm" class="form-horizontal" method="post" action="startAdd" enctype="multipart/form-data">
         <% if(typeof(errorMessage) !== 'undefined') {%>
-        <span><%= errorMessage %></span>
+        <div class="alert alert-danger">
+          <h4>提示!</h4>
+          <strong>警告!</strong> <%= errorMessage %>
+        </div>
         <% } %>
         <div class="control-group">
           <label class="control-label" for="startAppId">AppId</label>

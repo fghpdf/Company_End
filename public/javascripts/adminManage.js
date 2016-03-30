@@ -19,9 +19,11 @@ $(document).ready(function () {
                         if(data.success) {
                             alert("删除成功");
                             window.location.reload();
-                            $(".modal-backdrop").removeClass("in");
                         } else {
-                            $('#adminTable').html('失败');
+                            $('#adminTable').prepend("<div class='alert alert-danger'>" +
+                                "<h4>提示!</h4>" +
+                                "<strong>警告!</strong>您不是顶级管理员！" +
+                                "</div>");
                         }
                     },
                     error: function() {

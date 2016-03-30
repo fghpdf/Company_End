@@ -104,25 +104,35 @@
         <% for(var num = 0; purchaseList[num] !== undefined; num = num + 1) { %>
         <tr class="info">
           <td><%= purchaseList[num].id %></td>
-          <% if(purchaseList[num].purchaseChannel) { %>
-          <td><%= purchaseList[num].purchaseChannel %></td>
-          <% } else { %>
-          <td><%= '未付款' %></td>
-          <% } %>
-          <td><%= purchaseList[num].purchaseCreateDate %></td>
-          <td><% if(purchaseList[num].purchaseFinishDate) { %>
-            <%= purchaseList[num].purchaseFinishDate %>
-            <% } else { %>
-            <%= '尚未付款' %>
-            <% } %>
-          </td>
-          <td><%= purchaseList[num].purchasePrice + '元' %></td>
-          <td><% if(purchaseList[num].purchaseStatus) { %>
-            <%= '已付款' %>
-            <% } else { %>
+          <td><% if(!purchaseList[num].purchaseStatus) { %>
             <%= '未付款' %>
-            <% } %>
-          </td>
+            *<% } else if(purchaseList[num].purchaseStatus === 1) { %>
+            <%= purchaseList[num].purchaseChannel %>
+            <% } else if(purchaseList[num].purchaseStatus === 2) {%>
+            <%= '用户已取消' %>
+            <% } else if(purchaseList[num].purchaseStatus === 3) {%>
+            <%= '用户未在限定时间内付款，被取消' %>
+            <% } %></td>
+          <td><%= purchaseList[num].purchaseCreateDate %></td>
+          <td><% if(!purchaseList[num].purchaseStatus) { %>
+            <%= '未付款' %>
+            <% } else if(purchaseList[num].purchaseStatus === 1) { %>
+            <%= purchaseList[num].purchaseFinishDate %>
+            <% } else if(purchaseList[num].purchaseStatus === 2) {%>
+            <%= purchaseList[num].purchaseFinishDate %>
+            <% } else if(purchaseList[num].purchaseStatus === 3) {%>
+            <%= purchaseList[num].purchaseFinishDate %>
+            <% } %></td>
+          <td><%= purchaseList[num].purchasePrice + '元' %></td>
+          <td><% if(!purchaseList[num].purchaseStatus) { %>
+            <%= '未付款' %>
+            <% } else if(purchaseList[num].purchaseStatus === 1) { %>
+            <%= '已付款' %>
+            <% } else if(purchaseList[num].purchaseStatus === 2) {%>
+            <%= '用户已取消' %>
+            <% } else if(purchaseList[num].purchaseStatus === 3) {%>
+            <%= '用户未在限定时间内付款，被取消' %>
+            <% } %></td>
           <td>
             <button id="defrayDetail" class="btn btn-info">查看详情</button>
           </td>

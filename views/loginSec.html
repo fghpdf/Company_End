@@ -7,7 +7,11 @@
       </h3>
       <form class="form-horizontal" method="post" action="/loginSec">
         <% if(typeof(errorMessage) !== 'undefined') {%>
-          <span><%= errorMessage %></span>
+        <div class="alert alert-danger">
+          <h4>
+            提示!
+          </h4> <strong>警告!</strong> <%= errorMessage %>
+        </div>
         <% } %>
         <div class="control-group">
           <span>二级管理员登录</span>
