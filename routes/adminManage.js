@@ -31,7 +31,7 @@ router.post('/deleteAdmin', function(req, res, next) {
         var deleteId = model_id.get('id');
         console.log(deleteId);
         new model.Admin({id: deleteId}).destroy().then(function(model_delete) {
-            res.send({ success: true});
+            res.json({ success: true});
         });
     })
 });

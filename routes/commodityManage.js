@@ -41,11 +41,11 @@ router.get('/purchase', function(req, res, next) {
 
 //显示订单细节列表
 router.get('/detail', function(req, res, next) {
-    var adminEmail = req.session.passport.user;
     var purchaseId = url.parse(req.url, true).query.purchaseId;
-    detailListCreate(purchaseId, function(detailList) {
-        console.log(detailList);
-        res.render('commodityManage/detail', {title: '订单详情', adminEmail: adminEmail, detailList: detailList});
+    var adminEmail = req.session.passport.user;
+    var detailQueryPromise = new model.Detail().where('purchaseId', '=', purchaseId).query().select();
+    detailQueryPromise.then(function(model_detail) {
+        res.render('commodityManage/detail', {title: '订单详情', adminEmail: adminEmail, detailList: model_detail});
     });
 });
 
@@ -55,11 +55,13 @@ router.post('/detailQuery', function(req, res, next) {
     res.json({ success: true, purchaseId: purchaseId});
 });
 
+
+//商品上传
 router.get('/commodityAdd', function(req, res, next) {
     res.render('commodityManage/commodityAdd', {title: '添加商品'});
 });
 
-//商品上传
+
 router.post('/commodityAdd', function(req, res, next) {
     upload.commodityUpload(req, res, function(err) {
         if(err) {
@@ -77,7 +79,8 @@ router.post('/commodityAdd', function(req, res, next) {
                         commodityName: commodity.commodityName,
                         commodityPrice: commodity.commodityPrice,
                         commodityStock: commodity.commodityStock,
-                        commodityImg: req.file.path
+                        commodityImg: req.file.path,
+                        commodityCategories: commodity.commodityCategories
                     });
                     addCommodity.save().then(function(model_fetch) {
                         console.log('model_fetch_save:', model_fetch);
@@ -89,13 +92,223 @@ router.post('/commodityAdd', function(req, res, next) {
     });
 });
 
-//用defray中的commodityId来查找commodity的数据
+//删除商品
+router.post('/deleteCommodity', function(req, res, next) {
+    var deleteCommodityId = req.body.deleteCommodityId;
+    var deleteCommodityPromise = new model.Commodity({ id: deleteCommodityId});
+    deleteCommodityPromise.destroy().then(function(model_delete) {
+        //删除在订单详情中的商品
+        var deleteDetailPromise = new model.Detail().where('commodityId', '=', deleteCommodityId).query().select();
+        deleteDetailPromise.then(function(model_query) {
+            async.eachSeries(model_query, function(item, callback) {
+                var deleteId = item.id;
+                var purchaseId = item.purchaseId;
+                //查看订单是否已完成，如果已完成，则不能删除；未完成则可以删除
+                var statusPromise = new model.Purchase({ id: purchaseId}).fetch();
+                statusPromise.then(function(model_status) {
+                    var purchaseStatus = model_status.get('purchaseStatus');
+                    if(purchaseStatus !== 1) {
+                        new model.Detail({ id: deleteId}).destroy().then(function(model_detail) {
+                            callback(null, item);
+                        });
+                    } else {
+                        callback(null, item);
+                    }
+                })
+            }, function(err) {
+                if(err) {
+                    res.json({ success: false, errorMessage: err});
+                } else {
+                    res.json({ success: true});
+                }
+            });
+        });
+    });
+});
+
+//更改商品信息
+router.get('/commodityUpdate', function(req, res, next) {
+    var commodityId = url.parse(req.url, true).query.commodityId;
+    res.render('commodityManage/commodityUpdate', { title: '商品信息修改', commodityId: commodityId});
+});
+
+router.post('/commodityUpdate/:commodityId', function(req, res, next) {
+    var commodityId = req.params.commodityId;
+    upload.commodityUpdateUpload(req, res, function(err) {
+        if(err) {
+            console.log(err);
+            res.redirect(303, 'error');
+        } else {
+            var commodity = req.body;
+            console.log('commodityId:', commodityId);
+            console.log('commodity:', commodity);
+            var updatePromise = new model.Commodity({ id: commodityId});
+            updatePromise.save({
+                commodityName: commodity.commodityName,
+                commodityPrice: commodity.commodityPrice,
+                commodityCategories: commodity.commodityCategories,
+                commodityStock: commodity.commodityStock,
+                commodityImages: commodity.commodityImages
+            }).then(function(model_fetch) {
+                res.redirect(303, '/commodityManage/');
+            });
+        }
+    });
+});
+
+//订单上传api
+router.post('/purchaseAdd', function(req, res, next) {
+    var uploadData = req.body;
+    var commodityList = uploadData.commodityList;
+    var addPurchase = new model.Purchase({
+        purchaseCreateDate: new Date(),
+        purchasePrice: uploadData.purchasePrice,
+        userId: uploadData.userId
+    });
+    detectStock(commodityList, function(detect_result) {
+        console.log(detect_result);
+        if(!detect_result.success) {
+            res.json({ success: false, errorMessage: '有商品库存不足，请刷新订单重试'});
+        } else {
+            addPurchase.save().then(function(model_fetch) {
+                var purchaseId = model_fetch.get('id');
+                detailSave(purchaseId, commodityList, function() {
+                    res.json({ success: true, purchaseId: purchaseId});
+                });
+            });
+        }
+    });
+});
+
+//订单确认api
+router.post('/purchasePay', function(req, res, next) {
+    var uploadData = req.body;
+    console.log(uploadData);
+    var payPurchase = new model.Purchase({ id: uploadData.purchaseId});
+    payPurchase.fetch().then(function(model_fetch) {
+        if(model_fetch) {
+            var purchaseStatus = model_fetch.get('purchaseStatus');
+            //不允许重复支付订单
+            if(purchaseStatus === 1) {
+                res.json({ success: false, errorMessage: '此订单已经支付'});
+            } else {
+                payPurchase.save({
+                    purchaseFinishDate: new Date(),
+                    purchaseChannel: uploadData.purchaseChannel,
+                    purchaseStatus: 1
+                }).then(function(result) {
+                    saleNumber(uploadData.purchaseId, function() {
+                        res.json({ success: true, purchase: result});
+                    });
+                });
+            }
+        } else {
+            res.json({ success: false, errorMessage: '此订单不存在！'});
+        }
+    });
+});
+
+
+
+//提交订单需对商品数量检测
+function  detectStock(commodityList, callback) {
+    async.eachSeries(commodityList, function(item, callback_async) {
+        new model.Commodity({ id: item.commodityId}).fetch().then(function(model_fetch) {
+            var commodityStuck = model_fetch.get('commodityStock');
+            if(parseInt(commodityStuck) >= parseInt(item.commodityNumber)) {
+                callback_async(null, item);
+            } else {
+                callback({ success: false, it: item.commodityId});
+            }
+        });
+    }, function(err) {
+        console.log(err);
+        if(err) {
+            callback({ success: false, errorMessage: err});
+        } else {
+            callback({ success: true});
+        }
+    });
+}
+
+//将订单的详细数据保存在数据库中
+//输入是订单号，订单中的商品列表
+//回调会给予保存的状态和详情数据库的id
+function detailSave(purchaseId, commodityList,callback) {
+    var saveStatus = [];
+    for(var num = 0; commodityList[num] !== undefined; num++) {
+        var detailAddPromise = new model.Detail({
+            purchaseId: purchaseId,
+            commodityId: commodityList[num].commodityId,
+            commodityName: commodityList[num].commodityName,
+            commodityPrice: commodityList[num].commodityPrice,
+            commodityNumber: commodityList[num].commodityNumber
+        }).save().then(function(model_save) {
+            if(model_save) {
+                saveStatus[num] = { success: true, detailId: model_save.get('id')};
+            } else {
+                saveStatus[num] = { success: false};
+            }
+        });
+    }
+    callback(saveStatus);
+}
+
+//通过订单列表的ID查找此订单下的所有商品ID以及购买数量
+//拿到商品ID后，在商品列表改商品售出数量
+function saleNumber(purchaseId, callback) {
+    var saleNumPromise = new model.Detail().where('purchaseId', '=', purchaseId).query().select();
+    saleNumPromise.then(function(model_list) {
+        async.eachSeries(model_list, function(item, callback_async) {
+            var commodityId = item.commodityId;
+            //需要加上的销售数量，也是需要减去的库存
+            var numberAdd = item.commodityNumber;
+            var updatePromise = new model.Commodity({ id: commodityId});
+            updatePromise.fetch().then(function(model_fetch) {
+                console.log('model:',model_fetch);
+                if(model_fetch) {
+                    console.log('sur');
+                    //之前的销售数量
+                    var promiseSold = model_fetch.get('commoditySold');
+                    //之前的库存
+                    var promiseStock = model_fetch.get('commodityStock');
+                    //查看商品是否已经更改
+                    var commodityName = model_fetch.get('commodityName');
+                    var commodityPrice = model_fetch.get('commodityPrice');
+                    if(commodityName === item.commodityName && commodityPrice === item.commodityPrice) {
+                        var commoditySold = promiseSold + numberAdd;
+                        var commodityStock = promiseStock - numberAdd;
+                        updatePromise.save({
+                            commoditySold: commoditySold,
+                            commodityStock: commodityStock
+                        }).then(function() {
+                            callback_async(null, item);
+                        });
+                    } else {
+                        console.log('商品更改，不作处理');
+                        //商品更改，不作处理
+                        callback_async(null, item);
+                    }
+                } else {
+                    console.log('商品被删，不作处理');
+                    //商品被删，不作处理
+                    callback_async(null, item);
+                }
+            });
+        }, function(result) {
+            callback(result);
+        });
+    });
+}
+
+
+/*//用defray中的commodityId来查找commodity的数据
 function  commodityQuery(commodityId) {
     console.log("commodityId:",commodityId);
     return new model.Commodity().where('id', '=', commodityId).query().select();
-}
+}*/
 
-//detailList将重新填充数据，有和commodityId匹配的id，用来辨认是否是同一个商品
+/*//detailList将重新填充数据，有和commodityId匹配的id，用来辨认是否是同一个商品
 //和commodityName匹配的name，commodityPrice匹配的price
 //number用来记录数量，相同则加一
 //detailList将用来显示在页面上
@@ -141,7 +354,7 @@ function detailListCreate(purchaseId, callback) {
             callback(detailList);
         });
     });
-}
+}*/
 
 function isLoggedIn(req, res, next) {
     if(req.isAuthenticated()){

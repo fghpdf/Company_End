@@ -7,7 +7,9 @@ var bcrypt = require('bcrypt-nodejs');
 var path = require('path');
 var favicon = require('serve-favicon');
 
+//日志模块涉及包
 var logger = require('morgan');
+var log4js = require('log4js');
 //登陆模块涉及包
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
@@ -78,7 +80,24 @@ passport.deserializeUser(function(username, done) {
   });
 });
 
-// view engine setup
+//调整日志输出，采用文件和级别
+log4js.configure({
+  appenders: [
+    { type: 'console'},
+    {
+      type: 'file',
+      filename: 'logs/access.log',
+      maxLogSize: 1024,
+      backup: 3,
+      category: 'normal'
+    }
+  ]
+});
+//var logger = log4js.getLogger('normal');
+//logger.setLevel('INFO');
+//app.use(log4js.connectLogger(logger, {level:log4js.levels.INFO}));
+
+//把ejs模板改为html
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.html', require('ejs').renderFile);
 app.set('view engine', 'html');
@@ -86,8 +105,8 @@ app.set('view engine', 'html');
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: 'lmb'}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(session({secret: 'keyboard'}));
 app.use(passport.initialize());
@@ -106,7 +125,7 @@ app.use('/hardwareManage', hardwareManage);
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
-  next(err);
+  res.render('404', { title: '出错啦', errorStatus: err.status});
 });
 
 // error handlers
@@ -117,6 +136,7 @@ if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
+      title: '500错误',
       message: err.message,
       error: err
     });
@@ -128,6 +148,7 @@ if (app.get('env') === 'development') {
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
+    title: '500错误',
     message: err.message,
     error: {}
   });

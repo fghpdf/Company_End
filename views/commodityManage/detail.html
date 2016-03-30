@@ -48,12 +48,12 @@
                 </li>
               </ul>
               <ul class="nav">
-                <li class="active">
+                <li>
                   <a href="/commodityManage">商品管理</a>
                 </li>
               </ul>
               <ul class="nav">
-                <li>
+                <li class="active">
                   <a href="/commodityManage/purchase">订单管理</a>
                 </li>
               </ul>
@@ -89,11 +89,13 @@
         </tr>
         </thead>
         <tbody>
+        <% for(var num = 0; detailList[num] !== undefined; num = num + 1) { %>
         <tr class="info">
-          <td><%= detailList[0].name %></td>
-          <td><%= detailList[0].price %></td>
-          <td><%= detailList[0].number %></td>
+          <td><%= detailList[num].commodityName %></td>
+          <td><%= detailList[num].commodityPrice + '元' %></td>
+          <td><%= detailList[num].commodityNumber + '件' %></td>
         </tr>
+        <% } %>
         </tbody>
       </table>
     </div>

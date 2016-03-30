@@ -48,12 +48,12 @@
                 </li>
               </ul>
               <ul class="nav">
-                <li class="active">
+                <li>
                   <a href="/commodityManage">商品管理</a>
                 </li>
               </ul>
               <ul class="nav">
-                <li>
+                <li class="active">
                   <a href="/commodityManage/purchase">订单管理</a>
                 </li>
               </ul>
@@ -104,7 +104,11 @@
         <% for(var num = 0; purchaseList[num] !== undefined; num = num + 1) { %>
         <tr class="info">
           <td><%= purchaseList[num].id %></td>
+          <% if(purchaseList[num].purchaseChannel) { %>
           <td><%= purchaseList[num].purchaseChannel %></td>
+          <% } else { %>
+          <td><%= '未付款' %></td>
+          <% } %>
           <td><%= purchaseList[num].purchaseCreateDate %></td>
           <td><% if(purchaseList[num].purchaseFinishDate) { %>
             <%= purchaseList[num].purchaseFinishDate %>
@@ -112,7 +116,7 @@
             <%= '尚未付款' %>
             <% } %>
           </td>
-          <td><%= purchaseList[num].purchasePrice %></td>
+          <td><%= purchaseList[num].purchasePrice + '元' %></td>
           <td><% if(purchaseList[num].purchaseStatus) { %>
             <%= '已付款' %>
             <% } else { %>

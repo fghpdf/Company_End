@@ -78,6 +78,9 @@
         <thead>
         <tr>
           <th>
+            商品编号
+          </th>
+          <th>
             商品名
           </th>
           <th>
@@ -92,16 +95,26 @@
           <th>
             图片链接
           </th>
+          <th>
+            商品分类
+          </th>
+          <th>
+            操作
+          </th>
         </tr>
         </thead>
         <tbody>
         <% for(var num = 0; commodityList[num] !== undefined; num = num + 1) { %>
         <tr class="success">
+          <td><%= commodityList[num].id %></td>
           <td><%= commodityList[num].commodityName %></td>
           <td><%= commodityList[num].commodityPrice %></td>
           <td><%= commodityList[num].commodityStock %></td>
           <td><%= commodityList[num].commoditySold %></td>
           <td><%= commodityList[num].commodityImg %></td>
+          <td><%= commodityList[num].commodityCategories %></td>
+          <td><a href="#" role="button" class="btn btn-danger">删除商品</a>
+            <a href="#" role="button" class="btn btn-default" >修改商品信息</a></td>
         </tr>
         <% } %>
         </tbody>

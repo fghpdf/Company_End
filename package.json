@@ -27,6 +27,8 @@
     "serve-favicon": "~2.3.0",
     "step": "latest",
     "shortid": "latest",
-    "request": "latest"
+    "request": "latest",
+    "log4js": "latest",
+    "thenjs": "latest"
   }
 }

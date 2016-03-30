@@ -19,5 +19,6 @@
     <orderEntry type="library" name="pathjs-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="multer-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="getui" level="project" />
+    <orderEntry type="library" name="log4js-DefinitelyTyped" level="application" />
   </component>
 </module>

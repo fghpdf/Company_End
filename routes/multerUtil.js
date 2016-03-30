@@ -14,10 +14,12 @@ var commodityUpload = multer({ storage: storage}).single('commodityImages');
 var startUpload = multer({ storage: storage}).single('startImages');
 var guideUpload = multer({ storage: storage}).array('guideImages');
 var carouselUpload = multer({ storage: storage}).array('carouselImages');
+var commodityUpdateUpload = multer({ storage: storage}).single('commodityImages');
 
 module.exports = {
     commodityUpload: commodityUpload,
     startUpload: startUpload,
     guideUpload: guideUpload,
-    carouselUpload: carouselUpload
+    carouselUpload: carouselUpload,
+    commodityUpdateUpload: commodityUpdateUpload
 };

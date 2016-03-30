@@ -7,10 +7,10 @@
       </h3>
       <form class="form-horizontal" method="post" action="/loginTop">
         <% if(typeof(errorMessage) !== 'undefined') {%>
-          <span><%= errorMessage %></span>
+          <span  class="info"><%= errorMessage %></span>
         <% } %>
         <div class="control-group">
-          <span>一级管理员登录</span>
+          <span class="info">一级管理员登录</span>
         </div>
         <div class="control-group">
           <label class="control-label" for="adminEmail">账号</label>

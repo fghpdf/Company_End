@@ -1,0 +1,57 @@
+<%- include header.html %>
+<div class="container-fluid" id="LG">
+  <div class="row-fluid">
+    <div class="span12">
+      <h3 class="text-center">
+        厂家平台
+      </h3>
+      <form class="form-horizontal" id="commodityUpdateForm" method="post" action="commodityUpdate" enctype="multipart/form-data">
+        <% if(typeof(errorMessage) !== 'undefined') {%>
+        <span class="info"><%= errorMessage %></span>
+        <% } %>
+        <div class="control-group">
+          <label class="control-label" for="commodityId">CommodityId</label>
+          <div class="controls">
+            <span id="commodityId" class="span1"><%= commodityId %></span>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="commodityName">商品名称</label>
+          <div class="controls">
+            <input id="commodityName" type="text" name="commodityName" placeholder="请输入文字" required="required" />
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="commodityPrice">商品价格</label>
+          <div class="controls">
+            <input id="commodityPrice" type="text" name="commodityPrice" placeholder="请输入文字" required="required" />
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="commodityCategories">商品分类</label>
+          <div class="controls">
+            <input id="commodityCategories" type="text" name="commodityCategories" placeholder="请输入文字" required="required" />
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="commodityStock">商品库存</label>
+          <div class="controls">
+            <input id="commodityStock" type="text" name="commodityStock" placeholder="请输入文字" required="required" />
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="commodityImages">商品图片</label>
+          <div class="controls">
+            <input id="commodityImages" type="file" name="commodityImages" required="required" />
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn" value="submit">提交</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include footer.html %>

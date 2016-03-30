@@ -17,8 +17,9 @@ var Purchase = db.Model.extend({
     idAttribute: 'id'
 });
 
-var Defray = db.Model.extend({
-    tableName: 'defray'
+var Detail = db.Model.extend({
+    tableName: 'purchase_detail',
+    idAttribute: 'id'
 });
 
 //app管理相关的表
@@ -62,7 +63,7 @@ module.exports = {
     Admin: Admin,
     Commodity: Commodity,
     Purchase: Purchase,
-    Defray: Defray,
+    Detail: Detail,
     App: App,
     Start: Start,
     Guide: Guide,
