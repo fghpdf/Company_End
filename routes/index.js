@@ -4,6 +4,7 @@ var passport = require('passport');
 var bcrypt = require('bcrypt-nodejs');
 
 var model = require('../database/model');
+var operateLog = require('../database/operateLog');
 
 /* GET home page. */
 //对访问进行拦截，若没有登陆，则不能进入管理员管理页面
@@ -12,13 +13,14 @@ router.all('/adminManage', isLoggedIn);
 router.all('/commodityManage', isLoggedIn);
 router.all('/appManage', isTopLoggedIn);
 router.all('/hardwareManage', isTopLoggedIn);
+router.all('/operateManage', isLoggedIn);
 
 router.get('/', function(req, res, next) {
   res.redirect('/adminManage');
 });
 
 router.get('/login', function(req, res, next) {
-  res.render('login', { title: '登陆'});
+  res.render('login', { title: '登录'});
 });
 
 router.get('/loginTop', function(req, res, next) {
@@ -39,7 +41,6 @@ router.post('/loginTop', function(req, res, next){
   var adminEmailPromise = null;
   //bookshelfjs提供的方法，可以通过表单提交的字段查找数据库，这里做一个重复用户名查询
   adminEmailPromise = new model.Admin({adminEmail: req.body.adminEmail}).fetch();
-
   adminEmailPromise.then(function(model_fetch) {
     var level = model_fetch.get('Level');
     if(level === '1') {
@@ -48,21 +49,23 @@ router.post('/loginTop', function(req, res, next){
         failureRedirect: '/loginTop'
       }, function(err, user, info){
         if(err) {
-          return res.render('loginTop', {title: '顶级管理员登陆', errorMessage: err.message});
+          return res.render('loginTop', {title: '顶级管理员登录', errorMessage: err.message});
         }
         if(!user) {
-          return res.render('loginTop', {title: '顶级管理员登陆', errorMessage: info.message});
+          return res.render('loginTop', {title: '顶级管理员登录', errorMessage: info.message});
         }
         return req.logIn(user, function(err){
           if(err) {
-            return res.render('loginTop', {title: '顶级管理员登陆', errorMessage: err.message});
+            return res.render('loginTop', {title: '顶级管理员登录', errorMessage: err.message});
           } else {
+            //写入日志
+            operateLog.logWrite(user.adminEmail, '顶级管理员' + user.adminName + '登录');
             return res.redirect('/adminManage');
           }
         });
       })(req, res, next);
     } else {
-      return res.render('loginTop', {title: '顶级管理员登陆', errorMessage: '您不是顶级管理员'});
+      return res.render('loginTop', {title: '顶级管理员登录', errorMessage: '您不是顶级管理员'});
     }
   });
 });
@@ -79,21 +82,23 @@ router.post('/loginSec', function(req, res, next){
         failureRedirect: '/loginSec'
       }, function(err, user, info){
         if(err) {
-          return res.render('loginSec', {title: '次级管理员登陆', errorMessage: err.message});
+          return res.render('loginSec', {title: '次级管理员登录', errorMessage: err.message});
         }
         if(!user) {
-          return res.render('loginSec', {title: '次级管理员登陆', errorMessage: info.message});
+          return res.render('loginSec', {title: '次级管理员登录', errorMessage: info.message});
         }
         return req.logIn(user, function(err){
           if(err) {
-            return res.render('loginSec', {title: '登次级管理员登陆陆', errorMessage: err.message});
+            return res.render('loginSec', {title: '次级管理员登录', errorMessage: err.message});
           } else {
+            //写入日志
+            operateLog.logWrite(user.adminEmail, '次级管理员'+ user.adminName +'登录');
             return res.redirect('/adminManage');
           }
         });
       })(req, res, next);
     } else {
-      return res.render('loginSec', {title: '次级管理员登陆', errorMessage: '您不是次级管理员'});
+      return res.render('loginSec', {title: '次级管理员登录', errorMessage: '您不是次级管理员'});
     }
   });
 });

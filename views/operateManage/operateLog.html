@@ -48,7 +48,7 @@
                 </li>
               </ul>
               <ul class="nav">
-                <li class="active">
+                <li>
                   <a href="/commodityManage">商品管理</a>
                 </li>
               </ul>
@@ -58,7 +58,7 @@
                 </li>
               </ul>
               <ul class="nav">
-                <li>
+                <li class="active">
                   <a href="/operateManage">操作日志</a>
                 </li>
               </ul>
@@ -78,48 +78,34 @@
         <thead>
         <tr>
           <th>
-            商品编号
+            操作者Id
           </th>
           <th>
-            商品名
+            操作者名字
           </th>
           <th>
-            单价
+            操作者邮箱
           </th>
           <th>
-            库存
+            操作时间
           </th>
           <th>
-            售出数量
-          </th>
-          <th>
-            图片链接
-          </th>
-          <th>
-            商品分类
-          </th>
-          <th>
-            操作
+            操作内容
           </th>
         </tr>
         </thead>
         <tbody>
-        <% for(var num = 0; commodityList[num] !== undefined; num = num + 1) { %>
-        <tr class="success">
-          <td><%= commodityList[num].id %></td>
-          <td><%= commodityList[num].commodityName %></td>
-          <td><%= commodityList[num].commodityPrice %></td>
-          <td><%= commodityList[num].commodityStock %></td>
-          <td><%= commodityList[num].commoditySold %></td>
-          <td><%= commodityList[num].commodityImg %></td>
-          <td><%= commodityList[num].commodityCategories %></td>
-          <td><a href="#" role="button" class="btn btn-danger">删除商品</a>
-            <a href="#" role="button" class="btn btn-default" >修改商品信息</a></td>
+        <% for(var num = 0; operateList[num] !== undefined; num = num + 1) { %>
+        <tr class="info">
+          <td><%= operateList[num].operatorId %></td>
+          <td><%= operateList[num].operatorName %></td>
+          <td><%= operateList[num].operatorEmail %></td>
+          <td><%= operateList[num].operateDate %></td>
+          <td><%= operateList[num].operateContent %></td>
         </tr>
         <% } %>
         </tbody>
       </table>
-      <a href="/commodityManage/commodityAdd" role="button" class="btn btn-info">添加商品</a>
       <a href="/logout" role="button" class="btn">登出</a>
     </div>
   </div>

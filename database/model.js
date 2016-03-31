@@ -12,11 +12,13 @@ var Commodity = db.Model.extend({
     idAttribute: 'id'
 });
 
+//订单表
 var Purchase = db.Model.extend({
     tableName: 'purchase',
     idAttribute: 'id'
 });
 
+//订单细节表
 var Detail = db.Model.extend({
     tableName: 'purchase_detail',
     idAttribute: 'id'
@@ -27,30 +29,35 @@ var App = db.Model.extend({
     tableName: 'app'
 });
 
+//启动页表
 var Start = db.Model.extend({
     tableName: 'start',
     idAttribute: 'id'
 });
 
+//引导页表
 var Guide = db.Model.extend({
     tableName: 'guide',
     idAttribute: 'id'
 });
 
+//轮播图表
 var Carousel = db.Model.extend({
     tableName: 'carousel',
     idAttribute: 'id'
 });
 
+//手机信息表
 var Mobile = db.Model.extend({
     tableName: 'mobile_info',
     idAttribute: 'id'
 });
 
-/*new Admin({'adminAccount': 'qxx'}).fetch().then(function(model) {
-    console.log(model.get('isTopLevel'));
-});*/
-
+//操作日志表
+var Operate = db.Model.extend({
+    tableName: 'log_operate',
+    idAttribute: 'id'
+});
 
 /*new Defray().where('purchaseId','=', '2').query().select().then(function(model) {
     console.log(model);
@@ -68,5 +75,6 @@ module.exports = {
     Start: Start,
     Guide: Guide,
     Carousel: Carousel,
-    Mobile: Mobile
+    Mobile: Mobile,
+    Operate: Operate
 };

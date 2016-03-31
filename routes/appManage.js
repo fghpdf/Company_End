@@ -7,6 +7,7 @@ var url = require('url');
 
 
 var upload = require('./multerUtil');
+var operateLog = require('../database/operateLog');
 
 //拦截二级域名
 router.all('/', isTopLoggedIn);
@@ -55,6 +56,7 @@ router.get('/queryDetail', function(req, res, next) {
 
 //添加app, id用shortid生成
 router.post('/appAdd', function(req, res, next) {
+    var adminEmail = req.session.passport.user;
     var appId = shortid.generate();
     var app = req.body;
     var appNamePromise = new model.App({ appName: app.appName}).fetch();
@@ -70,7 +72,9 @@ router.post('/appAdd', function(req, res, next) {
             });
             console.log('addApp:', addApp);
             addApp.save().then(function(model_fetch) {
-                res.redirect('app');
+                //写入日志
+                operateLog.logWrite(adminEmail, '添加App，AppId：' + appId);
+                res.redirect('/appManage/app');
             })
         }
     });
@@ -95,6 +99,7 @@ router.get('/startAdd', function(req, res, next) {
 //添加启动页图片，把上传的单个图片的url保存在startContent中
 //然后保存在数据库中
 router.post('/startAdd/:appId', function (req, res, next) {
+    var adminEmail = req.session.passport.user;
     var appId = req.params.appId;
     console.log('appId:', appId);
     upload.startUpload(req, res, function (err) {
@@ -113,6 +118,8 @@ router.post('/startAdd/:appId', function (req, res, next) {
                     }, {
                         patch: true
                     }).then(function(model_save) {
+                        //写入日志
+                        operateLog.logWrite(adminEmail, '更新启动页图片,AppId:' + appId);
                         res.redirect(303, '/appManage/');
                     })
                 } else {
@@ -120,6 +127,8 @@ router.post('/startAdd/:appId', function (req, res, next) {
                         startContent: req.file.path,
                         appId: appId
                     }).save().then(function (model_save) {
+                        //写入日志
+                        operateLog.logWrite(adminEmail, '添加启动页图片,AppId:' + appId);
                         res.redirect(303, '/appManage/');
                     })
                 }
@@ -137,6 +146,7 @@ router.get('/guideAdd', function(req, res, next) {
 //添加引导页图片，把上传的多个图片的url保存在startContent中
 //然后保存在数据库中
 router.post('/guideAdd/:appId', function (req, res, next) {
+    var adminEmail = req.session.passport.user;
     var appId = req.params.appId;
     console.log('appId:', appId);
     upload.guideUpload(req, res, function (err) {
@@ -156,6 +166,8 @@ router.post('/guideAdd/:appId', function (req, res, next) {
                         }, {
                             patch: true
                         }).then(function(model_save) {
+                            //写入日志
+                            operateLog.logWrite(adminEmail, '更新引导页图片,AppId:' + appId);
                             res.redirect(303, '/appManage/');
                         })
                     });
@@ -165,6 +177,8 @@ router.post('/guideAdd/:appId', function (req, res, next) {
                             guideContent: content,
                             appId: appId
                         }).save().then(function (model_save) {
+                            //写入日志
+                            operateLog.logWrite(adminEmail, '添加引导页图片,AppId:' + appId);
                             res.redirect(303, '/appManage/');
                         })
                     });
@@ -183,6 +197,7 @@ router.get('/carouselAdd', function(req, res, next) {
 //添加轮播页图片，把上传的多个图片的url保存在startContent中
 //然后保存在数据库中
 router.post('/carouselAdd/:appId', function (req, res, next) {
+    var adminEmail = req.session.passport.user;
     var appId = req.params.appId;
     console.log('appId:', appId);
     upload.carouselUpload(req, res, function (err) {
@@ -202,6 +217,8 @@ router.post('/carouselAdd/:appId', function (req, res, next) {
                         }, {
                             patch: true
                         }).then(function(model_save) {
+                            //写入日志
+                            operateLog.logWrite(adminEmail, '更新轮播也图片,AppId:' + appId);
                             res.redirect(303, '/appManage/');
                         })
                     });
@@ -211,6 +228,8 @@ router.post('/carouselAdd/:appId', function (req, res, next) {
                             carouselContent: content,
                             appId: appId
                         }).save().then(function (model_save) {
+                            //写入日志
+                            operateLog.logWrite(adminEmail, '添加轮播页图片,AppId:' + appId);
                             res.redirect(303, '/appManage/');
                         })
                     });

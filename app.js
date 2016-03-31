@@ -26,6 +26,7 @@ var adminManage = require('./routes/adminManage');
 var commodityManage = require('./routes/commodityManage');
 var appManage = require('./routes/appManage');
 var hardwareManage = require('./routes/hardwareManage');
+var operateManage = require('./routes/operateManage');
 
 var model = require('./database/model');
 
@@ -120,6 +121,7 @@ app.use('/adminManage', adminManage);
 app.use('/commodityManage', commodityManage);
 app.use('/appManage', appManage);
 app.use('/hardwareManage', hardwareManage);
+app.use('/operateManage', operateManage);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

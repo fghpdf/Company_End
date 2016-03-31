@@ -5,6 +5,7 @@ var bcrypt = require('bcrypt-nodejs');
 
 var model = require('../database/model');
 var preset = require('../configuration/preset');
+var operateLog = require('../database/operateLog');
 
 //拦截二级域名
 router.all('/', isLoggedIn);
@@ -27,16 +28,17 @@ router.get('/', function(req, res, next) {
 
 /*这里处理ajax的请求，所以成功只是返回success，不渲染也不重定向*/
 router.post('/deleteAdmin', function(req, res, next) {
-    console.log(req.body);
-    var adminEmail = req.session.passport.user;
     var deleteAdminEmail = req.body.deleteAdminEmail;
     //真是日了狗了,bookshelf只能用id来删除(文档实在难以阅读，TM栗子那么少),只能先获得id，再来删除
     var deletePromise = new model.Admin({adminEmail: deleteAdminEmail}).fetch();
     if(adminEmail === preset.TopAdmin.adminEmail) {
         deletePromise.then(function(model_id) {
             var deleteId = model_id.get('id');
+            var deleteName = model_id.get('adminName');
             console.log(deleteId);
             new model.Admin({id: deleteId}).destroy().then(function(model_delete) {
+                //写入日志
+                operateLog.logWrite(preset.TopAdmin.adminEmail, '删除管理员：' + deleteName);
                 res.json({ success: true});
             });
         })
@@ -75,6 +77,8 @@ router.post('/adminAdd', function(req, res, next) {
             });
             registerUser.save().then(function(model_fetch){
                 if(req.isAuthenticated()) {
+                    //写入日志
+                    operateLog.logWrite(preset.TopAdmin.adminEmail, '添加管理员:' + admin.adminName);
                     res.redirect(303, '/adminManage/');
                 } else {
                     res.render('login', {title: '登录'});

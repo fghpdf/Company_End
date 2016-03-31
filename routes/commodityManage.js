@@ -8,6 +8,7 @@ var async = require('async');
 
 var multer = require('multer');
 var upload = require('./multerUtil');
+var operateLog = require('../database/operateLog');
 
 //拦截二级域名
 router.all('/', isLoggedIn);
@@ -63,6 +64,7 @@ router.get('/commodityAdd', function(req, res, next) {
 
 
 router.post('/commodityAdd', function(req, res, next) {
+    var adminEmail = req.session.passport.user;
     upload.commodityUpload(req, res, function(err) {
         if(err) {
             console.log(err);
@@ -83,8 +85,9 @@ router.post('/commodityAdd', function(req, res, next) {
                         commodityCategories: commodity.commodityCategories
                     });
                     addCommodity.save().then(function(model_fetch) {
-                        console.log('model_fetch_save:', model_fetch);
-                        res.redirect(303, 'commodity');
+                        //写入日志
+                        operateLog.logWrite(adminEmail, '添加商品:' + commodity.commodityName);
+                        res.redirect(303, '/commodityManage/commodity');
                     })
                 }
             });
@@ -94,35 +97,48 @@ router.post('/commodityAdd', function(req, res, next) {
 
 //删除商品
 router.post('/deleteCommodity', function(req, res, next) {
+    var adminEmail = req.session.passport.user;
     var deleteCommodityId = req.body.deleteCommodityId;
     var deleteCommodityPromise = new model.Commodity({ id: deleteCommodityId});
-    deleteCommodityPromise.destroy().then(function(model_delete) {
-        //删除在订单详情中的商品
-        var deleteDetailPromise = new model.Detail().where('commodityId', '=', deleteCommodityId).query().select();
-        deleteDetailPromise.then(function(model_query) {
-            async.eachSeries(model_query, function(item, callback) {
-                var deleteId = item.id;
-                var purchaseId = item.purchaseId;
-                //查看订单是否已完成，如果已完成，则不能删除；未完成则可以删除
-                var statusPromise = new model.Purchase({ id: purchaseId}).fetch();
-                statusPromise.then(function(model_status) {
-                    var purchaseStatus = model_status.get('purchaseStatus');
-                    if(purchaseStatus !== 1) {
-                        new model.Detail({ id: deleteId}).destroy().then(function(model_detail) {
-                            callback(null, item);
-                        });
-                    } else {
-                        callback(null, item);
-                    }
-                })
-            }, function(err) {
-                if(err) {
-                    res.json({ success: false, errorMessage: err});
-                } else {
-                    res.json({ success: true});
-                }
+    deleteCommodityPromise.fetch().then(function(model_fetch) {
+        if(model_fetch) {
+            var commodityName = model_fetch.get('commodityName');
+            deleteCommodityPromise.destroy().then(function(model_delete) {
+                //写入日志
+                operateLog.logWrite(adminEmail, '删除商品:' + commodityName);
+                res.json({ success: true});
+                /*//删除在订单详情中的商品
+                 var deleteDetailPromise = new model.Detail().where('commodityId', '=', deleteCommodityId).query().select();
+                 deleteDetailPromise.then(function(model_query) {
+                 async.eachSeries(model_query, function(item, callback) {
+                 var deleteId = item.id;
+                 var purchaseId = item.purchaseId;
+                 //查看订单是否已完成，如果已完成，则不能删除；未完成则可以删除
+                 var statusPromise = new model.Purchase({ id: purchaseId}).fetch();
+                 statusPromise.then(function(model_status) {
+                 var purchaseStatus = model_status.get('purchaseStatus');
+                 if(purchaseStatus !== 1) {
+                 new model.Detail({ id: deleteId}).destroy().then(function(model_detail) {
+                 callback(null, item);
+                 });
+                 } else {
+                 callback(null, item);
+                 }
+                 })
+                 }, function(err) {
+                 if(err) {
+                 res.json({ success: false, errorMessage: err});
+                 } else {
+                 //写入日志
+                 operateLog.logWrite(adminEmail, '删除商品');
+                 res.json({ success: true});
+                 }
+                 });
+                 });*/
             });
-        });
+        } else {
+            res.json({ success: false, errorMessage: '商品不存在'});
+        }
     });
 });
 
@@ -150,6 +166,8 @@ router.post('/commodityUpdate/:commodityId', function(req, res, next) {
                 commodityStock: commodity.commodityStock,
                 commodityImages: commodity.commodityImages
             }).then(function(model_fetch) {
+                //写入日志
+                operateLog.logWrite(adminEmail, '更改商品:' + commodity.commodityName);
                 res.redirect(303, '/commodityManage/');
             });
         }
