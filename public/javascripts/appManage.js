@@ -3,7 +3,18 @@ $(document).ready(function () {
     //启动页
     $(document).ready(function() {
         var appId = $("span#startAppId").text();
-        $("form#startAddForm").attr('action', 'startAdd/' + appId);
+        var startAdd = $("#startAddUpload").uploadFile({
+            url:"/appManage/startAdd/" + appId,
+            fileName:"startImages",
+            autoSubmit:false,
+            showPreview:true,
+            previewHeight: "100px",
+            previewWidth: "100px"
+        });
+        $("#startAddButton").click(function()
+        {
+            startAdd.startUpload();
+        });
     });
 
     $("button#addStart").click(function() {
@@ -57,7 +68,21 @@ $(document).ready(function () {
     //轮播页
     $(document).ready(function() {
         var appId = $("span#carouselAppId").text();
-        $("form#carouselAddForm").attr('action', 'carouselAdd/' + appId);
+        var carouselAdd = $("#carouselAddUpload").uploadFile({
+            url:"/appManage/carouselAdd/" + appId,
+            fileName:"carouselImages",
+            autoSubmit:false,
+            multiple:true,
+            showPreview:true,
+            previewHeight: "100px",
+            previewWidth: "100px",
+            sequential:true,
+            sequentialCount:1
+        });
+        $("#carouselAddButton").click(function()
+        {
+            carouselAdd.startUpload();
+        });
     });
 
     $("button#addCarousel").click(function() {

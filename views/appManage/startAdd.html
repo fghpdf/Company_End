@@ -5,32 +5,25 @@
       <h3 class="text-center">
         厂家平台
       </h3>
-      <form id="startAddForm" class="form-horizontal" method="post" action="startAdd" enctype="multipart/form-data">
-        <% if(typeof(errorMessage) !== 'undefined') {%>
-        <div class="alert alert-danger">
-          <h4>提示!</h4>
-          <strong>警告!</strong> <%= errorMessage %>
+      <% if(typeof(errorMessage) !== 'undefined') {%>
+      <div class="alert alert-danger">
+        <h4>提示!</h4>
+        <strong>警告!</strong> <%= errorMessage %>
+      </div>
+      <% } %>
+      <div class="control-group">
+        <div class="controls">
+          <div id="startAddUpload">启动页图片</div>
+          <div id="startAddButton" class="ajax-file-upload-green">提交</div>
         </div>
-        <% } %>
-        <div class="control-group">
-          <label class="control-label" for="startAppId">AppId</label>
-          <div class="controls">
-            <span id="startAppId" class="span1"><%= appId %></span>
-          </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="startAppId">AppId</label>
+        <div class="controls">
+          <span id="startAppId" class="span1"><%= appId %></span>
         </div>
-        <div class="control-group">
-          <label class="control-label" for="startImages">启动页图片</label>
-          <div class="controls">
-            <input id="startImages" type="file" name="startImages" required="required" />
-          </div>
-          <span class="info">仅可选择一张哟</span>
-        </div>
-        <div class="control-group">
-          <div class="controls">
-            <button type="submit" class="btn" value="submit">提交</button>
-          </div>
-        </div>
-      </form>
+      </div>
+      <span class="info">只可以选择一张哟</span>
     </div>
   </div>
 </div>

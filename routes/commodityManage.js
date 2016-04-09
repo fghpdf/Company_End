@@ -9,12 +9,13 @@ var async = require('async');
 var multer = require('multer');
 var upload = require('./multerUtil');
 var operateLog = require('../database/operateLog');
+var preset = require('../configuration/preset');
 
 //拦截二级域名
-router.all('/', isLoggedIn);
-router.all('/purchase', isLoggedIn);
-router.all('/detailQuery', isLoggedIn);
-router.all('/commodityAdd', isLoggedIn);
+router.all('/', preset.isLoggedIn);
+router.all('/purchase', preset.isLoggedIn);
+router.all('/detailQuery', preset.isLoggedIn);
+router.all('/commodityAdd', preset.isLoggedIn);
 
 /*这里需要查询数据库，显示商品列表列表 */
 router.get('/commodity', function(req, res, next) {
@@ -55,7 +56,6 @@ router.post('/detailQuery', function(req, res, next) {
     var purchaseId = req.body.purchaseId;
     res.json({ success: true, purchaseId: purchaseId});
 });
-
 
 //商品上传
 router.get('/commodityAdd', function(req, res, next) {
@@ -149,6 +149,7 @@ router.get('/commodityUpdate', function(req, res, next) {
 });
 
 router.post('/commodityUpdate/:commodityId', function(req, res, next) {
+    var adminEmail = req.session.passport.user;
     var commodityId = req.params.commodityId;
     upload.commodityUpdateUpload(req, res, function(err) {
         if(err) {
@@ -156,8 +157,6 @@ router.post('/commodityUpdate/:commodityId', function(req, res, next) {
             res.redirect(303, 'error');
         } else {
             var commodity = req.body;
-            console.log('commodityId:', commodityId);
-            console.log('commodity:', commodity);
             var updatePromise = new model.Commodity({ id: commodityId});
             updatePromise.save({
                 commodityName: commodity.commodityName,
@@ -433,13 +432,5 @@ function detailListCreate(purchaseId, callback) {
         });
     });
 }*/
-
-function isLoggedIn(req, res, next) {
-    if(req.isAuthenticated()){
-        return next();
-    } else {
-        res.redirect('/login');
-    }
-}
 
 module.exports = router;

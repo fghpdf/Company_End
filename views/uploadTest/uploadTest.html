@@ -1,0 +1,31 @@
+<%- include header.html %>
+<div class="container-fluid" id="LG">
+  <div class="row-fluid">
+    <div class="span12">
+      <h3 class="text-center">
+        厂家平台
+      </h3>
+      <div id="extraupload">上传</div>
+      <div id="extrabutton" class="ajax-file-upload-green">Start Upload</div>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function() {
+    var appId = 'Abbb';
+    var extraObj = $("#extraupload").uploadFile({
+      url:"/operateManage/uploadTest/" + appId,
+      fileName:"myfile",
+      autoSubmit:false,
+      showPreview:true,
+      previewHeight: "100px",
+      previewWidth: "100px"
+    });
+    $("#extrabutton").click(function()
+    {
+      extraObj.startUpload();
+    });
+  });
+
+</script>
+<%- include footer.html %>

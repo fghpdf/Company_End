@@ -1,6 +1,31 @@
 var multer = require('multer');
 
-var storage = multer.diskStorage({
+var appStorage = multer.diskStorage({
+    destination: function(req, file, callback) {
+        callback(null, 'public/images');
+    },
+    filename: function(req, file, callback) {
+        var appId = req.params.appId;
+        console.log('appId', appId);
+        var fileFormat = (file.originalname).split(".");
+        callback(null, file.fieldname + '-' + appId + '.' + fileFormat[fileFormat.length - 1]);
+    }
+});
+
+var appStorageArray = multer.diskStorage({
+    destination: function(req, file, callback) {
+        callback(null, 'public/images');
+    },
+    filename: function(req, file, callback) {
+        var appId = req.params.appId;
+        var fileFormat = (file.originalname).split(".");
+        console.log('req:',req);
+        console.log(file);
+        callback(null, file.fieldname + '-' + appId + '-' +  Date.now() + '.' + fileFormat[fileFormat.length - 1]);
+    }
+});
+
+var commodityStorage = multer.diskStorage({
     destination: function(req, file, callback) {
         callback(null, 'public/images');
     },
@@ -10,16 +35,30 @@ var storage = multer.diskStorage({
     }
 });
 
-var commodityUpload = multer({ storage: storage}).single('commodityImages');
-var startUpload = multer({ storage: storage}).single('startImages');
-var guideUpload = multer({ storage: storage}).array('guideImages');
-var carouselUpload = multer({ storage: storage}).array('carouselImages');
-var commodityUpdateUpload = multer({ storage: storage}).single('commodityImages');
+var commodityUpdateStorage = multer.diskStorage({
+    destination: function(req, file, callback) {
+        callback(null, 'public/images');
+    },
+    filename: function(req, file, callback) {
+        var commodityId = req.params.commodityId;
+        var fileFormat = (file.originalname).split(".");
+        callback(null, file.fieldname + '-' + commodityId + '.' + fileFormat[fileFormat.length - 1]);
+    }
+});
+
+var commodityUpload = multer({ storage: commodityStorage}).single('commodityImages');
+var commodityUpdateUpload = multer({ storage: commodityUpdateStorage}).single('commodityImages');
+var startUpload = multer({ storage: appStorage}).single('startImages');
+var guideUpload = multer({ storage: appStorage}).array('guideImages');
+var carouselUpload = multer({ storage: appStorageArray}).array('carouselImages');
+var uploadTest = multer({ storage: appStorage}).array('myfile');
+
 
 module.exports = {
     commodityUpload: commodityUpload,
     startUpload: startUpload,
     guideUpload: guideUpload,
     carouselUpload: carouselUpload,
-    commodityUpdateUpload: commodityUpdateUpload
+    commodityUpdateUpload: commodityUpdateUpload,
+    uploadTest: uploadTest
 };

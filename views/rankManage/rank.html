@@ -1,0 +1,110 @@
+<%- include header.html %>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span3">
+      <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+          <div class="container-fluid">
+            <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+            <a href="/login" class="brand">空净产品后台管理平台</a>
+            <div class="nav-collapse collapse navbar-responsive-collapse">
+              <ul class="nav">
+                <li>
+                  <a href="/adminManage">主页</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li>
+                  <a href="/adminManage">管理员账户管理</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li>
+                  <a href="#">用户账户管理</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li>
+                  <a href="/appManage">APP管理</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li>
+                  <a href="#">推送管理</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li class="active">
+                  <a href="/rankManage">社交管理</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li>
+                  <a href="/hardwareManage">设备管理</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li>
+                  <a href="/commodityManage">商品管理</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li>
+                  <a href="/commodityManage/purchase">订单管理</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li>
+                  <a href="/operateManage">操作日志</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li>
+                  <a href="/feedBackManage">用户反馈</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="span9">
+      <div class="page-header">
+        <h1>
+          你好<small><%= adminEmail %></small>
+        </h1>
+      </div>
+      <div id="operateStatus"></div>
+      <table id="rankTable" class="table table-hover table-striped">
+        <thead>
+        <tr>
+          <th>appId</th>
+          <th>用户Id</th>
+          <th>硬件Id</th>
+          <th>内容</th>
+          <th>上传时间</th>
+          <th>地理位置</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for(var num = 0; rankList[num] !== undefined; num = num + 1) { %>
+        <tr class="info">
+          <td><%= rankList[num].appId %></td>
+          <td><%= rankList[num].userId %></td>
+          <td><%= rankList[num].hardwareId %></td>
+          <td><%= rankList[num].rankContent %></td>
+          <td><%= rankList[num].rankDate.toLocaleString() %></td>
+          <td><%= rankList[num].mobileLocation %></td>
+        </tr>
+        <% } %>
+        </tbody>
+      </table>
+      <a href="/logout" role="button" class="btn">登出</a>
+    </div>
+  </div>
+</div>
+<%- include footer.html %>

@@ -5,11 +5,15 @@
       <w>bcrypt</w>
       <w>bookshelfjs</w>
       <w>clearable</w>
+      <w>coordtransform</w>
+      <w>datetimepicker</w>
       <w>dest</w>
       <w>dirname</w>
+      <w>fileuploader</w>
       <w>firadmin</w>
       <w>getui</w>
       <w>hekr</w>
+      <w>hekrcompanyplatform</w>
       <w>knex</w>
       <w>multer</w>
       <w>navbar</w>

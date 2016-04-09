@@ -59,9 +59,16 @@ var Operate = db.Model.extend({
     idAttribute: 'id'
 });
 
+//用户反馈表
+var FeedBack = db.Model.extend({
+    tableName: 'feedback',
+    idAttribute: 'id'
+});
+
 /*new Defray().where('purchaseId','=', '2').query().select().then(function(model) {
     console.log(model);
 });*/
+
 
 //因为是企业的管理员来登录，并且有顶级管理员管理之类的，所以使用admin
 //这里通过json格式来保存表的接口
@@ -76,5 +83,6 @@ module.exports = {
     Guide: Guide,
     Carousel: Carousel,
     Mobile: Mobile,
-    Operate: Operate
+    Operate: Operate,
+    FeedBack: FeedBack
 };

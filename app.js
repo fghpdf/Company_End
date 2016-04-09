@@ -27,6 +27,8 @@ var commodityManage = require('./routes/commodityManage');
 var appManage = require('./routes/appManage');
 var hardwareManage = require('./routes/hardwareManage');
 var operateManage = require('./routes/operateManage');
+var rankManage = require('./routes/rankManage');
+var feedBackManage = require('./routes/feedBackManage');
 
 var model = require('./database/model');
 
@@ -122,6 +124,9 @@ app.use('/commodityManage', commodityManage);
 app.use('/appManage', appManage);
 app.use('/hardwareManage', hardwareManage);
 app.use('/operateManage', operateManage);
+app.use('/uploadTest', operateManage);
+app.use('/rankManage', rankManage);
+app.use('/feedBackManage', feedBackManage);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

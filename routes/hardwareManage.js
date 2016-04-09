@@ -4,9 +4,10 @@ var router = express.Router();
 var model = require('../database/model');
 var url = require('url');
 var request = require('request');
+var preset = require('../configuration/preset');
 
-router.all('/', isLoggedIn);
-router.all('/hardware', isLoggedIn);
+router.all('/', preset.isLoggedIn);
+router.all('/hardware', preset.isLoggedIn);
 
 router.get('/hardware', function(req, res, next) {
     res.redirect(303, '/hardwareManage/');
@@ -41,32 +42,5 @@ router.get('/', function(req, res, next) {
         }
     });
 });
-
-//判断一级管理员登录
-function isTopLoggedIn(req, res, next) {
-    if(!req.session.passport) {
-        res.render('login', {title: '一级管理员登登录', errorMessage: '您尚未登陆，请使用一级管理员账号登录'});
-    } else {
-        var adminEmail = req.session.passport.user;
-        new model.Admin({adminEmail: adminEmail}).fetch().then(function(model_getLevel) {
-            var adminLevel = model_getLevel.get('Level');
-            if(req.isAuthenticated() && adminLevel === '1') {
-                return next();
-            } else if(req.isAuthenticated()) {
-                res.render('login', {title: '一级管理员登登录', errorMessage: '您无权查看此页面，请使用一级管理员账号登录'});
-            } else {
-                res.render('login', {title: '一级管理员登登录', errorMessage: '您尚未登陆，请使用一级管理员账号登录'});
-            }
-        });
-    }
-}
-
-function isLoggedIn(req, res, next) {
-    if(req.isAuthenticated()){
-        return next();
-    } else {
-        res.redirect('/login');
-    }
-}
 
 module.exports = router;

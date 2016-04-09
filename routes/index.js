@@ -5,15 +5,16 @@ var bcrypt = require('bcrypt-nodejs');
 
 var model = require('../database/model');
 var operateLog = require('../database/operateLog');
+var preset = require('../configuration/preset');
 
 /* GET home page. */
 //对访问进行拦截，若没有登陆，则不能进入管理员管理页面
-router.all('/', isLoggedIn);
-router.all('/adminManage', isLoggedIn);
-router.all('/commodityManage', isLoggedIn);
-router.all('/appManage', isTopLoggedIn);
-router.all('/hardwareManage', isTopLoggedIn);
-router.all('/operateManage', isLoggedIn);
+router.all('/', preset.isLoggedIn);
+router.all('/adminManage', preset.isLoggedIn);
+router.all('/commodityManage', preset.isLoggedIn);
+router.all('/appManage', preset.isTopLoggedIn);
+router.all('/hardwareManage', preset.isTopLoggedIn);
+router.all('/operateManage', preset.isLoggedIn);
 
 router.get('/', function(req, res, next) {
   res.redirect('/adminManage');
@@ -108,35 +109,5 @@ router.get('/logout', function (req, res) {
   req.logout();
   res.redirect('/login');
 });
-
-
-//判断一级管理员登录
-function isTopLoggedIn(req, res, next) {
-  if(!req.session.passport) {
-    res.render('login', {title: '一级管理员登登录', errorMessage: '您尚未登陆，请使用一级管理员账号登录'});
-  } else {
-    var adminEmail = req.session.passport.user;
-    new model.Admin({adminEmail: adminEmail}).fetch().then(function(model_getLevel) {
-      var adminLevel = model_getLevel.get('Level');
-      if(req.isAuthenticated() && adminLevel === '1') {
-        return next();
-      } else if(req.isAuthenticated()) {
-        res.render('login', {title: '一级管理员登登录', errorMessage: '您无权查看此页面，请使用一级管理员账号登录'});
-      } else {
-        res.render('login', {title: '一级管理员登登录', errorMessage: '您尚未登陆，请使用一级管理员账号登录'});
-      }
-    });
-  }
-}
-
-
-//判断管理员是否登录
-function isLoggedIn(req, res, next) {
-  if(req.isAuthenticated()){
-    return next();
-  } else {
-    res.redirect('/login');
-  }
-}
 
 module.exports = router;

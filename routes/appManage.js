@@ -5,16 +5,18 @@ var model = require('../database/model');
 var shortid = require('shortid');
 var url = require('url');
 
-
 var upload = require('./multerUtil');
 var operateLog = require('../database/operateLog');
 
+var qiniu = require('qiniu');
+var preset = require('../configuration/preset');
+
 //拦截二级域名
-router.all('/', isTopLoggedIn);
-router.all('/appAdd', isTopLoggedIn);
-router.all('/startAdd', isTopLoggedIn);
-router.all('/guideAdd', isTopLoggedIn);
-router.all('/carouselAdd', isTopLoggedIn);
+router.all('/', preset.isTopLoggedIn);
+router.all('/appAdd', preset.isTopLoggedIn);
+router.all('/startAdd', preset.isTopLoggedIn);
+router.all('/guideAdd', preset.isTopLoggedIn);
+router.all('/carouselAdd', preset.isTopLoggedIn);
 
 //显示app列表
 router.get('/', function(req, res, next) {
@@ -278,22 +280,36 @@ router.get('/getImagesUrl', function(req, res, next) {
     }
 });
 
-//和IOS对接，接收app发来的系统版本，地理位置和手机型号信息
-router.get('/sendMobileInfo', function (req, res, next) {
+//和IOS对接，接收app发来的系统版本，地理位置和手机型号信息，以及排行榜中的信息
+router.get('/sendMobileInfo', function(req, res, next) {
     var appId = url.parse(req.url, true).query.appId;
     var mobileVersion = url.parse(req.url, true).query.version;
-    console.log(mobileVersion);
     var mobileLocation = url.parse(req.url, true).query.location;
     var mobileModels = url.parse(req.url, true).query.models;
+    var userId = url.parse(req.url, true).query.userId;
+    var hardwareId = url.parse(req.url, true).query.hardwareId;
+    var rankContent = url.parse(req.url, true).query.rankContent;
     new model.Mobile({
         mobileVersion: mobileVersion,
         mobileLocation: mobileLocation,
         mobileModels: mobileModels,
-        appId: appId
+        appId: appId,
+        userId: userId,
+        hardwareId: hardwareId,
+        rankContent: rankContent,
+        rankDate: new Date()
     }).save().then(function (model_save) {
-        res.json({success: true});
+        if(model_save) {
+            res.json({ success: true, info: model_save});
+        } else {
+            res.json({ success: false, info: '没有任何信息录入数据库'});
+        }
+    }).catch(function(err){
+        res.json({ success: false, info: err});
     });
 });
+
+
 
 //回调避免同步,把多个文件路径合成一个以;相隔的字符串
 function getContent(files, callback) {
@@ -306,31 +322,5 @@ function getContent(files, callback) {
     callback(content);
 }
 
-//判断一级管理员登录
-function isTopLoggedIn(req, res, next) {
-    if(!req.session.passport) {
-        res.render('login', {title: '一级管理员登登录', errorMessage: '您尚未登陆，请使用一级管理员账号登录'});
-    } else {
-        var adminEmail = req.session.passport.user;
-        new model.Admin({adminEmail: adminEmail}).fetch().then(function(model_getLevel) {
-            var adminLevel = model_getLevel.get('Level');
-            if(req.isAuthenticated() && adminLevel === '1') {
-                return next();
-            } else if(req.isAuthenticated()) {
-                res.render('login', {title: '一级管理员登登录', errorMessage: '您无权查看此页面，请使用一级管理员账号登录'});
-            } else {
-                res.render('login', {title: '一级管理员登登录', errorMessage: '您尚未登陆，请使用一级管理员账号登录'});
-            }
-        });
-    }
-}
-
-function isLoggedIn(req, res, next) {
-    if(req.isAuthenticated()){
-        return next();
-    } else {
-        res.redirect('/login');
-    }
-}
 
 module.exports = router;

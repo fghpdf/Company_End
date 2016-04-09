@@ -1,0 +1,173 @@
+<%- include header.html %>
+<!-- 需要后台填入的数据 -->
+<script type="text/javascript">
+  // 后台的 url 信息，例子：http://服务器IP/production
+  //window.url = "http://115.159.79.110:6060/milkProduction";
+  window.url = "http://localhost:3000/feedBackManage";
+  // 月，如果没有则填入 null
+  window.month = getUrlParam('month');
+  // 周，如果没有则填入 null
+  window.week = getUrlParam('week');
+  // 日，如果没有则填入 null
+  window.date = getUrlParam('date');
+  //开始时间
+  window.dateStart = getUrlParam('dateStart');
+  //结束时间
+  window.dateEnd = getUrlParam('dateEnd');
+
+  //获取url里的参数
+  function getUrlParam(name) {
+
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+
+    if (r != null) {
+
+      return unescape(r[2]);
+
+    }
+
+    return null;
+  }
+  function setTime(){
+    var currentTime = new Date().toLocaleString();
+    $('#htmer_time').val(currentTime);
+  }
+  setInterval(setTime,1000);
+</script>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span3">
+      <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+          <div class="container-fluid">
+            <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+            <a href="/login" class="brand">空净产品后台管理平台</a>
+            <div class="nav-collapse collapse navbar-responsive-collapse">
+              <ul class="nav">
+                <li>
+                  <a href="/adminManage">主页</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li>
+                  <a href="/adminManage">管理员账户管理</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li>
+                  <a href="#">用户账户管理</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li>
+                  <a href="/appManage">APP管理</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li>
+                  <a href="#">推送管理</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li>
+                  <a href="/rankManage">社交管理</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li>
+                  <a href="/hardwareManage">设备管理</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li>
+                  <a href="/commodityManage">商品管理</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li>
+                  <a href="/commodityManage/purchase">订单管理</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li>
+                  <a href="/operateManage">操作日志</a>
+                </li>
+              </ul>
+              <ul class="nav">
+                <li class="active">
+                  <a href="/feedBackManage">用户反馈</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="span9">
+      <div class="page-header">
+        <h1>
+          你好<small><%= adminEmail %></small>
+        </h1>
+      </div>
+      <div class="navgation">
+        <div class="navgation-item">时间范围：</div>
+        <div class="navgation-item">
+          <select class="form-control" id="timeRange">
+            <option>请选择时间</option>
+            <option value="today">当天</option>
+            <option value="week">最近一周</option>
+            <option value="month">最近一月</option>
+            <option value="custom">自定时间</option>
+          </select>
+        </div>
+        <div class="navgation-item" data-value="time" style="display: none;">开始日期：</div>
+        <div class="navgation-item">
+          <input type="text" class="form-control" style="display: none; margin-right: 10px;" id="datetimepickerStart" data-date-format="yyyy-mm-dd">
+        </div>
+        <div class="navgation-item" data-value="time" style="display: none;">结束日期：</div>
+        <div class="navgation-item">
+          <input type="text" class="form-control" style="display: none; margin-right: 10px;" id="datetimepickerEnd" data-date-format="yyyy-mm-dd">
+        </div>
+      </div>
+      <table id="rankTable" class="table table-hover table-striped">
+        <thead>
+        <tr>
+          <th>appId</th>
+          <th>用户Id</th>
+          <th>内容</th>
+          <th>上传时间</th>
+          <th>图片</th>
+          <th>音频路径</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for(var num = 0; feedBackList[num] !== undefined; num = num + 1) {
+           var micUrl = feedBackList[num].picKey.split(";");
+           var domain = "http://7xsprr.com2.z0.glb.qiniucdn.com/"; %>
+        <tr class="info">
+          <td><%= feedBackList[num].appId %></td>
+          <td><%= feedBackList[num].userId %></td>
+          <td><%= feedBackList[num].feedBackContent %></td>
+          <td><%= feedBackList[num].uploadDate.toLocaleString() %></td>
+          <td>
+            <% for(var micNum = 0; micNum < (micUrl.length - 1); micNum++) { %>
+            <a href="<%= (domain + micUrl[micNum]) %>" target="_blank">
+              <img src="<%= (domain + micUrl[micNum]) %>" class="img-thumbnail" alt="Cinque Terre" width="100" height="100">
+            </a>
+            <% } %>
+          </td>
+          <td><%= feedBackList[num].micKey %></td>
+        </tr>
+        <% } %>
+        </tbody>
+      </table>
+      <a href="/logout" role="button" class="btn">登出</a>
+    </div>
+  </div>
+</div>
+<%- include footer.html %>
