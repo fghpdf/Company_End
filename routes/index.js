@@ -20,10 +20,6 @@ router.get('/', function(req, res, next) {
   res.redirect('/adminManage');
 });
 
-router.get('/login', function(req, res, next) {
-  res.render('login', { title: '登录'});
-});
-
 router.get('/loginTop', function(req, res, next) {
   res.render('loginTop', { title: '顶级管理员登录'});
 });
@@ -43,31 +39,36 @@ router.post('/loginTop', function(req, res, next){
   //bookshelfjs提供的方法，可以通过表单提交的字段查找数据库，这里做一个重复用户名查询
   adminEmailPromise = new model.Admin({adminEmail: req.body.adminEmail}).fetch();
   adminEmailPromise.then(function(model_fetch) {
-    var level = model_fetch.get('Level');
-    if(level === '1') {
-      passport.authenticate('local', {
-        successRedirect: '/adminManage',
-        failureRedirect: '/loginTop'
-      }, function(err, user, info){
-        if(err) {
-          return res.render('loginTop', {title: '顶级管理员登录', errorMessage: err.message});
-        }
-        if(!user) {
-          return res.render('loginTop', {title: '顶级管理员登录', errorMessage: info.message});
-        }
-        return req.logIn(user, function(err){
+    if(model_fetch) {
+      var level = model_fetch.get('Level');
+      if(level === '1') {
+        passport.authenticate('local', {
+          successRedirect: '/adminManage',
+          failureRedirect: '/loginTop'
+        }, function(err, user, info){
           if(err) {
             return res.render('loginTop', {title: '顶级管理员登录', errorMessage: err.message});
-          } else {
-            //写入日志
-            operateLog.logWrite(user.adminEmail, '顶级管理员' + user.adminName + '登录');
-            return res.redirect('/adminManage');
           }
-        });
-      })(req, res, next);
+          if(!user) {
+            return res.render('loginTop', {title: '顶级管理员登录', errorMessage: info.message});
+          }
+          return req.logIn(user, function(err){
+            if(err) {
+              return res.render('loginTop', {title: '顶级管理员登录', errorMessage: err.message});
+            } else {
+              //写入日志
+              operateLog.logWrite(user.adminEmail, '顶级管理员' + user.adminName + '登录');
+              return res.redirect('/adminManage');
+            }
+          });
+        })(req, res, next);
+      } else {
+        return res.render('loginTop', {title: '顶级管理员登录', errorMessage: '您不是顶级管理员'});
+      }
     } else {
-      return res.render('loginTop', {title: '顶级管理员登录', errorMessage: '您不是顶级管理员'});
+      return res.render('loginTop', {title: '顶级管理员登录', errorMessage: '不存在的邮箱账号'});
     }
+
   });
 });
 
@@ -76,30 +77,34 @@ router.post('/loginSec', function(req, res, next){
   adminEmailPromise = new model.Admin({adminEmail: req.body.adminEmail}).fetch();
 
   adminEmailPromise.then(function(model_fetch) {
-    var level = model_fetch.get('Level');
-    if(level === '2') {
-      passport.authenticate('local', {
-        successRedirect: '/adminManage',
-        failureRedirect: '/loginSec'
-      }, function(err, user, info){
-        if(err) {
-          return res.render('loginSec', {title: '次级管理员登录', errorMessage: err.message});
-        }
-        if(!user) {
-          return res.render('loginSec', {title: '次级管理员登录', errorMessage: info.message});
-        }
-        return req.logIn(user, function(err){
+    if(model_fetch) {
+      var level = model_fetch.get('Level');
+      if(level === '2') {
+        passport.authenticate('local', {
+          successRedirect: '/adminManage',
+          failureRedirect: '/loginSec'
+        }, function(err, user, info){
           if(err) {
             return res.render('loginSec', {title: '次级管理员登录', errorMessage: err.message});
-          } else {
-            //写入日志
-            operateLog.logWrite(user.adminEmail, '次级管理员'+ user.adminName +'登录');
-            return res.redirect('/adminManage');
           }
-        });
-      })(req, res, next);
+          if(!user) {
+            return res.render('loginSec', {title: '次级管理员登录', errorMessage: info.message});
+          }
+          return req.logIn(user, function(err){
+            if(err) {
+              return res.render('loginSec', {title: '次级管理员登录', errorMessage: err.message});
+            } else {
+              //写入日志
+              operateLog.logWrite(user.adminEmail, '次级管理员'+ user.adminName +'登录');
+              return res.redirect('/adminManage');
+            }
+          });
+        })(req, res, next);
+      } else {
+        return res.render('loginSec', {title: '次级管理员登录', errorMessage: '您不是次级管理员'});
+      }
     } else {
-      return res.render('loginSec', {title: '次级管理员登录', errorMessage: '您不是次级管理员'});
+      return res.render('loginSec', {title: '次级管理员登录', errorMessage: '不存在的邮箱账号'});
     }
   });
 });
@@ -107,7 +112,7 @@ router.post('/loginSec', function(req, res, next){
 //登出
 router.get('/logout', function (req, res) {
   req.logout();
-  res.redirect('/login');
+  res.redirect('/loginTop');
 });
 
 module.exports = router;

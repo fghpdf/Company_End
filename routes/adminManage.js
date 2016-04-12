@@ -52,7 +52,7 @@ router.get('/adminAdd', function(req, res, next) {
     if(adminEmail === preset.TopAdmin.adminEmail) {
         res.render('adminManage/adminAdd', {title: '添加管理员'});
     } else {
-        res.render('login', {title: '一级管理员登登录', errorMessage: '您无权查看此页面，请使用一级管理员账号登录'});
+        res.render('loginTop', {title: '一级管理员登录', errorMessage: '您无权查看此页面，请使用一级管理员账号登录'});
     }
 });
 
@@ -81,7 +81,7 @@ router.post('/adminAdd', function(req, res, next) {
                     operateLog.logWrite(preset.TopAdmin.adminEmail, '添加管理员:' + admin.adminName);
                     res.redirect(303, '/adminManage/');
                 } else {
-                    res.render('login', {title: '登录'});
+                    res.render('loginTop', {title: '一级管理员登录'});
                 }
             });
         }

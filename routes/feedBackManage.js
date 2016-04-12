@@ -17,7 +17,7 @@ router.get('/feedBack', function (req, res, next) {
     var month;
     var date;
     var week;
-    var token;
+    var token = 0;
     var dateStart;
     var dateEnd;
     var adminEmail = req.session.passport.user;
@@ -84,7 +84,8 @@ router.get('/feedBack', function (req, res, next) {
             });
         });
     } else {
-        var queryPromise = model.FeedBack.query().query();
+        console.log(token);
+        var queryPromise = model.FeedBack.query();
         queryPromise.then(function (model_query) {
             res.render('feedBackManage/feedBack', {
                 title: '用户反馈',

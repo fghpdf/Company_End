@@ -1,39 +1,61 @@
 <%- include header.html %>
-<div class="container-fluid" id="LG">
-  <div class="row-fluid">
-    <div class="span12">
-      <h3 class="text-center">
-        厂家平台
-      </h3>
-      <form class="form-horizontal" method="post" action="/adminManage/adminAdd">
-        <% if(typeof(errorMessage) !== 'undefined') {%>
-        <span><%= errorMessage %></span>
-        <% } %>
-        <div class="control-group">
-          <label class="control-label" for="adminName">名字</label>
-          <div class="controls">
-            <input id="adminName" type="text" name="adminName" placeholder="请输入您的姓名" required="required" />
+<div class="page-container">
+  <!-- BEGIN CONTENT -->
+  <div class="page-content-wrapper">
+      <!-- BEGIN ADD -->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <!-- BEGIN ADD FORM -->
+            <div class="portlet light bordered">
+              <div class="portlet-body form">
+                <form novalidate="novalidate" class="login-form" action="/adminManage/adminAdd" method="post">
+                  <div class="form-body">
+                    <h3 class="form-title font-green">添加二级管理员</h3>
+                    <% if(typeof(errorMessage) !== 'undefined') {%>
+                    <div class="alert alert-danger">
+                      <button class="close" data-close="alert"></button>
+                      <span><%= errorMessage %></span>
+                    </div>
+                    <% } %>
+                    <div class="form-group form-md-line-input has-success">
+                      <div class="input">
+                        <label class="control-label visible-ie8 visible-ie9" for="adminName">姓名</label>
+                        <input id="adminName" class="form-control form-control-solid placeholder-no-fix" autocomplete="off"
+                               placeholder="请输入该管理员的姓名" name="adminName" type="text" required="required">
+                      </div>
+                    </div>
+                    <div class="form-group form-md-line-input has-success">
+                      <div class="input">
+                        <label class="control-label visible-ie8 visible-ie9" for="adminEmail">账号</label>
+                        <input id="adminEmail" class="form-control form-control-solid placeholder-no-fix" autocomplete="off"
+                               placeholder="请输入您的邮箱" name="adminEmail" type="email" required="required">
+                      </div>
+                    </div>
+                    <div class="form-group form-md-line-input has-success">
+                      <div class="input">
+                        <label class="control-label visible-ie8 visible-ie9" for="adminPassword">密码</label>
+                        <input id="adminPassword" class="form-control form-control-solid placeholder-no-fix" autocomplete="off"
+                               placeholder="请输入对应的密码" name="adminPassword" type="password" required="required">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-actions noborder">
+                    <button type="button" class="btn blue">提交</button>
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
+          <!-- END ADD FORM -->
+          <div class="col-md-4"></div>
         </div>
-        <div class="control-group">
-          <label class="control-label" for="adminEmail">账号</label>
-          <div class="controls">
-            <input id="adminEmail" type="email" name="adminEmail" placeholder="请输入账号" required="required" />
-          </div>
-        </div>
-        <div class="control-group">
-          <label class="control-label" for="adminPassword">密码</label>
-          <div class="controls">
-            <input id="adminPassword" type="password" name="adminPassword" placeholder="请输入密码" required="required"/>
-          </div>
-        </div>
-        <div class="control-group">
-          <div class="controls">
-            <button type="submit" class="btn">提交</button>
-          </div>
-        </div>
-      </form>
-    </div>
+      </div>
+      <!-- END ADD -->
   </div>
+  <!-- END CONTENT -->
 </div>
+
+
 <%- include footer.html %>
