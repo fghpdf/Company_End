@@ -64,6 +64,7 @@ passport.use(new LocalStrategy({
             loginAdminPromise.then(function(model_getId) {
               var loginId = model_getId.get('id');
               var date = new Date();
+              console.log(date);
               new model.Admin({ id: loginId}).save({adminLoginDate: date}, {patch:true}).then(function() {
                 return done(null ,admin);
               })
@@ -74,7 +75,7 @@ passport.use(new LocalStrategy({
     }));
 
 passport.serializeUser(function(user, done){
-  done(null, user.adminEmail);
+  done(null, { adminName: user.adminName, adminEmail: user.adminEmail});
 });
 
 passport.deserializeUser(function(username, done) {
@@ -106,7 +107,7 @@ app.engine('.html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public/img', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json({limit: 'lmb'}));
 app.use(bodyParser.urlencoded({ extended: true }));

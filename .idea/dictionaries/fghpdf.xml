@@ -9,6 +9,9 @@
       <w>datetimepicker</w>
       <w>dest</w>
       <w>dirname</w>
+      <w>dragdrop</w>
+      <w>dropdown</w>
+      <w>fghpdf</w>
       <w>fileuploader</w>
       <w>firadmin</w>
       <w>getui</w>
@@ -21,6 +24,8 @@
       <w>onreadystatechange</w>
       <w>secadmin</w>
       <w>shortid</w>
+      <w>sitemap</w>
+      <w>stackable</w>
       <w>stacktraces</w>
       <w>thenjs</w>
       <w>userpassword</w>

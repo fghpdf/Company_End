@@ -1,61 +1,91 @@
 <%- include header.html %>
-<div class="page-container">
-  <!-- BEGIN CONTENT -->
-  <div class="page-content-wrapper">
-      <!-- BEGIN ADD -->
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-4"></div>
-          <div class="col-md-4">
-            <!-- BEGIN ADD FORM -->
-            <div class="portlet light bordered">
-              <div class="portlet-body form">
-                <form novalidate="novalidate" class="login-form" action="/adminManage/adminAdd" method="post">
-                  <div class="form-body">
-                    <h3 class="form-title font-green">添加二级管理员</h3>
-                    <% if(typeof(errorMessage) !== 'undefined') {%>
-                    <div class="alert alert-danger">
-                      <button class="close" data-close="alert"></button>
-                      <span><%= errorMessage %></span>
-                    </div>
-                    <% } %>
-                    <div class="form-group form-md-line-input has-success">
-                      <div class="input">
-                        <label class="control-label visible-ie8 visible-ie9" for="adminName">姓名</label>
-                        <input id="adminName" class="form-control form-control-solid placeholder-no-fix" autocomplete="off"
-                               placeholder="请输入该管理员的姓名" name="adminName" type="text" required="required">
-                      </div>
-                    </div>
-                    <div class="form-group form-md-line-input has-success">
-                      <div class="input">
-                        <label class="control-label visible-ie8 visible-ie9" for="adminEmail">账号</label>
-                        <input id="adminEmail" class="form-control form-control-solid placeholder-no-fix" autocomplete="off"
-                               placeholder="请输入您的邮箱" name="adminEmail" type="email" required="required">
-                      </div>
-                    </div>
-                    <div class="form-group form-md-line-input has-success">
-                      <div class="input">
-                        <label class="control-label visible-ie8 visible-ie9" for="adminPassword">密码</label>
-                        <input id="adminPassword" class="form-control form-control-solid placeholder-no-fix" autocomplete="off"
-                               placeholder="请输入对应的密码" name="adminPassword" type="password" required="required">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-actions noborder">
-                    <button type="button" class="btn blue">提交</button>
-                  </div>
-                </form>
-              </div>
-            </div>
+<div class="ui grid">
+  <div class="row">
+    <div class="column">
+      <div class="ui">
+        <div class="ui huge menu">
+          <div class="item">
+            <img class="ui tiny image" src="/img/logo.png" height="100%">
           </div>
-          <!-- END ADD FORM -->
-          <div class="col-md-4"></div>
+          <a class="item" href="/">
+            <i class="cloud icon"></i>厂家平台
+          </a>
+          <div class="right menu">
+            <div class="item">
+              <i class="user icon"></i><%= adminName %>
+            </div>
+            <a class="item" href="/logout">
+              <i class="sign out icon"></i>登出
+            </a>
+          </div>
         </div>
       </div>
-      <!-- END ADD -->
+    </div>
   </div>
-  <!-- END CONTENT -->
+  <div class="row">
+    <div class="three wide centered column segment">
+      <div class="ui large vertical menu">
+        <a class="active item" href="/adminManage"><i class="sitemap icon"></i>管理员账户管理</a>
+        <a class="item" href="#"><i class="users icon"></i>用户账户管理</a>
+        <a class="item" href="/appManage"><i class="mobile icon"></i>App管理</a>
+        <a class="item" href="#"><i class="external icon"></i>推送管理</a>
+        <a class="item" href="/rankManage"><i class="qq icon"></i>社交管理</a>
+        <a class="item" href="/hardwareManage"><i class="laptop icon"></i>设备管理</a>
+        <div class="ui dropdown item">
+          商城管理
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            <a class="item" href="/commodityManage"><i class="shop icon"></i>商品管理</a>
+            <a class="item" href="/commodityManage/purchase"><i class="table icon"></i>订单管理</a>
+          </div>
+        </div>
+        <a class="item" href="/operateManage"><i class="file text icon"></i>操作日志</a>
+        <a class="item" href="/feedBackManage"><i class="red bug icon"></i>用户反馈</a>
+      </div>
+    </div>
+    <div class="twelve wide centered column">
+      <div class="ui middle aligned center aligned grid">
+        <div class="eight wide column">
+          <form class="ui large form" action="/adminManage/adminAdd" method="post">
+            <% if(typeof(errorMessage) !== 'undefined') {%>
+            <div class="ui message transition">
+              <i class="close icon"></i>
+              <div class="header">提示</div>
+              <p><%= errorMessage %></p>
+            </div>
+            <% } %>
+            <div class="ui stacked segment">
+              <div class="field">
+                <h2 class="ui tea1 header">
+                  <div class="content">
+                    添加二级管理员
+                  </div>
+                </h2>
+              </div>
+              <div class="field">
+                <div class="ui left icon input">
+                  <i class="user icon"></i>
+                  <input id="adminName" name="adminName" type="text" placeholder="请输入您的姓名" required="required">
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui left icon input">
+                  <i class="mail icon"></i>
+                  <input id="adminEmail" name="adminEmail" type="email" placeholder="请输入您的邮箱" required="required">
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui left icon input">
+                  <i class="lock icon"></i>
+                  <input id="adminPassword" name="adminPassword" type="password" placeholder="请输入对应的密码" required="required">
+                </div>
+              </div>
+              <button class="ui fluid large teal button" type="submit">提交</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-
 <%- include footer.html %>

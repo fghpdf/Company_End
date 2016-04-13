@@ -19,15 +19,17 @@ router.get('/admin', function(req, res, next) {
 });
 
 router.get('/', function(req, res, next) {
-    var adminEmail = req.session.passport.user;
+    var adminEmail = req.session.passport.user.adminEmail;
+    var adminName = req.session.passport.user.adminName;
     var adminList = model.Admin.query();
     adminList.select().then(function(model_fetch) {
-        res.render('adminManage/admin', { title: '首页', adminEmail: adminEmail, adminList: model_fetch});
+        res.render('adminManage/admin', { title: '首页', adminEmail: adminEmail, adminName: adminName, adminList: model_fetch});
     });
 });
 
 /*这里处理ajax的请求，所以成功只是返回success，不渲染也不重定向*/
 router.post('/deleteAdmin', function(req, res, next) {
+    var adminEmail = req.session.passport.user.adminEmail;
     var deleteAdminEmail = req.body.deleteAdminEmail;
     //真是日了狗了,bookshelf只能用id来删除(文档实在难以阅读，TM栗子那么少),只能先获得id，再来删除
     var deletePromise = new model.Admin({adminEmail: deleteAdminEmail}).fetch();
@@ -48,9 +50,10 @@ router.post('/deleteAdmin', function(req, res, next) {
 });
 
 router.get('/adminAdd', function(req, res, next) {
-    var adminEmail = req.session.passport.user;
+    var adminEmail = req.session.passport.user.adminEmail;
+    var adminName = req.session.passport.user.adminName;
     if(adminEmail === preset.TopAdmin.adminEmail) {
-        res.render('adminManage/adminAdd', {title: '添加管理员'});
+        res.render('adminManage/adminAdd', {title: '添加管理员', adminName: adminName});
     } else {
         res.render('loginTop', {title: '一级管理员登录', errorMessage: '您无权查看此页面，请使用一级管理员账号登录'});
     }

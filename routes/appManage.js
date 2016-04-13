@@ -20,52 +20,52 @@ router.all('/carouselAdd', preset.isTopLoggedIn);
 
 //显示app列表
 router.get('/', function(req, res, next) {
-    var adminEmail = req.session.passport.user;
-    var appList = model.App.query();
-    appList.select().then(function(model_fetch) {
-        res.render('appManage/app', {title: 'App管理', adminEmail: adminEmail, appList: model_fetch});
-    });
+    res.redirect(303, '/appManage/app');
 });
 
 router.get('/app', function(req, res, next) {
-    var adminEmail = req.session.passport.user;
+    var adminEmail = req.session.passport.user.adminEmail;
+    var adminName = req.session.passport.user.adminName;
     var appList = model.App.query();
     appList.select().then(function(model_fetch) {
-        res.render('appManage/app', {title: 'App管理', adminEmail: adminEmail, appList: model_fetch});
+        res.render('appManage/app', {title: 'App管理', adminEmail: adminEmail, adminName: adminName, appList: model_fetch});
     });
 });
 
 //显示添加app页面
 router.get('/appAdd', function(req, res, next) {
-    res.render('appManage/appAdd', {title: 'App添加'});
+    var adminName = req.session.passport.user.adminName;
+    res.render('appManage/appAdd', {title: 'App添加', adminName: adminName});
 });
 
 //显示app详情页面
 router.get('/queryDetail', function(req, res, next) {
-    var adminEmail = req.session.passport.user;
+    var adminEmail = req.session.passport.user.adminEmail;
+    var adminName = req.session.passport.user.adminName;
     var appId = url.parse(req.url, true).query.appId;
     var mobilePromise = new model.Mobile().where('appId', '=', appId).query().select();
 
     mobilePromise.then(function(model_fetch) {
         console.log(model_fetch);
         if(model_fetch) {
-            res.render('appManage/queryDetail', { title: 'app详情', adminEmail: adminEmail, mobileInfoList: model_fetch});
+            res.render('appManage/queryDetail', { title: 'app详情', adminEmail: adminEmail, adminName: adminName, mobileInfoList: model_fetch});
         } else {
-            res.render('appManage/queryDetail', { title: 'app详情', adminEmail: adminEmail, errorMessage: '此App尚未有用户使用'});
+            res.render('appManage/queryDetail', { title: 'app详情', adminEmail: adminEmail, adminName: adminName, errorMessage: '此App尚未有用户使用'});
         }
     });
 });
 
 //添加app, id用shortid生成
 router.post('/appAdd', function(req, res, next) {
-    var adminEmail = req.session.passport.user;
+    var adminEmail = req.session.passport.user.adminEmail;
+    var adminName = req.session.passport.user.adminName;
     var appId = shortid.generate();
     var app = req.body;
     var appNamePromise = new model.App({ appName: app.appName}).fetch();
 
     return appNamePromise.then(function(model_fetch) {
         if(model_fetch) {
-            res.render('appManage/appAdd', {title: '添加App', errorMessage: '此App名已存在！'});
+            res.render('appManage/appAdd', {title: '添加App', adminName: adminName,errorMessage: '此App名已存在！'});
         } else {
             var addApp = new model.App({
                 appId: appId,
@@ -92,16 +92,17 @@ router.post('/getAppId', function(req, res, next) {
 });
 
 
-//显示启动页添加页面
-router.get('/startAdd', function(req, res, next) {
+//显示图片上传页面
+router.get('/imagesAdd', function(req, res, next) {
     var appId = url.parse(req.url, true).query.appId;
-    res.render('appManage/startAdd', {title: '添加启动页', appId: appId});
+    var adminName = req.session.passport.user.adminName;
+    res.render('appManage/imagesAdd', {title: '上传图片', appId: appId, adminName: adminName});
 });
 
 //添加启动页图片，把上传的单个图片的url保存在startContent中
 //然后保存在数据库中
 router.post('/startAdd/:appId', function (req, res, next) {
-    var adminEmail = req.session.passport.user;
+    var adminEmail = req.session.passport.user.adminEmail;
     var appId = req.params.appId;
     console.log('appId:', appId);
     upload.startUpload(req, res, function (err) {
@@ -139,16 +140,10 @@ router.post('/startAdd/:appId', function (req, res, next) {
     });
 });
 
-//显示引导页添加页面
-router.get('/guideAdd', function(req, res, next) {
-    var appId = url.parse(req.url, true).query.appId;
-    res.render('appManage/guideAdd', {title: '添加引导页', appId: appId});
-});
-
 //添加引导页图片，把上传的多个图片的url保存在startContent中
 //然后保存在数据库中
 router.post('/guideAdd/:appId', function (req, res, next) {
-    var adminEmail = req.session.passport.user;
+    var adminEmail = req.session.passport.user.adminEmail;
     var appId = req.params.appId;
     console.log('appId:', appId);
     upload.guideUpload(req, res, function (err) {
@@ -190,16 +185,10 @@ router.post('/guideAdd/:appId', function (req, res, next) {
     });
 });
 
-//显示轮播页添加页面
-router.get('/carouselAdd', function(req, res, next) {
-    var appId = url.parse(req.url, true).query.appId;
-    res.render('appManage/carouselAdd', {title: '添加轮播页', appId: appId});
-});
-
 //添加轮播页图片，把上传的多个图片的url保存在startContent中
 //然后保存在数据库中
 router.post('/carouselAdd/:appId', function (req, res, next) {
-    var adminEmail = req.session.passport.user;
+    var adminEmail = req.session.passport.user.adminEmail;
     var appId = req.params.appId;
     console.log('appId:', appId);
     upload.carouselUpload(req, res, function (err) {

@@ -1,189 +1,73 @@
 <%- include header.html %>
-<!-- BEGIN HEADER -->
-<div class="page-header navbar navbar-fixed-top">
-  <!-- BEGIN HEADER INNER -->
-  <div class="page-header-inner ">
-    <!-- BEGIN LOGO -->
-    <div class="page-logo">
-      <a href="index.html">
-        <img src="../assets/layouts/layout4/img/logo-light.png" alt="logo" class="logo-default" /> </a>
-      <div class="menu-toggler sidebar-toggler">
-        <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
-      </div>
-    </div>
-    <!-- END LOGO -->
-    <!-- BEGIN RESPONSIVE MENU TOGGLER -->
-    <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
-    <!-- END RESPONSIVE MENU TOGGLER -->
-    <!-- BEGIN PAGE TOP -->
-    <div class="page-top">
-      <!-- BEGIN HEADER SEARCH BOX -->
-      <!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
-      <form class="search-form" action="page_general_search_2.html" method="GET">
-        <div class="input-group">
-          <input type="text" class="form-control input-sm" placeholder="Search..." name="query">
-                            <span class="input-group-btn">
-                                <a href="javascript:;" class="btn submit">
-                                  <i class="icon-magnifier"></i>
-                                </a>
-                            </span>
-        </div>
-      </form>
-      <!-- END HEADER SEARCH BOX -->
-      <!-- BEGIN TOP NAVIGATION MENU -->
-      <div class="top-menu">
-        <ul class="nav navbar-nav pull-right">
-          <!-- BEGIN USER LOGIN DROPDOWN -->
-          <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-          <li class="dropdown dropdown-user dropdown-dark">
-            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-              <span class="username username-hide-on-mobile"> Nick </span>
-            <ul class="dropdown-menu dropdown-menu-default">
-              <li>
-                <a href="page_user_login_1.html">
-                  <i class="icon-key"></i> Log Out </a>
-              </li>
-            </ul>
-          </li>
-          <!-- END USER LOGIN DROPDOWN -->
-        </ul>
-      </div>
-      <!-- END TOP NAVIGATION MENU -->
-    </div>
-    <!-- END PAGE TOP -->
-  </div>
-  <!-- END HEADER INNER -->
-</div>
-<!-- END HEADER -->
-
-<div class="container-fluid">
-  <div class="row-fluid">
-    <div class="span3">
-      <div class="navbar navbar-inverse">
-        <div class="navbar-inner">
-          <div class="container-fluid">
-            <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </a>
-            <a href="/login" class="brand">空净产品后台管理平台</a>
-            <div class="nav-collapse collapse navbar-responsive-collapse">
-              <ul class="nav">
-                <li>
-                  <a href="/adminManage/">主页</a>
-                </li>
-              </ul>
-              <ul class="nav">
-                <li class="active">
-                  <a href="/adminManage">管理员账户管理</a>
-                </li>
-              </ul>
-              <ul class="nav">
-                <li>
-                  <a href="#">用户账户管理</a>
-                </li>
-              </ul>
-              <ul class="nav">
-                <li>
-                  <a href="/appManage">APP管理</a>
-                </li>
-              </ul>
-              <ul class="nav">
-                <li>
-                  <a href="#">推送管理</a>
-                </li>
-              </ul>
-              <ul class="nav">
-                <li>
-                  <a href="/rankManage">社交管理</a>
-                </li>
-              </ul>
-              <ul class="nav">
-                <li>
-                  <a href="/hardwareManage">设备管理</a>
-                </li>
-              </ul>
-              <ul class="nav">
-                <li>
-                  <a href="/commodityManage">商品管理</a>
-                </li>
-              </ul>
-              <ul class="nav">
-                <li>
-                  <a href="/commodityManage/purchase">订单管理</a>
-                </li>
-              </ul>
-              <ul class="nav">
-                <li>
-                  <a href="/operateManage">操作日志</a>
-                </li>
-              </ul>
-              <ul class="nav">
-                <li>
-                  <a href="/feedBackManage">用户反馈</a>
-                </li>
-              </ul>
+<div class="ui grid">
+  <div class="row">
+    <div class="column">
+      <div class="ui">
+        <div class="ui huge menu">
+          <div class="item">
+            <img class="ui tiny image" src="/img/logo.png" height="100%">
+          </div>
+          <a class="item" href="/">
+            <i class="cloud icon"></i>厂家平台
+          </a>
+          <div class="right menu">
+            <div class="item">
+              <i class="user icon"></i><%= adminName %>
             </div>
+            <a class="item" href="/logout">
+              <i class="sign out icon"></i>登出
+            </a>
           </div>
         </div>
       </div>
     </div>
-    <div class="span9">
-      <div class="page-header">
-        <h1>
-          你好
-          <small><%= adminEmail %></small>
-        </h1>
-        <div id="google_translate_element"></div>
-        <script type="text/javascript">
-          function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-              pageLanguage: 'zh-CN',
-              layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-            }, 'google_translate_element');
-          }
-        </script>
-        <script type="text/javascript"
-                src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-      </div>
-      <div id="operateStatus"></div>
-      <table id="adminTable" class="table table-hover table-striped">
+  </div>
+  <div class="row">
+    <div class="three wide centered column segment">
+        <div class="ui large vertical menu">
+          <a class="active item" href="/adminManage"><i class="sitemap icon"></i>管理员账户管理</a>
+          <a class="item" href="#"><i class="users icon"></i>用户账户管理</a>
+          <a class="item" href="/appManage"><i class="mobile icon"></i>App管理</a>
+          <a class="item" href="#"><i class="external icon"></i>推送管理</a>
+          <a class="item" href="/rankManage"><i class="qq icon"></i>社交管理</a>
+          <a class="item" href="/hardwareManage"><i class="laptop icon"></i>设备管理</a>
+          <div class="ui dropdown item">
+            商城管理
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              <a class="item" href="/commodityManage"><i class="shop icon"></i>商品管理</a>
+              <a class="item" href="/commodityManage/purchase"><i class="table icon"></i>订单管理</a>
+            </div>
+          </div>
+          <a class="item" href="/operateManage"><i class="file text icon"></i>操作日志</a>
+          <a class="item" href="/feedBackManage"><i class="red bug icon"></i>用户反馈</a>
+        </div>
+    </div>
+    <div class="twelve wide centered column">
+      <table class="ui small celled blue table">
         <thead>
         <tr>
-          <th>
-            名字
-          </th>
-          <th>
-            账号
-          </th>
-          <th>
-            创建时间
-          </th>
-          <th>
-            登录时间
-          </th>
-          <th>
-            等级
-          </th>
-          <th>
-            操作
-          </th>
+          <th>名字</th>
+          <th>账号</th>
+          <th>创建时间</th>
+          <th>登录时间</th>
+          <th>等级</th>
+          <th>操作</th>
         </tr>
         </thead>
         <tbody>
-        <tr class="success">
-          <td><%= adminList[0].adminName %></td>
+        <tr class="warning">
+          <td><div class="ui ribbon label"><%= adminList[0].adminName %></div></td>
           <td><%= adminList[0].adminEmail %></td>
           <td><%= adminList[0].adminCreateDate.toLocaleString() %></td>
           <td><%= adminList[0].adminLoginDate.toLocaleString() %></td>
           <td><% if(adminList[0].Level === '1'){ %>
-            <%= '一级管理员' %>
+            <i class="attention icon"></i><%= '一级管理员' %>
             <% } else if(adminList[0] === '2') { %>
             <%= '二级管理员' %>
             <% } %></td>
           <td>
-            <a href="#" role="button" class="btn btn-inverse disabled">删除</a>
+            <a href="#" role="button" class="ui black disabled button">删除</a>
           </td>
         </tr>
         <% for(var num = 1; adminList[num] !== undefined; num = num + 1) { %>
@@ -198,21 +82,30 @@
             <%= '二级管理员' %>
             <% } %></td>
           <td><% if(adminList[0].adminEmail === adminEmail){ %>
-            <a href="#" role="button" class="btn btn-danger">删除</a>
+            <a href="#" role="button" class="negative ui button">删除</a>
             <% } else { %>
-            <a href="#" role="button" class="btn btn-inverse disabled">删除</a>
+            <a href="#" role="button" class="ui black disabled button">删除</a>
             <% } %>
           </td>
         </tr>
         <% } %>
         </tbody>
+        <tfoot class="full-width">
+        <tr>
+          <th colspan="6">
+            <% if(adminList[0].adminEmail === adminEmail){ %>
+            <a class="ui right floated small primary labeled icon button" href="/adminManage/adminAdd">
+              <i class="add user icon"></i>添加二级管理员
+            </a>
+            <% } else { %>
+            <a class="ui right floated small block  labeled icon disabled button">
+              <i class="add user icon"></i>添加二级管理员
+            </a>
+            <% } %>
+          </th>
+        </tr>
+        </tfoot>
       </table>
-      <% if(adminList[0].adminEmail === adminEmail){ %>
-      <a href="/adminManage/adminAdd" role="button" class="btn btn-info">添加二级管理员</a>
-      <% } else { %>
-      <a href="#" role="button" class="btn btn-info disabled">添加二级管理员</a>
-      <% } %>
-      <a href="/logout" role="button" class="btn">登出</a>
     </div>
   </div>
 </div>

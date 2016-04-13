@@ -1,20 +1,48 @@
 $(document).ready(function () {
+
+    $("#addImages").click(function() {
+        var appId = $(this).parent().parent().children().eq(0).text();
+        $.ajax({
+            data: {
+                appId: appId
+            },
+            url:'/appManage/getAppId',
+            type: 'POST',
+            success: function(data) {
+                if(data.success) {
+                    location.href = '/appManage/imagesAdd?appId=' + data.appId;
+                } else {
+                    alert("appId错误");
+                }
+            },
+            error: function() {
+                alert("出现错误");
+            }
+        });
+    });
+
     //通过js改变form的action的值，预设的值在span里预存
     //启动页
-    $(document).ready(function() {
-        var appId = $("span#startAppId").text();
-        var startAdd = $("#startAddUpload").uploadFile({
-            url:"/appManage/startAdd/" + appId,
-            fileName:"startImages",
-            autoSubmit:false,
-            showPreview:true,
-            previewHeight: "100px",
-            previewWidth: "100px"
-        });
-        $("#startAddButton").click(function()
-        {
-            startAdd.startUpload();
-        });
+    var appId = $("#startAppId").text();
+    var startAdd = $("#startAddUpload").uploadFile({
+        url: "/appManage/startAdd/" + appId,
+        fileName: "startImages",
+        autoSubmit:false,
+        multiple:true,
+        showPreview:true,
+        previewHeight: "100px",
+        previewWidth: "100px",
+        sequential:true,
+        sequentialCount:1,
+        uploadStr: "上传图片",
+        dragDropStr: "<span><b>拖动文件到此处</b></span>",
+        abortStr: "取消",
+        cancelStr: "取消",
+        uploadButtonClass: "ui blue button",
+        cancelButtonClass: "ui yellow button"
+    });
+    $("#startAddButton").click(function () {
+        startAdd.startUpload();
     });
 
     $("button#addStart").click(function() {
@@ -39,9 +67,26 @@ $(document).ready(function () {
     });
 
     //引导页
-    $(document).ready(function() {
-        var appId = $("span#guideAppId").text();
-        $("form#guideAddForm").attr('action', 'guideAdd/' + appId);
+    var appId = $("#guideAppId").text();
+    var guideAdd = $("#guideAddUpload").uploadFile({
+        url: "/appManage/guideAdd/" + appId,
+        fileName: "guideImages",
+        autoSubmit: false,
+        multiple: true,
+        showPreview: true,
+        previewHeight: "100px",
+        previewWidth: "100px",
+        sequential: true,
+        sequentialCount: 1,
+        uploadStr: "上传图片",
+        dragDropStr: "<span><b>拖动文件到此处</b></span>",
+        abortStr: "取消",
+        cancelStr: "取消",
+        uploadButtonClass: "ui blue button",
+        cancelButtonClass: "ui yellow button"
+    });
+    $("#guideAddButton").click(function () {
+        guideAdd.startUpload();
     });
 
     $("button#addGuide").click(function() {
@@ -66,23 +111,26 @@ $(document).ready(function () {
     });
 
     //轮播页
-    $(document).ready(function() {
-        var appId = $("span#carouselAppId").text();
-        var carouselAdd = $("#carouselAddUpload").uploadFile({
-            url:"/appManage/carouselAdd/" + appId,
-            fileName:"carouselImages",
-            autoSubmit:false,
-            multiple:true,
-            showPreview:true,
-            previewHeight: "100px",
-            previewWidth: "100px",
-            sequential:true,
-            sequentialCount:1
-        });
-        $("#carouselAddButton").click(function()
-        {
-            carouselAdd.startUpload();
-        });
+    var appId = $("#carouselAppId").text();
+    var carouselAdd = $("#carouselAddUpload").uploadFile({
+        url: "/appManage/carouselAdd/" + appId,
+        fileName: "carouselImages",
+        autoSubmit: false,
+        multiple: true,
+        showPreview: true,
+        previewHeight: "100px",
+        previewWidth: "100px",
+        sequential: true,
+        sequentialCount: 1,
+        uploadStr: "上传图片",
+        dragDropStr: "<span><b>拖动文件到此处</b></span>",
+        abortStr: "取消",
+        cancelStr: "取消",
+        uploadButtonClass: "ui blue button",
+        cancelButtonClass: "ui yellow button"
+    });
+    $("#carouselAddButton").click(function () {
+        carouselAdd.startUpload();
     });
 
     $("button#addCarousel").click(function() {
@@ -128,5 +176,11 @@ $(document).ready(function () {
         });
     });
 
-
+    $('.ui.dropdown').dropdown();
+    $('.message .close').on('click', function () {
+        $(this)
+            .closest('.message')
+            .transition('fade')
+        ;
+    });
 });
