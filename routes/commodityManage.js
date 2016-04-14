@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var fs = require('fs');
 
 var model = require('../database/model');
 
@@ -24,30 +25,33 @@ router.get('/commodity', function(req, res, next) {
 
 //显示商品列表
 router.get('/', function(req, res, next) {
-    var adminEmail = req.session.passport.user;
+    var adminEmail = req.session.passport.user.adminEmail;
+    var adminName = req.session.passport.user.adminName;
     var commodityList = model.Commodity.query();
     commodityList.select().then(function(model_fetch) {
-        res.render('commodityManage/commodity', { title: '商品管理', adminEmail: adminEmail, commodityList: model_fetch});
+        res.render('commodityManage/commodity', { title: '商品管理', adminEmail: adminEmail, adminName: adminName, commodityList: model_fetch});
     });
 });
 
 //显示订单列表
 router.get('/purchase', function(req, res, next) {
-    var adminEmail = req.session.passport.user;
+    var adminEmail = req.session.passport.user.adminEmail;
+    var adminName = req.session.passport.user.adminName;
     var purchaseList = model.Purchase.query();
     purchaseList.select().then(function(model_fetch) {
         console.log(model_fetch);
-        res.render('commodityManage/purchase', { title: '订单管理', adminEmail: adminEmail, purchaseList: model_fetch});
+        res.render('commodityManage/purchase', { title: '订单管理', adminEmail: adminEmail, adminName: adminName, purchaseList: model_fetch});
     });
 });
 
 //显示订单细节列表
 router.get('/detail', function(req, res, next) {
     var purchaseId = url.parse(req.url, true).query.purchaseId;
-    var adminEmail = req.session.passport.user;
+    var adminEmail = req.session.passport.user.adminEmail;
+    var adminName = req.session.passport.user.adminName;
     var detailQueryPromise = new model.Detail().where('purchaseId', '=', purchaseId).query().select();
     detailQueryPromise.then(function(model_detail) {
-        res.render('commodityManage/detail', {title: '订单详情', adminEmail: adminEmail, detailList: model_detail});
+        res.render('commodityManage/detail', {title: '订单详情', adminEmail: adminEmail, adminName: adminName, detailList: model_detail});
     });
 });
 
@@ -59,12 +63,15 @@ router.post('/detailQuery', function(req, res, next) {
 
 //商品上传
 router.get('/commodityAdd', function(req, res, next) {
-    res.render('commodityManage/commodityAdd', {title: '添加商品'});
+    var adminEmail = req.session.passport.user.adminEmail;
+    var adminName = req.session.passport.user.adminName;
+    res.render('commodityManage/commodityAdd', {title: '添加商品', adminEmail: adminEmail, adminName: adminName});
 });
 
 
 router.post('/commodityAdd', function(req, res, next) {
-    var adminEmail = req.session.passport.user;
+    var adminEmail = req.session.passport.user.adminEmail;
+    var adminName = req.session.passport.user.adminName;
     upload.commodityUpload(req, res, function(err) {
         if(err) {
             console.log(err);
@@ -75,7 +82,7 @@ router.post('/commodityAdd', function(req, res, next) {
 
             return commodityNamePromise.then(function(model_fetch) {
                 if(model_fetch) {
-                    res.render('commodityManage/commodityAdd', {title: '添加商品', errorMessage: '该商品已存在！'});
+                    res.render('commodityManage/commodityAdd', {title: '添加商品',  adminEmail: adminEmail, adminName: adminName, errorMessage: '该商品已存在！'});
                 } else {
                     var addCommodity = new model.Commodity({
                         commodityName: commodity.commodityName,
@@ -97,44 +104,52 @@ router.post('/commodityAdd', function(req, res, next) {
 
 //删除商品
 router.post('/deleteCommodity', function(req, res, next) {
-    var adminEmail = req.session.passport.user;
+    var adminEmail = req.session.passport.user.adminEmail;
+    var adminName = req.session.passport.user.adminName;
     var deleteCommodityId = req.body.deleteCommodityId;
     var deleteCommodityPromise = new model.Commodity({ id: deleteCommodityId});
     deleteCommodityPromise.fetch().then(function(model_fetch) {
         if(model_fetch) {
             var commodityName = model_fetch.get('commodityName');
-            deleteCommodityPromise.destroy().then(function(model_delete) {
-                //写入日志
-                operateLog.logWrite(adminEmail, '删除商品:' + commodityName);
-                res.json({ success: true});
-                /*//删除在订单详情中的商品
-                 var deleteDetailPromise = new model.Detail().where('commodityId', '=', deleteCommodityId).query().select();
-                 deleteDetailPromise.then(function(model_query) {
-                 async.eachSeries(model_query, function(item, callback) {
-                 var deleteId = item.id;
-                 var purchaseId = item.purchaseId;
-                 //查看订单是否已完成，如果已完成，则不能删除；未完成则可以删除
-                 var statusPromise = new model.Purchase({ id: purchaseId}).fetch();
-                 statusPromise.then(function(model_status) {
-                 var purchaseStatus = model_status.get('purchaseStatus');
-                 if(purchaseStatus !== 1) {
-                 new model.Detail({ id: deleteId}).destroy().then(function(model_detail) {
-                 callback(null, item);
-                 });
-                 } else {
-                 callback(null, item);
-                 }
-                 })
-                 }, function(err) {
-                 if(err) {
-                 res.json({ success: false, errorMessage: err});
-                 } else {
-                 //写入日志
-                 operateLog.logWrite(adminEmail, '删除商品');
-                 res.json({ success: true});
-                 }
-                 });
-                 });*/
+            var commodityImg = model_fetch.get('commodityImg');
+            fs.unlink('./' + commodityImg, function(err, stats) {
+                if(err) {
+                    res.json({ success: false, errorMessage: '商品图片不存在，您可以更新图片后再删除'});
+                } else {
+                    deleteCommodityPromise.destroy().then(function(model_delete) {
+                        //写入日志
+                        operateLog.logWrite(adminEmail, '删除商品:' + commodityName);
+                        res.json({ success: true});
+                        /*!//删除在订单详情中的商品
+                         var deleteDetailPromise = new model.Detail().where('commodityId', '=', deleteCommodityId).query().select();
+                         deleteDetailPromise.then(function(model_query) {
+                         async.eachSeries(model_query, function(item, callback) {
+                         var deleteId = item.id;
+                         var purchaseId = item.purchaseId;
+                         //查看订单是否已完成，如果已完成，则不能删除；未完成则可以删除
+                         var statusPromise = new model.Purchase({ id: purchaseId}).fetch();
+                         statusPromise.then(function(model_status) {
+                         var purchaseStatus = model_status.get('purchaseStatus');
+                         if(purchaseStatus !== 1) {
+                         new model.Detail({ id: deleteId}).destroy().then(function(model_detail) {
+                         callback(null, item);
+                         });
+                         } else {
+                         callback(null, item);
+                         }
+                         })
+                         }, function(err) {
+                         if(err) {
+                         res.json({ success: false, errorMessage: err});
+                         } else {
+                         //写入日志
+                         operateLog.logWrite(adminEmail, '删除商品');
+                         res.json({ success: true});
+                         }
+                         });
+                         });*/
+                    });
+                }
             });
         } else {
             res.json({ success: false, errorMessage: '商品不存在'});
@@ -145,11 +160,42 @@ router.post('/deleteCommodity', function(req, res, next) {
 //更改商品信息
 router.get('/commodityUpdate', function(req, res, next) {
     var commodityId = url.parse(req.url, true).query.commodityId;
-    res.render('commodityManage/commodityUpdate', { title: '商品信息修改', commodityId: commodityId});
+    var adminEmail = req.session.passport.user.adminEmail;
+    var adminName = req.session.passport.user.adminName;
+    new model.Commodity({ id: commodityId}).fetch().then(function(model_fetch) {
+        if(model_fetch) {
+            var commodityName = model_fetch.get('commodityName');
+            var commodityPrice = model_fetch.get('commodityPrice');
+            var commodityCategories = model_fetch.get('commodityCategories');
+            var commodityStock = model_fetch.get('commodityStock');
+            var commodityImg = model_fetch.get('commodityImg');
+            var commoditySold = model_fetch.get('commoditySold');
+            res.render('commodityManage/commodityUpdate', {
+                title: '商品信息修改',
+                adminEmail: adminEmail,
+                adminName: adminName,
+                commodityId: commodityId,
+                commodityName: commodityName,
+                commodityPrice: commodityPrice,
+                commodityCategories: commodityCategories,
+                commodityStock: commodityStock,
+                commodityImg: commodityImg,
+                commoditySold: commoditySold
+            });
+        } else {
+            res.render('commodityManage/commodityUpdate', {
+                title: '商品信息修改',
+                errorMessage: '此商品已不存在',
+                adminEmail: adminEmail,
+                adminName: adminName
+            });
+        }
+    })
 });
 
 router.post('/commodityUpdate/:commodityId', function(req, res, next) {
-    var adminEmail = req.session.passport.user;
+    var adminEmail = req.session.passport.user.adminEmail;
+    var adminName = req.session.passport.user.adminName;
     var commodityId = req.params.commodityId;
     upload.commodityUpdateUpload(req, res, function(err) {
         if(err) {
@@ -163,7 +209,7 @@ router.post('/commodityUpdate/:commodityId', function(req, res, next) {
                 commodityPrice: commodity.commodityPrice,
                 commodityCategories: commodity.commodityCategories,
                 commodityStock: commodity.commodityStock,
-                commodityImages: commodity.commodityImages
+                commodityImg: req.file.path
             }).then(function(model_fetch) {
                 //写入日志
                 operateLog.logWrite(adminEmail, '更改商品:' + commodity.commodityName);

@@ -9,12 +9,13 @@ var preset = require('../configuration/preset');
 router.all('/', preset.isLoggedIn);
 router.all('/hardware', preset.isLoggedIn);
 
-router.get('/hardware', function(req, res, next) {
-    res.redirect(303, '/hardwareManage/');
+router.get('/', function(req, res, next) {
+    res.redirect(303, '/hardwareManage/hardware');
 });
 
-router.get('/', function(req, res, next) {
-    var adminEmail = req.session.passport.user;
+router.get('/hardware', function(req, res, next) {
+    var adminEmail = req.session.passport.user.adminEmail;
+    var adminName = req.session.passport.user.adminName;
     var options = {
         url: 'http://123.59.81.102:8082/webapi/device',
         headers: {
@@ -36,9 +37,19 @@ router.get('/', function(req, res, next) {
         if (!error && response.statusCode == 200) {
             var hardwareList = JSON.parse(body);
             console.log("info:", hardwareList);
-            res.render('hardwareManage/hardware', {title: '硬件管理', adminEmail: adminEmail, hardwareList: hardwareList});
+            res.render('hardwareManage/hardware', {
+                title: '硬件管理',
+                adminEmail: adminEmail,
+                adminName: adminName,
+                hardwareList: hardwareList
+            });
         } else {
-            res.redirect(303, '/error');
+            res.render('hardwareManage/hardware', {
+                title: '硬件管理',
+                adminEmail: adminEmail,
+                adminName: adminName,
+                errorMessage: 'token过期'
+            });
         }
     });
 });

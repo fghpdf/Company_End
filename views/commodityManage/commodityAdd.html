@@ -1,53 +1,114 @@
 <%- include header.html %>
-<div class="container-fluid" id="LG">
-  <div class="row-fluid">
-    <div class="span12">
-      <h3 class="text-center">
-        厂家平台
-      </h3>
-      <form class="form-horizontal" method="post" action="commodityAdd" enctype="multipart/form-data">
-        <% if(typeof(errorMessage) !== 'undefined') {%>
-        <div class="alert alert-danger">
-          <h4>提示!</h4>
-          <strong>警告!</strong> <%= errorMessage %>
-        </div>
-        <% } %>
-        <div class="control-group">
-          <label class="control-label" for="commodityName">商品名称</label>
-          <div class="controls">
-            <input id="commodityName" type="text" name="commodityName" placeholder="请输入文字" required="required" />
+<div class="ui grid">
+  <div class="row">
+    <div class="column">
+      <div class="ui">
+        <div class="ui huge menu">
+          <div class="item">
+            <img class="ui tiny image" src="/img/logo.png" height="100%">
+          </div>
+          <a class="item" href="/">
+            <i class="cloud icon"></i>厂家平台
+          </a>
+          <div class="right menu">
+            <div class="item">
+              <i class="user icon"></i><%= adminName %>
+            </div>
+            <a class="item" href="/logout">
+              <i class="sign out icon"></i>登出
+            </a>
           </div>
         </div>
-        <div class="control-group">
-          <label class="control-label" for="commodityPrice">商品价格</label>
-          <div class="controls">
-            <input id="commodityPrice" type="text" name="commodityPrice" placeholder="请输入文字" required="required" />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="three wide centered column segment">
+      <div class="ui large vertical menu">
+        <a class="item" href="/adminManage"><i class="sitemap icon"></i>管理员账户管理</a>
+        <a class="item" href="#"><i class="users icon"></i>用户账户管理</a>
+        <a class="active item" href="/appManage"><i class="mobile icon"></i>App管理</a>
+        <a class="item" href="#"><i class="external icon"></i>推送管理</a>
+        <a class="item" href="/rankManage"><i class="qq icon"></i>社交管理</a>
+        <a class="item" href="/hardwareManage"><i class="laptop icon"></i>设备管理</a>
+        <div class="ui dropdown item">
+          商城管理
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            <a class="item" href="/commodityManage"><i class="shop icon"></i>商品管理</a>
+            <a class="item" href="/commodityManage/purchase"><i class="table icon"></i>订单管理</a>
           </div>
         </div>
-        <div class="control-group">
-          <label class="control-label" for="commodityCategories">商品分类</label>
-          <div class="controls">
-            <input id="commodityCategories" type="text" name="commodityCategories" placeholder="请输入文字" required="required" />
+        <a class="item" href="/operateManage"><i class="file text icon"></i>操作日志</a>
+        <a class="item" href="/feedBackManage"><i class="red bug icon"></i>用户反馈</a>
+      </div>
+    </div>
+    <div class="twelve wide centered column">
+      <div class="ui middle aligned center aligned grid">
+        <div class="eight wide column">
+          <% if(typeof(errorMessage) !== 'undefined') {%>
+          <div class="ui message transition">
+            <i class="close icon"></i>
+            <div class="header">提示</div>
+            <p><%= errorMessage %></p>
           </div>
+          <% } else { %>
+          <form class="ui large form" action="commodityAdd" method="post" enctype="multipart/form-data">
+            <div class="ui stacked segment">
+              <div class="field">
+                <h2 class="ui tea1 header">
+                  <div class="content">
+                    添加商品
+                  </div>
+                </h2>
+              </div>
+              <div class="field">
+                <div class="ui left icon input">
+                  <i class="info icon"></i>
+                  <input id="commodityName" name="commodityName" type="text" placeholder="请输入商品名称" required="required">
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui left icon input">
+                  <i class="yen icon"></i>
+                  <input id="commodityPrice" name="commodityPrice" type="text" placeholder="请输入商品价格"
+                         required="required">
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui left icon input">
+                  <i class="folder open icon"></i>
+                  <input id="commodityCategories" name="commodityCategories" type="text" placeholder="请输入商品分类"
+                         required="required">
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui left icon input">
+                  <i class="database icon"></i>
+                  <input id="commodityStock" name="commodityStock" type="text" placeholder="请输入商品库存"
+                         required="required">
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui left icon input">
+                  <label for="commodityImages" class="ui icon button">
+                    <i class="file image outline icon"></i>请上传图片
+                  </label>
+                  <input id="commodityImages" name="commodityImages" type="file" placeholder="请输入商品库存"
+                         required="required" style="display: none">
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui small image">
+                  <img id="preview">
+                </div>
+              </div>
+              <button class="ui fluid large teal button" type="submit">提交</button>
+            </div>
+          </form>
+          <% } %>
         </div>
-        <div class="control-group">
-          <label class="control-label" for="commodityStock">商品库存</label>
-          <div class="controls">
-            <input id="commodityStock" type="text" name="commodityStock" placeholder="请输入文字" required="required" />
-          </div>
-        </div>
-        <div class="control-group">
-          <label class="control-label" for="commodityImages">商品图片</label>
-          <div class="controls">
-            <input id="commodityImages" type="file" name="commodityImages" required="required" />
-          </div>
-        </div>
-        <div class="control-group">
-          <div class="controls">
-            <button type="submit" class="btn" value="submit">提交</button>
-          </div>
-        </div>
-      </form>
+      </div>
     </div>
   </div>
 </div>

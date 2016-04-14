@@ -14,10 +14,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/rankManage', function(req, res, next) {
-    var adminEmail = req.session.passport.user;
+    var adminEmail = req.session.passport.user.adminEmail;
+    var adminName = req.session.passport.user.adminName;
     var rankListPromise = new model.Mobile().query();
     rankListPromise.then(function(model_query) {
-        res.render('rankManage/rank', { title: '排行榜管理', adminEmail: adminEmail, rankList: model_query});
+        res.render('rankManage/rank', { title: '排行榜管理', adminEmail: adminEmail, adminName: adminName,rankList: model_query});
     });
 });
 

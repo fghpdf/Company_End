@@ -20,7 +20,8 @@ router.get('/feedBack', function (req, res, next) {
     var token = 0;
     var dateStart;
     var dateEnd;
-    var adminEmail = req.session.passport.user;
+    var adminEmail = req.session.passport.user.adminEmail;
+    var adminName = req.session.passport.user.adminName;
     if (url.parse(req.url, true).query.month !== undefined) {
         month = url.parse(req.url, true).query.month;
         token = 1;
@@ -46,7 +47,8 @@ router.get('/feedBack', function (req, res, next) {
                 title: '用户反馈',
                 feedBackList: model_query,
                 token: token,
-                adminEmail: adminEmail
+                adminEmail: adminEmail,
+                adminName: adminName
             });
         });
     } else if (token === 2 || token === '2') {
@@ -57,7 +59,8 @@ router.get('/feedBack', function (req, res, next) {
                 title: '用户反馈',
                 feedBackList: model_query,
                 token: token,
-                adminEmail: adminEmail
+                adminEmail: adminEmail,
+                adminName: adminName
             });
         });
     } else if (token === 3 || token === '3') {
@@ -67,7 +70,8 @@ router.get('/feedBack', function (req, res, next) {
                 title: '用户反馈',
                 feedBackList: model_query,
                 token: token,
-                adminEmail: adminEmail
+                adminEmail: adminEmail,
+                adminName: adminName
             });
         });
     } else if (token === 4 || token === '4') {
@@ -80,7 +84,8 @@ router.get('/feedBack', function (req, res, next) {
                 title: '用户反馈',
                 feedBackList: model_query,
                 token: token,
-                adminEmail: adminEmail
+                adminEmail: adminEmail,
+                adminName: adminName
             });
         });
     } else {
@@ -91,7 +96,8 @@ router.get('/feedBack', function (req, res, next) {
                 title: '用户反馈',
                 feedBackList: model_query,
                 token: token,
-                adminEmail: adminEmail
+                adminEmail: adminEmail,
+                adminName: adminName
             });
         });
     }

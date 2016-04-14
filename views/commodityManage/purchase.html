@@ -1,113 +1,65 @@
 <%- include header.html %>
-<div class="container-fluid">
-  <div class="row-fluid">
-    <div class="span3">
-      <div class="navbar navbar-inverse">
-        <div class="navbar-inner">
-          <div class="container-fluid">
-            <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </a>
-            <a href="/login" class="brand">空净产品后台管理平台</a>
-            <div class="nav-collapse collapse navbar-responsive-collapse">
-              <ul class="nav">
-                <li>
-                  <a href="/adminManage">主页</a>
-                </li>
-              </ul>
-              <ul class="nav">
-                <li>
-                  <a href="/adminManage">管理员账户管理</a>
-                </li>
-              </ul>
-              <ul class="nav">
-                <li>
-                  <a href="#">用户账户管理</a>
-                </li>
-              </ul>
-              <ul class="nav">
-                <li>
-                  <a href="/appManage">APP管理</a>
-                </li>
-              </ul>
-              <ul class="nav">
-                <li>
-                  <a href="#">推送管理</a>
-                </li>
-              </ul>
-              <ul class="nav">
-                <li>
-                  <a href="/rankManage">社交管理</a>
-                </li>
-              </ul>
-              <ul class="nav">
-                <li>
-                  <a href="/hardwareManage">设备管理</a>
-                </li>
-              </ul>
-              <ul class="nav">
-                <li>
-                  <a href="/commodityManage">商品管理</a>
-                </li>
-              </ul>
-              <ul class="nav">
-                <li class="active">
-                  <a href="/commodityManage/purchase">订单管理</a>
-                </li>
-              </ul>
-              <ul class="nav">
-                <li>
-                  <a href="/operateManage">操作日志</a>
-                </li>
-              </ul>
-              <ul class="nav">
-                <li>
-                  <a href="/feedBackManage">用户反馈</a>
-                </li>
-              </ul>
+<div class="ui grid">
+  <div class="row">
+    <div class="column">
+      <div class="ui">
+        <div class="ui huge menu">
+          <div class="item">
+            <img class="ui tiny image" src="/img/logo.png" height="100%">
+          </div>
+          <a class="item" href="/">
+            <i class="cloud icon"></i>厂家平台
+          </a>
+          <div class="right menu">
+            <div class="item">
+              <i class="user icon"></i><%= adminName %>
             </div>
+            <a class="item" href="/logout">
+              <i class="sign out icon"></i>登出
+            </a>
           </div>
         </div>
       </div>
     </div>
-    <div class="span9">
-      <div class="page-header">
-        <h1>
-          你好<small><%= adminEmail %></small>
-        </h1>
+  </div>
+  <div class="row">
+    <div class="three wide centered column segment">
+      <div class="ui large vertical menu">
+        <a class="item" href="/adminManage"><i class="sitemap icon"></i>管理员账户管理</a>
+        <a class="item" href="#"><i class="users icon"></i>用户账户管理</a>
+        <a class="item" href="/appManage"><i class="mobile icon"></i>App管理</a>
+        <a class="item" href="#"><i class="external icon"></i>推送管理</a>
+        <a class="item" href="/rankManage"><i class="qq icon"></i>社交管理</a>
+        <a class="item" href="/hardwareManage"><i class="laptop icon"></i>设备管理</a>
+        <div class="ui dropdown item">
+          商城管理
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            <a class="item" href="/commodityManage"><i class="shop icon"></i>商品管理</a>
+            <a class="active item" href="/commodityManage/purchase"><i class="table icon"></i>订单管理</a>
+          </div>
+        </div>
+        <a class="item" href="/operateManage"><i class="file text icon"></i>操作日志</a>
+        <a class="item" href="/feedBackManage"><i class="red bug icon"></i>用户反馈</a>
       </div>
-      <div id="operateStatus"></div>
-      <table id="adminTable" class="table table-hover table-striped">
+    </div>
+    <div class="twelve wide centered column">
+      <table class="ui small celled blue table">
         <thead>
         <tr>
-          <th>
-            订单编号
-          </th>
-          <th>
-            支付渠道
-          </th>
-          <th>
-            创建时间
-          </th>
-          <th>
-            完成时间
-          </th>
-          <th>
-            订单总价
-          </th>
-          <th>
-            订单状态
-          </th>
-          <th>
-            操作
-          </th>
+          <th>订单编号</th>
+          <th>支付渠道</th>
+          <th>创建时间</th>
+          <th>完成时间</th>
+          <th>订单总价</th>
+          <th>订单状态</th>
+          <th>操作</th>
         </tr>
         </thead>
         <tbody>
+        <% var domain = "http://localhost:3000" %>
         <% for(var num = 0; purchaseList[num] !== undefined; num = num + 1) { %>
-        <tr class="info">
+        <tr>
           <td><%= purchaseList[num].id %></td>
           <td><% if(!purchaseList[num].purchaseStatus) { %>
             <%= '未付款' %>
@@ -138,14 +90,11 @@
             <% } else if(purchaseList[num].purchaseStatus === 3) {%>
             <%= '用户未在限定时间内付款，被取消' %>
             <% } %></td>
-          <td>
-            <button id="defrayDetail" class="btn btn-info">查看详情</button>
-          </td>
+          <td><button class="ui tiny teal button">查看详情</button></td>
         </tr>
         <% } %>
         </tbody>
       </table>
-      <a href="/logout" role="button" class="btn">登出</a>
     </div>
   </div>
 </div>

@@ -16,11 +16,12 @@ router.get('/', function(req, res, next) {
 
 //获取日志目录
 router.get('/operateLog', function(req, res, next) {
-    var adminEmail = req.session.passport.user;
+    var adminEmail = req.session.passport.user.adminEmail;
+    var adminName = req.session.passport.user.adminName;
     var operateListPromise = new model.Operate().query();
     operateListPromise.then(function(model_query) {
         console.log(model_query);
-        res.render('operateManage/operateLog', { title: '操作日志', adminEmail: adminEmail, operateList: model_query});
+        res.render('operateManage/operateLog', { title: '操作日志', adminEmail: adminEmail, adminName: adminName, operateList: model_query});
     });
 });
 
