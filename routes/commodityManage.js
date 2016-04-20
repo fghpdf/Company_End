@@ -68,21 +68,29 @@ router.get('/commodityAdd', function(req, res, next) {
     res.render('commodityManage/commodityAdd', {title: '添加商品', adminEmail: adminEmail, adminName: adminName});
 });
 
-
+//添加商品
 router.post('/commodityAdd', function(req, res, next) {
     var adminEmail = req.session.passport.user.adminEmail;
     var adminName = req.session.passport.user.adminName;
     upload.commodityUpload(req, res, function(err) {
         if(err) {
             console.log(err);
-            res.redirect(303, 'error');
+            res.render('error', {
+                title: '出错啦',
+                message: err.message,
+                err: err
+            });
         } else {
             var commodity = req.body;
             var commodityNamePromise = new model.Commodity({ commodityName: commodity.commodityName}).fetch();
-
-            return commodityNamePromise.then(function(model_fetch) {
+            commodityNamePromise.then(function(model_fetch) {
                 if(model_fetch) {
-                    res.render('commodityManage/commodityAdd', {title: '添加商品',  adminEmail: adminEmail, adminName: adminName, errorMessage: '该商品已存在！'});
+                    res.render('commodityManage/commodityAdd', {
+                        title: '添加商品',
+                        adminEmail: adminEmail,
+                        adminName: adminName,
+                        errorMessage: '该商品已存在！'
+                    });
                 } else {
                     var addCommodity = new model.Commodity({
                         commodityName: commodity.commodityName,
@@ -231,7 +239,7 @@ router.post('/purchaseAdd', function(req, res, next) {
     detectStock(commodityList, function(detect_result) {
         console.log(detect_result);
         if(!detect_result.success) {
-            res.json({ success: false, errorMessage: '有商品库存不足，请刷新订单重试'});
+            res.json({ success: false, errorMessage: detect_result.errorMessage});
         } else {
             addPurchase.save().then(function(model_fetch) {
                 var purchaseId = model_fetch.get('id');
@@ -337,11 +345,15 @@ router.post('/purchaseCancel', function(req, res, next) {
 function  detectStock(commodityList, callback) {
     async.eachSeries(commodityList, function(item, callback_async) {
         new model.Commodity({ id: item.commodityId}).fetch().then(function(model_fetch) {
-            var commodityStuck = model_fetch.get('commodityStock');
-            if(parseInt(commodityStuck) >= parseInt(item.commodityNumber)) {
-                callback_async(null, item);
+            if(model_fetch) {
+                var commodityStuck = model_fetch.get('commodityStock');
+                if(parseInt(commodityStuck) >= parseInt(item.commodityNumber)) {
+                    callback_async(null, item);
+                } else {
+                    callback({ success: false, id: item.commodityId, errorMessage: '该商品库存不足，请刷新后重试'});
+                }
             } else {
-                callback({ success: false, it: item.commodityId});
+                callback({ success: false, id: item.commodityId, errorMessage: '该商品不存在，请刷新后重试'});
             }
         });
     }, function(err) {

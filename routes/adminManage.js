@@ -23,7 +23,7 @@ router.get('/', function(req, res, next) {
     var adminName = req.session.passport.user.adminName;
     var adminList = model.Admin.query();
     adminList.select().then(function(model_fetch) {
-        res.render('adminManage/admin', { title: '首页', adminEmail: adminEmail, adminName: adminName, adminList: model_fetch});
+        res.render('adminManage/admin', { title: '管理员管理', adminEmail: adminEmail, adminName: adminName, adminList: model_fetch});
     });
 });
 
@@ -64,12 +64,18 @@ router.get('/adminAdd', function(req, res, next) {
  * */
 router.post('/adminAdd', function(req, res, next) {
     var admin = req.body;
-    var adminEmailPromise = null;
-    adminEmailPromise = new model.Admin({adminEmail: admin.adminEmail}).fetch();
+    var adminEmail = req.session.passport.user.adminEmail;
+    var adminName = req.session.passport.user.adminName;
+    var adminEmailPromise =  new model.Admin({adminEmail: admin.adminEmail}).fetch();
 
-    return adminEmailPromise.then(function(model_fetch) {
+    adminEmailPromise.then(function(model_fetch) {
         if(model_fetch) {
-            res.render('adminManage/adminAdd', {title: '添加管理员', errorMessage: '该邮箱已被注册！'});
+            res.render('adminManage/adminAdd', {
+                title: '添加管理员',
+                errorMessage: '该邮箱已被注册！',
+                adminName: adminName,
+                adminEmail: adminEmail
+            });
         } else {
             var password = admin.adminPassword;
             var hash = bcrypt.hashSync(password);
@@ -84,6 +90,8 @@ router.post('/adminAdd', function(req, res, next) {
                     operateLog.logWrite(preset.TopAdmin.adminEmail, '添加管理员:' + admin.adminName);
                     res.redirect(303, '/adminManage/');
                 } else {
+                    //写入日志
+                    operateLog.logWrite(preset.TopAdmin.adminEmail, '添加管理员:' + admin.adminName);
                     res.render('loginTop', {title: '一级管理员登录'});
                 }
             });

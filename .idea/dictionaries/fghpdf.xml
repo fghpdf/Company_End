@@ -8,6 +8,7 @@
       <w>coordtransform</w>
       <w>datetimepicker</w>
       <w>dest</w>
+      <w>dimmable</w>
       <w>dirname</w>
       <w>dragdrop</w>
       <w>dropdown</w>
@@ -18,6 +19,7 @@
       <w>hekr</w>
       <w>hekrcompanyplatform</w>
       <w>knex</w>
+      <w>latlng</w>
       <w>multer</w>
       <w>navbar</w>
       <w>nodejs</w>

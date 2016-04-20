@@ -46,12 +46,22 @@ var commodityUpdateStorage = multer.diskStorage({
     }
 });
 
+var repairmanAddStorage = multer.diskStorage({
+    destination: function(req, file, callback) {
+        callback(null, 'public/images');
+    },
+    filename: function(req, file, callback) {
+        var fileFormat = (file.originalname).split(".");
+        callback(null, file.fieldname + '-' + Date.now() + '.' + fileFormat[fileFormat.length - 1]);
+    }
+});
+
 var commodityUpload = multer({ storage: commodityStorage}).single('commodityImages');
 var commodityUpdateUpload = multer({ storage: commodityUpdateStorage}).single('commodityImages');
 var startUpload = multer({ storage: appStorage}).single('startImages');
 var guideUpload = multer({ storage: appStorage}).array('guideImages');
 var carouselUpload = multer({ storage: appStorageArray}).array('carouselImages');
-var uploadTest = multer({ storage: appStorage}).array('myfile');
+var repairmanAddUpload = multer({ storage: repairmanAddStorage}).single('repairmanImages');
 
 
 module.exports = {
@@ -60,5 +70,5 @@ module.exports = {
     guideUpload: guideUpload,
     carouselUpload: carouselUpload,
     commodityUpdateUpload: commodityUpdateUpload,
-    uploadTest: uploadTest
+    repairmanAddUpload: repairmanAddUpload
 };

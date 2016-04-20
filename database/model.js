@@ -65,6 +65,18 @@ var FeedBack = db.Model.extend({
     idAttribute: 'id'
 });
 
+//维修人员表
+var Repairman = db.Model.extend({
+    tableName: 'repairman',
+    idAttribute: 'id'
+});
+
+//维修订单列表
+var Repair = db.Model.extend({
+    tableName: 'repair',
+    idAttribute: 'id'
+});
+
 /*new Defray().where('purchaseId','=', '2').query().select().then(function(model) {
     console.log(model);
 });*/
@@ -84,5 +96,7 @@ module.exports = {
     Carousel: Carousel,
     Mobile: Mobile,
     Operate: Operate,
-    FeedBack: FeedBack
+    FeedBack: FeedBack,
+    Repairman: Repairman,
+    Repair: Repair
 };

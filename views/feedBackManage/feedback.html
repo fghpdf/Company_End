@@ -26,7 +26,6 @@
       return unescape(r[2]);
 
     }
-
     return null;
   }
   function setTime(){
@@ -77,27 +76,45 @@
         </div>
         <a class="item" href="/operateManage"><i class="file text icon"></i>操作日志</a>
         <a class="active item" href="/feedBackManage"><i class="red bug icon"></i>用户反馈</a>
+        <div class="ui dropdown item">
+          维修管理
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            <a class="item" href="/repairManage/repairman"><i class="green doctor icon"></i>维修人员管理</a>
+            <a class="item" href="/repairManage/repair"><i class="teal dashboard icon"></i>维修订单管理</a>
+          </div>
+        </div>
       </div>
     </div>
     <div class="twelve wide centered column">
       <div class="row">
-        <div class="navgation-item">时间范围：</div>
-        <div class="navgation-item">
-          <select class="form-control" id="timeRange">
-            <option>请选择时间</option>
-            <option value="today">当天</option>
-            <option value="week">最近一周</option>
-            <option value="month">最近一月</option>
-            <option value="custom">自定时间</option>
-          </select>
-        </div>
-        <div class="navgation-item" data-value="time" style="display: none;">开始日期：</div>
-        <div class="navgation-item">
-          <input type="text" class="form-control" style="display: none; margin-right: 10px;" id="datetimepickerStart" data-date-format="yyyy-mm-dd">
-        </div>
-        <div class="navgation-item" data-value="time" style="display: none;">结束日期：</div>
-        <div class="navgation-item">
-          <input type="text" class="form-control" style="display: none; margin-right: 10px;" id="datetimepickerEnd" data-date-format="yyyy-mm-dd">
+        <div class="ui three column doubling stackable grid container">
+          <div class="column">
+            <div class="ui big selection">
+              <i class="calendar icon"></i>
+              <label for="timeRange">选择时间</label>
+              <select class="ui selection dropdown" id="timeRange">
+                <option>请选择时间</option>
+                <option value="today">当天</option>
+                <option value="week">最近一周</option>
+                <option value="month">最近一月</option>
+                <option value="custom">自定时间</option>
+              </select>
+            </div>
+          </div>
+          <div class="column">
+            <div class="ui labeled input">
+              <label class="ui label" for="datetimepickerStart" data-value="time" style="display: none;">开始日期</label>
+              <input type="text" style="display: none;" id="datetimepickerStart"
+                     data-date-format="yyyy-mm-dd">
+            </div>
+          </div>
+          <div class="column">
+            <div class="ui labeled input">
+              <label class="ui label" for="datetimepickerEnd" data-value="time" style="display: none;">结束日期</label>
+              <input type="text" class="form-control" style="display: none;" id="datetimepickerEnd" data-date-format="yyyy-mm-dd">
+            </div>
+          </div>
         </div>
       </div>
       <% if(typeof(errorMessage) !== 'undefined') {%>

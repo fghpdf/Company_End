@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $("#addImages").click(function() {
+    $("button#addImages").click(function() {
         var appId = $(this).parent().parent().children().eq(0).text();
         $.ajax({
             data: {
@@ -23,8 +23,7 @@ $(document).ready(function () {
 
     //通过js改变form的action的值，预设的值在span里预存
     //启动页
-    var appId = $("#startAppId").text();
-    var startAdd = $("#startAddUpload").uploadFile({
+    var startAdd = $("button#startAddUpload").uploadFile({
         url: "/appManage/startAdd/" + appId,
         fileName: "startImages",
         autoSubmit:false,
@@ -41,7 +40,7 @@ $(document).ready(function () {
         uploadButtonClass: "ui blue button",
         cancelButtonClass: "ui yellow button"
     });
-    $("#startAddButton").click(function () {
+    $("button#startAddButton").click(function () {
         startAdd.startUpload();
     });
 
@@ -67,8 +66,7 @@ $(document).ready(function () {
     });
 
     //引导页
-    var appId = $("#guideAppId").text();
-    var guideAdd = $("#guideAddUpload").uploadFile({
+    var guideAdd = $("button#guideAddUpload").uploadFile({
         url: "/appManage/guideAdd/" + appId,
         fileName: "guideImages",
         autoSubmit: false,
@@ -85,7 +83,7 @@ $(document).ready(function () {
         uploadButtonClass: "ui blue button",
         cancelButtonClass: "ui yellow button"
     });
-    $("#guideAddButton").click(function () {
+    $("button#guideAddButton").click(function () {
         guideAdd.startUpload();
     });
 
@@ -111,8 +109,7 @@ $(document).ready(function () {
     });
 
     //轮播页
-    var appId = $("#carouselAppId").text();
-    var carouselAdd = $("#carouselAddUpload").uploadFile({
+    var carouselAdd = $("button#carouselAddUpload").uploadFile({
         url: "/appManage/carouselAdd/" + appId,
         fileName: "carouselImages",
         autoSubmit: false,
@@ -129,7 +126,7 @@ $(document).ready(function () {
         uploadButtonClass: "ui blue button",
         cancelButtonClass: "ui yellow button"
     });
-    $("#carouselAddButton").click(function () {
+    $("button#carouselAddButton").click(function () {
         carouselAdd.startUpload();
     });
 

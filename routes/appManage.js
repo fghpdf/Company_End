@@ -4,6 +4,7 @@ var router = express.Router();
 var model = require('../database/model');
 var shortid = require('shortid');
 var url = require('url');
+var fs = require('fs');
 
 var upload = require('./multerUtil');
 var operateLog = require('../database/operateLog');
@@ -107,7 +108,11 @@ router.post('/startAdd/:appId', function (req, res, next) {
     console.log('appId:', appId);
     upload.startUpload(req, res, function (err) {
         if (err) {
-            res.redirect(303, 'error');
+            res.render('error', {
+                title: '出错啦',
+                message: err.message,
+                err: err
+            });
         } else {
             //因为appId不能重复，所以先通过appId查出重复的项，重复的项就获取id，来更新
             //路径，如果没有重复，就直接插入，这里因为设置了idAttribute = id，所以只能
@@ -209,7 +214,7 @@ router.post('/carouselAdd/:appId', function (req, res, next) {
                             patch: true
                         }).then(function(model_save) {
                             //写入日志
-                            operateLog.logWrite(adminEmail, '更新轮播也图片,AppId:' + appId);
+                            operateLog.logWrite(adminEmail, '更新轮播页图片,AppId:' + appId);
                             res.redirect(303, '/appManage/');
                         })
                     });

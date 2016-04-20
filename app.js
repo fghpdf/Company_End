@@ -29,6 +29,7 @@ var hardwareManage = require('./routes/hardwareManage');
 var operateManage = require('./routes/operateManage');
 var rankManage = require('./routes/rankManage');
 var feedBackManage = require('./routes/feedBackManage');
+var repairManage = require('./routes/repairManage');
 
 var model = require('./database/model');
 
@@ -128,6 +129,7 @@ app.use('/operateManage', operateManage);
 app.use('/uploadTest', operateManage);
 app.use('/rankManage', rankManage);
 app.use('/feedBackManage', feedBackManage);
+app.use('/repairManage', repairManage);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,200 @@
+<%- include header.html %>
+<div class="ui grid">
+  <div class="row">
+    <div class="column">
+      <div class="ui">
+        <div class="ui huge menu">
+          <div class="item">
+            <img class="ui tiny image" src="/img/logo.png" height="100%">
+          </div>
+          <a class="active item" href="/">
+            <i class="cloud icon"></i>厂家平台
+          </a>
+          <div class="right menu">
+            <div class="item">
+              <i class="user icon"></i><%= adminName %>
+            </div>
+            <a class="item" href="/logout">
+              <i class="sign out icon"></i>登出
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="three wide centered column segment">
+      <div class="ui large vertical menu">
+        <a class="item" href="/adminManage"><i class="sitemap icon"></i>管理员账户管理</a>
+        <a class="item" href="#"><i class="users icon"></i>用户账户管理</a>
+        <a class="item" href="/appManage"><i class="mobile icon"></i>App管理</a>
+        <a class="item" href="#"><i class="external icon"></i>推送管理</a>
+        <a class="item" href="/rankManage"><i class="qq icon"></i>社交管理</a>
+        <a class="item" href="/hardwareManage"><i class="laptop icon"></i>设备管理</a>
+        <div class="ui dropdown item">
+          商城管理
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            <a class="item" href="/commodityManage"><i class="shop icon"></i>商品管理</a>
+            <a class="item" href="/commodityManage/purchase"><i class="table icon"></i>订单管理</a>
+          </div>
+        </div>
+        <a class="item" href="/operateManage"><i class="file text icon"></i>操作日志</a>
+        <a class="item" href="/feedBackManage"><i class="red bug icon"></i>用户反馈</a>
+        <div class="ui dropdown item">
+          维修管理
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            <a class="item" href="/repairManage/repairman"><i class="green doctor icon"></i>维修人员管理</a>
+            <a class="item" href="/repairManage/repair"><i class="teal dashboard icon"></i>维修订单管理</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="twelve wide centered column">
+      <div class="ui three column grid">
+        <!--两张只有最新十条数据的表-->
+        <div class="row">
+          <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+          <div id="main" style="height:400px;width:100%;"></div>
+        </div>
+        <!--用户反馈最新十条数据-->
+        <div class="row">
+          <div class="column">
+            <div class="centered column">
+              <% if(typeof(errorMessage) !== 'undefined') {%>
+              <div class="ui message transition">
+                <i class="close icon"></i>
+                <div class="header">提示</div>
+                <p><%= errorMessage %></p>
+              </div>
+              <% } else { %>
+              <table class="ui small celled blue table">
+                <thead>
+                <tr class="collapsing">
+                  <th colspan="5">用户反馈</th>
+                </tr>
+                <tr>
+                  <th>appId</th>
+                  <th>内容</th>
+                  <th>上传时间</th>
+                  <th>图片</th>
+                  <th>语音</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% for(var num = feedBackList.length - 1; feedBackList[num] !== undefined; num--) {
+                var micUrl = feedBackList[num].picKey.split(";");
+                var count = 1;
+                var domain = "http://7xsprr.com2.z0.glb.qiniucdn.com/";
+                if(count > 10) break;%>
+                <tr>
+                  <td><%= feedBackList[num].appId %></td>
+                  <td><%= feedBackList[num].feedBackContent %></td>
+                  <td><%= feedBackList[num].uploadDate.toLocaleString() %></td>
+                  <% if(feedBackList[num].picKey) { %>
+                  <td><%= '有图片' %></td>
+                  <% } else { %>
+                  <td><%= '无图片' %></td>
+                  <% } %>
+                  <% if(feedBackList[num].micKey) { %>
+                  <td><%= '有语音' %></td>
+                  <% } else { %>
+                  <td><%= '无语音' %></td>
+                  <% } %>
+                </tr>
+                <% count++;
+                } %>
+                </tbody>
+              </table>
+              <% } %>
+            </div>
+          </div>
+          <div class="column">
+            <div class="centered column">
+              <% if(typeof(errorMessage) !== 'undefined') {%>
+              <div class="ui message transition">
+                <i class="close icon"></i>
+                <div class="header">提示</div>
+                <p><%= errorMessage %></p>
+              </div>
+              <% } else { %>
+              <table class="ui small celled blue table" id="rankTable">
+                <thead>
+                <tr class="collapsing">
+                  <th colspan="5">水质排行榜</th>
+                </tr>
+                <tr>
+                  <th>appId</th>
+                  <th>用户Id</th>
+                  <th>水质</th>
+                  <th>上传时间</th>
+                  <th>地理位置</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% var domain = "http://localhost:3000"
+                for(var num = 0; rankList[num] !== undefined; num = num + 1) {
+                var count = 1;
+                if(count > 10) break;  %>
+                <tr>
+                  <td><%= rankList[num].appId %></td>
+                  <td><%= rankList[num].userId %></td>
+                  <td><%= rankList[num].rankContent %></td>
+                  <td><%= rankList[num].rankDate.toLocaleString() %></td>
+                  <td><%= rankList[num].mobileLocation %></td>
+                </tr>
+                <% count++;
+                } %>
+                </tbody>
+              </table>
+              <% } %>
+            </div>
+          </div>
+          <div class="column">
+            <div class="centered column">
+              <% if(typeof(errorMessage) !== 'undefined') {%>
+              <div class="ui message transition">
+                <i class="close icon"></i>
+                <div class="header">提示</div>
+                <p><%= errorMessage %></p>
+              </div>
+              <% } else { %>
+              <table class="ui small celled blue table" id="rankTable">
+                <thead>
+                <tr class="collapsing">
+                  <th colspan="5">天气排行榜</th>
+                </tr>
+                <tr>
+                  <th>appId</th>
+                  <th>用户Id</th>
+                  <th>天气质量</th>
+                  <th>上传时间</th>
+                  <th>地理位置</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% var domain = "http://localhost:3000"
+                for(var num = 0; rankList[num] !== undefined; num = num + 1) {
+                var count = 1;
+                if(count > 10) break;  %>
+                <tr>
+                  <td><%= rankList[num].appId %></td>
+                  <td><%= rankList[num].userId %></td>
+                  <td><%= rankList[num].rankContent %></td>
+                  <td><%= rankList[num].rankDate.toLocaleString() %></td>
+                  <td><%= rankList[num].mobileLocation %></td>
+                </tr>
+                <% count++;
+                } %>
+                </tbody>
+              </table>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include footer.html %>

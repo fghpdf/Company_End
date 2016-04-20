@@ -2,36 +2,54 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44ba234f-660b-40ca-960a-4211c61aed51" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/operateManage.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/rankManage.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/indexManage.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/repairManage.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/routes/repairManage.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/repairUploadTest.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/indexManage/footer.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/indexManage/header.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/indexManage/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/repairManage/designateRepairman.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/repairManage/footer.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/repairManage/header.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/repairManage/repair.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/repairManage/repairman.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/repairManage/repairmanAdd.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/views/uploadTest/footer.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/views/uploadTest/header.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/views/uploadTest/uploadTest.html" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/fghpdf.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/fghpdf.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/adminManage.js" afterPath="$PROJECT_DIR$/public/javascripts/adminManage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/commodityManage.js" afterPath="$PROJECT_DIR$/public/javascripts/commodityManage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/feedBackManage.js" afterPath="$PROJECT_DIR$/public/javascripts/feedBackManage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/hardwareManage.js" afterPath="$PROJECT_DIR$/public/javascripts/hardwareManage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/model.js" afterPath="$PROJECT_DIR$/database/model.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/appManage.js" afterPath="$PROJECT_DIR$/public/javascripts/appManage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/rankManage.js" afterPath="$PROJECT_DIR$/public/javascripts/rankManage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/body.css" afterPath="$PROJECT_DIR$/public/stylesheets/body.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/adminManage.js" afterPath="$PROJECT_DIR$/routes/adminManage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/appManage.js" afterPath="$PROJECT_DIR$/routes/appManage.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/commodityManage.js" afterPath="$PROJECT_DIR$/routes/commodityManage.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/feedBackManage.js" afterPath="$PROJECT_DIR$/routes/feedBackManage.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/hardwareManage.js" afterPath="$PROJECT_DIR$/routes/hardwareManage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/operateManage.js" afterPath="$PROJECT_DIR$/routes/operateManage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/rankManage.js" afterPath="$PROJECT_DIR$/routes/rankManage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/index.js" afterPath="$PROJECT_DIR$/routes/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/multerUtil.js" afterPath="$PROJECT_DIR$/routes/multerUtil.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/adminManage/admin.html" afterPath="$PROJECT_DIR$/views/adminManage/admin.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/adminManage/adminAdd.html" afterPath="$PROJECT_DIR$/views/adminManage/adminAdd.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/appManage/app.html" afterPath="$PROJECT_DIR$/views/appManage/app.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/appManage/appAdd.html" afterPath="$PROJECT_DIR$/views/appManage/appAdd.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/appManage/imagesAdd.html" afterPath="$PROJECT_DIR$/views/appManage/imagesAdd.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/appManage/queryDetail.html" afterPath="$PROJECT_DIR$/views/appManage/queryDetail.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/commodityManage/commodity.html" afterPath="$PROJECT_DIR$/views/commodityManage/commodity.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/commodityManage/commodityAdd.html" afterPath="$PROJECT_DIR$/views/commodityManage/commodityAdd.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/commodityManage/commodityUpdate.html" afterPath="$PROJECT_DIR$/views/commodityManage/commodityUpdate.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/commodityManage/detail.html" afterPath="$PROJECT_DIR$/views/commodityManage/detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/commodityManage/footer.html" afterPath="$PROJECT_DIR$/views/commodityManage/footer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/commodityManage/header.html" afterPath="$PROJECT_DIR$/views/commodityManage/header.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/commodityManage/purchase.html" afterPath="$PROJECT_DIR$/views/commodityManage/purchase.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/feedBackManage/feedback.html" afterPath="$PROJECT_DIR$/views/feedBackManage/feedback.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/feedBackManage/footer.html" afterPath="$PROJECT_DIR$/views/feedBackManage/footer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/feedBackManage/header.html" afterPath="$PROJECT_DIR$/views/feedBackManage/header.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/hardwareManage/footer.html" afterPath="$PROJECT_DIR$/views/hardwareManage/footer.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/hardwareManage/hardware.html" afterPath="$PROJECT_DIR$/views/hardwareManage/hardware.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/hardwareManage/header.html" afterPath="$PROJECT_DIR$/views/hardwareManage/header.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/operateManage/footer.html" afterPath="$PROJECT_DIR$/views/operateManage/footer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/operateManage/header.html" afterPath="$PROJECT_DIR$/views/operateManage/header.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/operateManage/operateLog.html" afterPath="$PROJECT_DIR$/views/operateManage/operateLog.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/rankManage/footer.html" afterPath="$PROJECT_DIR$/views/rankManage/footer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/rankManage/header.html" afterPath="$PROJECT_DIR$/views/rankManage/header.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/rankManage/rank.html" afterPath="$PROJECT_DIR$/views/rankManage/rank.html" />
     </list>
     <ignored path="login_model.iws" />
@@ -53,27 +71,62 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="feedBackManage.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/javascripts/feedBackManage.js">
+      <file leaf-file-name="repair.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/repairManage/repair.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.08029197">
-              <caret line="48" column="35" selection-start-line="48" selection-start-column="35" selection-end-line="48" selection-end-column="35" />
+            <state vertical-scroll-proportion="-33.225807">
+              <caret line="93" column="15" selection-start-line="93" selection-start-column="15" selection-end-line="93" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="feedback.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/feedBackManage/feedback.html">
+      <file leaf-file-name="repairManage.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/javascripts/repairManage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="20.193548">
-              <caret line="85" column="54" selection-start-line="85" selection-start-column="54" selection-end-line="85" selection-end-column="54" />
-              <folding>
-                <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#3;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#5;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0">
+              <caret line="72" column="3" selection-start-line="72" selection-start-column="3" selection-end-line="72" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="repairManage.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/routes/repairManage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.58058923">
+              <caret line="173" column="43" selection-start-line="173" selection-start-column="43" selection-end-line="173" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="appManage.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/appManage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="123" column="20" selection-start-line="123" selection-start-column="20" selection-end-line="131" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="designateRepairman.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/repairManage/designateRepairman.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.7096775">
+              <caret line="72" column="43" selection-start-line="72" selection-start-column="43" selection-end-line="72" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="repairUploadTest.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/repairUploadTest.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -81,63 +134,68 @@
     </leaf>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="瞿祥轩 &lt;quxiangxuanqxx@hotmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/views/adminManage/footer.html" />
-        <option value="$PROJECT_DIR$/views/adminManage/header.html" />
-        <option value="$PROJECT_DIR$/public/stylesheets/body.css" />
-        <option value="$PROJECT_DIR$/views/adminManage/adminAdd.html" />
-        <option value="$PROJECT_DIR$/routes/adminManage.js" />
-        <option value="$PROJECT_DIR$/configuration/preset.js" />
-        <option value="$PROJECT_DIR$/views/appManage/header.html" />
-        <option value="$PROJECT_DIR$/views/appManage/footer.html" />
-        <option value="$PROJECT_DIR$/views/appManage/appAdd.html" />
-        <option value="$PROJECT_DIR$/public/semantic/dist/semantic.min.css" />
-        <option value="$PROJECT_DIR$/views/appManage/queryDetail.html" />
-        <option value="$PROJECT_DIR$/public/vendor/jquery.uploadfile.min.js" />
-        <option value="$PROJECT_DIR$/public/vendor/uploadfile.css" />
-        <option value="$PROJECT_DIR$/views/appManage/carouselAdd.html" />
-        <option value="$PROJECT_DIR$/public/javascripts/appManage.js" />
-        <option value="$PROJECT_DIR$/views/appManage/app.html" />
-        <option value="$PROJECT_DIR$/routes/appManage.js" />
-        <option value="$PROJECT_DIR$/views/adminManage/admin.html" />
-        <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/views/commodityManage/footer.html" />
-        <option value="$PROJECT_DIR$/views/commodityManage/header.html" />
-        <option value="$PROJECT_DIR$/views/commodityManage/commodity.html" />
-        <option value="$PROJECT_DIR$/routes/index.js" />
-        <option value="$PROJECT_DIR$/routes/commodityManage.js" />
-        <option value="$PROJECT_DIR$/views/appManage/imagesAdd.html" />
-        <option value="$PROJECT_DIR$/views/commodityManage/commodityUpdate.html" />
-        <option value="$PROJECT_DIR$/views/commodityManage/purchase.html" />
-        <option value="$PROJECT_DIR$/public/javascripts/commodityManage.js" />
-        <option value="$PROJECT_DIR$/views/commodityManage/detail.html" />
-        <option value="$PROJECT_DIR$/public/javascripts/adminManage.js" />
-        <option value="$PROJECT_DIR$/public/javascripts/hardwareManage.js" />
-        <option value="$PROJECT_DIR$/views/commodityManage/commodityAdd.html" />
-        <option value="$PROJECT_DIR$/views/hardwareManage/hardware.html" />
-        <option value="$PROJECT_DIR$/routes/hardwareManage.js" />
-        <option value="$PROJECT_DIR$/routes/operateManage.js" />
-        <option value="$PROJECT_DIR$/views/hardwareManage/header.html" />
         <option value="$PROJECT_DIR$/views/operateManage/header.html" />
         <option value="$PROJECT_DIR$/views/operateManage/footer.html" />
         <option value="$PROJECT_DIR$/public/javascripts/operateManage.js" />
-        <option value="$PROJECT_DIR$/views/operateManage/operateLog.html" />
         <option value="$PROJECT_DIR$/routes/rankManage.js" />
-        <option value="$PROJECT_DIR$/views/rankManage/header.html" />
-        <option value="$PROJECT_DIR$/views/rankManage/footer.html" />
-        <option value="$PROJECT_DIR$/public/javascripts/rankManage.js" />
-        <option value="$PROJECT_DIR$/views/rankManage/rank.html" />
-        <option value="$PROJECT_DIR$/routes/feedBackManage.js" />
         <option value="$PROJECT_DIR$/public/javascripts/feedBackManage.js" />
-        <option value="$PROJECT_DIR$/views/hardwareManage/footer.html" />
-        <option value="$PROJECT_DIR$/views/feedBackManage/feedback.html" />
         <option value="$PROJECT_DIR$/views/feedBackManage/header.html" />
+        <option value="$PROJECT_DIR$/public/stylesheets/body.css" />
         <option value="$PROJECT_DIR$/views/feedBackManage/footer.html" />
+        <option value="$PROJECT_DIR$/views/indexManage/header.html" />
+        <option value="$PROJECT_DIR$/views/rankManage/header.html" />
+        <option value="$PROJECT_DIR$/public/javascripts/rankManage.js" />
+        <option value="$PROJECT_DIR$/views/rankManage/footer.html" />
+        <option value="$PROJECT_DIR$/views/hardwareManage/footer.html" />
+        <option value="$PROJECT_DIR$/views/hardwareManage/header.html" />
+        <option value="$PROJECT_DIR$/routes/feedBackManage.js" />
+        <option value="$PROJECT_DIR$/views/indexManage/footer.html" />
+        <option value="$PROJECT_DIR$/routes/hardwareManage.js" />
+        <option value="$PROJECT_DIR$/database/model.js" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/views/repairManage/footer.html" />
+        <option value="$PROJECT_DIR$/views/adminManage/admin.html" />
+        <option value="$PROJECT_DIR$/views/adminManage/adminAdd.html" />
+        <option value="$PROJECT_DIR$/views/appManage/app.html" />
+        <option value="$PROJECT_DIR$/views/appManage/appAdd.html" />
+        <option value="$PROJECT_DIR$/views/appManage/imagesAdd.html" />
+        <option value="$PROJECT_DIR$/views/appManage/queryDetail.html" />
+        <option value="$PROJECT_DIR$/views/commodityManage/commodity.html" />
+        <option value="$PROJECT_DIR$/views/commodityManage/commodityUpdate.html" />
+        <option value="$PROJECT_DIR$/views/commodityManage/detail.html" />
+        <option value="$PROJECT_DIR$/views/commodityManage/purchase.html" />
+        <option value="$PROJECT_DIR$/views/feedBackManage/feedback.html" />
+        <option value="$PROJECT_DIR$/views/hardwareManage/hardware.html" />
+        <option value="$PROJECT_DIR$/views/operateManage/operateLog.html" />
+        <option value="$PROJECT_DIR$/views/rankManage/rank.html" />
+        <option value="$PROJECT_DIR$/views/indexManage/index.html" />
+        <option value="$PROJECT_DIR$/public/javascripts/indexManage.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/routes/adminManage.js" />
+        <option value="$PROJECT_DIR$/routes/multerUtil.js" />
+        <option value="$PROJECT_DIR$/routes/appManage.js" />
+        <option value="$PROJECT_DIR$/routes/commodityManage.js" />
+        <option value="$PROJECT_DIR$/views/commodityManage/commodityAdd.html" />
+        <option value="$PROJECT_DIR$/views/repairManage/repairmanAdd.html" />
+        <option value="$PROJECT_DIR$/views/error.html" />
+        <option value="$PROJECT_DIR$/views/repairManage/repairman.html" />
+        <option value="$PROJECT_DIR$/test/repairUploadTest.js" />
+        <option value="$PROJECT_DIR$/public/javascripts/appManage.js" />
+        <option value="$PROJECT_DIR$/views/repairManage/designateRepairman.html" />
+        <option value="$PROJECT_DIR$/public/javascripts/repairManage.js" />
+        <option value="$PROJECT_DIR$/views/repairManage/repair.html" />
+        <option value="$PROJECT_DIR$/routes/repairManage.js" />
       </list>
     </option>
   </component>
@@ -204,8 +262,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -252,7 +310,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="rankManage" />
+              <option name="myItemId" value="repairManage" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -270,7 +328,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="operateManage" />
+              <option name="myItemId" value="commodityManage" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -284,29 +342,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hardwareManage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="login_model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HEKR_END" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="feedBackManage" />
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -321,24 +357,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="routes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="login_model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HEKR_END" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -384,11 +402,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
+              <option name="myItemId" value="database" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -411,7 +425,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../pasture" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
@@ -425,17 +439,14 @@
       <recent name="E:\wordspace\javascript\HEKR_END\public\img" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\wordspace\javascript\HEKR_END\views\repairManage" />
+      <recent name="E:\wordspace\javascript\HEKR_END\views\indexManage" />
       <recent name="E:\wordspace\javascript\HEKR_END\public\vendor" />
       <recent name="E:\wordspace\javascript\HEKR_END\public\stylesheets" />
       <recent name="E:\wordspace\javascript\HEKR_END\public\javascripts" />
-      <recent name="E:\wordspace\javascript\HEKR_END\public\img" />
-      <recent name="E:\wordspace\javascript\HEKR_END\public" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.purchaseCancel.js">
-    <configuration default="false" name="singleTest.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="singleTest.js" working-dir="$PROJECT_DIR$/test">
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Node.js.repairUploadTest.js">
     <configuration default="false" name="test.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="$PROJECT_DIR$/test/purchaseAddTest.js" working-dir="$PROJECT_DIR$/test">
       <method />
     </configuration>
@@ -446,6 +457,9 @@
       <method />
     </configuration>
     <configuration default="false" name="purchaseCancel.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="purchaseCancel.js" working-dir="$PROJECT_DIR$/test">
+      <method />
+    </configuration>
+    <configuration default="false" name="repairUploadTest.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="repairUploadTest.js" working-dir="$PROJECT_DIR$/test">
       <method />
     </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
@@ -497,19 +511,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Node.js.singleTest.js" />
-      <item index="1" class="java.lang.String" itemvalue="Node.js.test.js" />
-      <item index="2" class="java.lang.String" itemvalue="Node.js.purchasePayTest.js" />
-      <item index="3" class="java.lang.String" itemvalue="Node.js.thenTest.js" />
-      <item index="4" class="java.lang.String" itemvalue="Node.js.purchaseCancel.js" />
+      <item index="0" class="java.lang.String" itemvalue="Node.js.test.js" />
+      <item index="1" class="java.lang.String" itemvalue="Node.js.purchasePayTest.js" />
+      <item index="2" class="java.lang.String" itemvalue="Node.js.thenTest.js" />
+      <item index="3" class="java.lang.String" itemvalue="Node.js.purchaseCancel.js" />
+      <item index="4" class="java.lang.String" itemvalue="Node.js.repairUploadTest.js" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Node.js.purchaseCancel.js" />
-        <item index="1" class="java.lang.String" itemvalue="Node.js.purchasePayTest.js" />
-        <item index="2" class="java.lang.String" itemvalue="Node.js.test.js" />
-        <item index="3" class="java.lang.String" itemvalue="Node.js.thenTest.js" />
-        <item index="4" class="java.lang.String" itemvalue="Node.js.singleTest.js" />
+        <item index="0" class="java.lang.String" itemvalue="Node.js.repairUploadTest.js" />
+        <item index="1" class="java.lang.String" itemvalue="Node.js.purchaseCancel.js" />
+        <item index="2" class="java.lang.String" itemvalue="Node.js.purchasePayTest.js" />
+        <item index="3" class="java.lang.String" itemvalue="Node.js.test.js" />
+        <item index="4" class="java.lang.String" itemvalue="Node.js.thenTest.js" />
       </list>
     </recent_temporary>
   </component>
@@ -536,7 +550,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24762407" sideWeight="0.42502818" order="0" side_tool="false" content_ui="combo" />
@@ -544,7 +558,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24746907" sideWeight="0.5714286" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33032694" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34195724" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31496063" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973601" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31383577" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973601" sideWeight="0.5714286" order="3" side_tool="true" content_ui="tabs" />
@@ -589,285 +603,68 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/images/guideImages-Nkgw3k5Tg.ico">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/startImages-Nkgw3k5Tg.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/semantic/dist/semantic.min.css">
+    <entry file="file://$PROJECT_DIR$/database/sevenCattle.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2774275">
-          <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.57192373">
+          <caret line="24" column="15" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/feedBackManage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30688447">
+          <caret line="125" column="43" selection-start-line="125" selection-start-column="43" selection-end-line="125" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/vendor/uploadfile.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.346247">
-          <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/vendor/jquery.uploadfile.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.026699029">
-          <caret line="7" column="94" selection-start-line="7" selection-start-column="94" selection-end-line="7" selection-end-column="94" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/appManage/queryDetail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4915254">
-          <caret line="56" column="23" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/adminManage/admin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23970944">
-          <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/adminManage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.025670946">
-          <caret line="16" column="47" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.025670946">
-          <caret line="66" column="32" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/multerUtil.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58926487">
-          <caret line="53" column="64" selection-start-line="53" selection-start-column="64" selection-end-line="53" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/appManage/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="15" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/appManage/footer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="2" selection-start-line="0" selection-start-column="2" selection-end-line="3" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/appManage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.482821">
-          <caret line="178" column="4" selection-start-line="178" selection-start-column="4" selection-end-line="184" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/configuration/preset.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3851718">
-          <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.19349006">
-          <caret line="58" column="20" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/nodejs/4.2.4/core-modules/fs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49186257">
-          <caret line="752" column="49" selection-start-line="752" selection-start-column="49" selection-end-line="752" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/appManage/app.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.026634382">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="78" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/appManage/appAdd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1598063">
-          <caret line="6" column="28" selection-start-line="1" selection-start-column="0" selection-end-line="83" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/jquery.uploadfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.73236">
-          <caret line="598" column="27" selection-start-line="598" selection-start-column="23" selection-end-line="598" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/appManage/imagesAdd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.451612">
-          <caret line="72" column="44" selection-start-line="72" selection-start-column="44" selection-end-line="72" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/commodityManage/commodityUpdate.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3983051">
-          <caret line="99" column="81" selection-start-line="99" selection-start-column="81" selection-end-line="99" selection-end-column="81" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#5;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/commodityManage/purchase.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8135593">
-          <caret line="99" column="6" selection-start-line="99" selection-start-column="6" selection-end-line="99" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/commodityManage/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37288135">
-          <caret line="14" column="55" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/appManage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25554258">
-          <caret line="59" column="4" selection-start-line="59" selection-start-column="4" selection-end-line="60" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/adminManage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.87281215">
-          <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="40" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/commodityManage/commodityAdd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30750605">
-          <caret line="48" column="10" selection-start-line="48" selection-start-column="10" selection-end-line="54" selection-end-column="24" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#5;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/commodityManage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.8471412">
-          <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/commodityManage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53908986">
-          <caret line="162" column="4" selection-start-line="162" selection-start-column="4" selection-end-line="163" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/commodityManage/commodity.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.026634382">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="87" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/commodityManage/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07990315">
-          <caret line="3" column="2" selection-start-line="3" selection-start-column="2" selection-end-line="8" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/commodityManage/footer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13317192">
-          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/operateManage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46207702">
-          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="19" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/rankManage/header.html">
+    <entry file="file://$PROJECT_DIR$/views/hardwareManage/header.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37288135">
           <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/operateManage/header.html">
+    <entry file="file://$PROJECT_DIR$/views/hardwareManage/footer.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.5161295">
-          <caret line="12" column="2" selection-start-line="12" selection-start-column="2" selection-end-line="13" selection-end-column="71" />
+        <state vertical-scroll-proportion="0.07990315">
+          <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/rankManage.js">
+    <entry file="file://$PROJECT_DIR$/test/purchasePayTest.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46207702">
-          <caret line="18" column="53" selection-start-line="18" selection-start-column="53" selection-end-line="18" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/db.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/operateManage.js">
+    <entry file="file://$PROJECT_DIR$/public/javascripts/rankManage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23103851">
+          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12835473">
+          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/hardwareManage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="8" selection-end-column="3" />
@@ -875,127 +672,338 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/rankManage.js">
+    <entry file="file://$PROJECT_DIR$/routes/users.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10268378">
-          <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/operateManage/footer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/rankManage/footer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07990315">
-          <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/operateManage/operateLog.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.7096774">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="79" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/rankManage/rank.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.0774817">
-          <caret line="81" column="6" selection-start-line="81" selection-start-column="6" selection-end-line="81" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/hardwareManage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15285881">
-          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="17" selection-end-column="56" />
+        <state vertical-scroll-proportion="0.35822636">
+          <caret line="62" column="47" selection-start-line="62" selection-start-column="47" selection-end-line="62" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/feedBackManage.js">
+    <entry file="file://$PROJECT_DIR$/views/repairManage/footer.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.5414236">
-          <caret line="99" column="36" selection-start-line="99" selection-start-column="36" selection-end-line="99" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.13317192">
+          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/hardwareManage.js">
+    <entry file="file://$PROJECT_DIR$/views/adminManage/admin.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.025670946">
-          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="7" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.9467312">
+          <caret line="50" column="16" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/hardwareManage/footer.html">
+    <entry file="file://$PROJECT_DIR$/views/adminManage/adminAdd.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07990315">
-          <caret line="3" column="50" selection-start-line="3" selection-start-column="50" selection-end-line="3" selection-end-column="50" />
+        <state vertical-scroll-proportion="0.692494">
+          <caret line="50" column="14" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/appManage/imagesAdd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.692494">
+          <caret line="50" column="14" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/appManage/queryDetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9322034">
+          <caret line="50" column="14" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/commodityManage/commodityUpdate.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9467312">
+          <caret line="50" column="14" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/commodityManage/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9467312">
+          <caret line="50" column="14" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/commodityManage/footer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/commodityManage/purchase.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9467312">
+          <caret line="50" column="14" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/hardwareManage/hardware.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.026634382">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="87" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.88014525">
+          <caret line="50" column="14" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/hardwareManage/header.html">
+    <entry file="file://$PROJECT_DIR$/views/operateManage/operateLog.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.346247">
-          <caret line="13" column="71" selection-start-line="13" selection-start-column="71" selection-end-line="13" selection-end-column="71" />
+        <state vertical-scroll-proportion="0.9467312">
+          <caret line="50" column="14" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/feedBackManage/footer.html">
+    <entry file="file://$PROJECT_DIR$/views/indexManage/header.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.026634382">
-          <caret line="1" column="32" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.3196126">
+          <caret line="12" column="71" selection-start-line="12" selection-start-column="71" selection-end-line="12" selection-end-column="71" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/feedBackManage/header.html">
+    <entry file="file://$PROJECT_DIR$/public/javascripts/indexManage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4527845">
-          <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.6674446">
+          <caret line="116" column="26" selection-start-line="116" selection-start-column="26" selection-end-line="116" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/indexManage/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.692494">
+          <caret line="53" column="22" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2823804">
+          <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/indexManage/footer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1598063">
+          <caret line="6" column="52" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/rankManage/rank.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.77360773">
+          <caret line="50" column="14" selection-start-line="0" selection-start-column="0" selection-end-line="90" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/multerUtil.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.92415404">
+          <caret line="72" column="42" selection-start-line="72" selection-start-column="42" selection-end-line="72" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/commodityManage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12835473">
+          <caret line="77" column="4" selection-start-line="77" selection-start-column="4" selection-end-line="105" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/error.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12087912">
+          <caret line="3" column="26" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/feedBackManage/feedback.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="20.193548">
-          <caret line="85" column="54" selection-start-line="85" selection-start-column="54" selection-end-line="85" selection-end-column="54" />
-          <folding>
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#3;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#5;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-1.2106538">
+          <caret line="85" column="14" selection-start-line="85" selection-start-column="14" selection-end-line="85" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/feedBackManage.js">
+    <entry file="file://$PROJECT_DIR$/views/appManage/appAdd.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08029197">
-          <caret line="48" column="35" selection-start-line="48" selection-start-column="35" selection-end-line="48" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.041162226">
+          <caret line="50" column="14" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.025670946">
+          <caret line="131" column="39" selection-start-line="131" selection-start-column="39" selection-end-line="131" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/adminManage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6662777">
+          <caret line="92" column="20" selection-start-line="92" selection-start-column="20" selection-end-line="93" selection-end-column="96" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/repairManage/repairmanAdd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1864407">
+          <caret line="104" column="44" selection-start-line="104" selection-start-column="29" selection-end-line="104" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12718786">
+          <caret line="73" column="8" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/appManage/app.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36077482">
+          <caret line="69" column="78" selection-start-line="69" selection-start-column="78" selection-end-line="69" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/purchaseAddTest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="39" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/repairManage/repairman.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.026634382">
+          <caret line="11" column="14" selection-start-line="0" selection-start-column="0" selection-end-line="89" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/repairUploadTest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configuration/preset.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/appManage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1819757">
+          <caret line="142" column="81" selection-start-line="142" selection-start-column="20" selection-end-line="142" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/repairManage/designateRepairman.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.7096775">
+          <caret line="72" column="43" selection-start-line="72" selection-start-column="43" selection-end-line="72" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/commodityManage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.4523396">
+          <caret line="48" column="4" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/appManage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="123" column="20" selection-start-line="123" selection-start-column="20" selection-end-line="131" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/commodityManage/commodity.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.7765567">
+          <caret line="71" column="42" selection-start-line="71" selection-start-column="42" selection-end-line="71" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/commodityManage/commodityAdd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2014652">
+          <caret line="56" column="10" selection-start-line="56" selection-start-column="10" selection-end-line="62" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/repairManage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="72" column="3" selection-start-line="72" selection-start-column="3" selection-end-line="72" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/repairManage/repair.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-33.225807">
+          <caret line="93" column="15" selection-start-line="93" selection-start-column="15" selection-end-line="93" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/repairManage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.58058923">
+          <caret line="173" column="43" selection-start-line="173" selection-start-column="43" selection-end-line="173" selection-end-column="43" />
           <folding />
         </state>
       </provider>

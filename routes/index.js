@@ -15,9 +15,24 @@ router.all('/commodityManage', preset.isLoggedIn);
 router.all('/appManage', preset.isTopLoggedIn);
 router.all('/hardwareManage', preset.isTopLoggedIn);
 router.all('/operateManage', preset.isLoggedIn);
+router.all('/repairManage', preset.isLoggedIn);
 
 router.get('/', function(req, res, next) {
-  res.redirect('/adminManage');
+  var adminEmail = req.session.passport.user.adminEmail;
+  var adminName = req.session.passport.user.adminName;
+  var rankListPromise = new model.Mobile().query();
+  var feedBackPromise = new model.FeedBack().query();
+  rankListPromise.then(function(model_rankList) {
+    feedBackPromise.then(function(model_feedBack) {
+      res.render('indexManage/index', {
+        title: '首页',
+        adminEmail: adminEmail,
+        adminName: adminName,
+        rankList: model_rankList,
+        feedBackList: model_feedBack
+      });
+    });
+  });
 });
 
 router.get('/loginTop', function(req, res, next) {
@@ -58,7 +73,7 @@ router.post('/loginTop', function(req, res, next){
             } else {
               //写入日志
               operateLog.logWrite(user.adminEmail, '顶级管理员' + user.adminName + '登录');
-              return res.redirect('/adminManage');
+              return res.redirect('/');
             }
           });
         })(req, res, next);
@@ -68,7 +83,6 @@ router.post('/loginTop', function(req, res, next){
     } else {
       return res.render('loginTop', {title: '顶级管理员登录', errorMessage: '不存在的邮箱账号'});
     }
-
   });
 });
 
@@ -96,7 +110,7 @@ router.post('/loginSec', function(req, res, next){
             } else {
               //写入日志
               operateLog.logWrite(user.adminEmail, '次级管理员'+ user.adminName +'登录');
-              return res.redirect('/adminManage');
+              return res.redirect('/');
             }
           });
         })(req, res, next);
