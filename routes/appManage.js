@@ -39,22 +39,22 @@ router.get('/appAdd', function(req, res, next) {
     res.render('appManage/appAdd', {title: 'App添加', adminName: adminName});
 });
 
-//显示app详情页面
-router.get('/queryDetail', function(req, res, next) {
-    var adminEmail = req.session.passport.user.adminEmail;
-    var adminName = req.session.passport.user.adminName;
-    var appId = url.parse(req.url, true).query.appId;
-    var mobilePromise = new model.Mobile().where('appId', '=', appId).query().select();
-
-    mobilePromise.then(function(model_fetch) {
-        console.log(model_fetch);
-        if(model_fetch) {
-            res.render('appManage/queryDetail', { title: 'app详情', adminEmail: adminEmail, adminName: adminName, mobileInfoList: model_fetch});
-        } else {
-            res.render('appManage/queryDetail', { title: 'app详情', adminEmail: adminEmail, adminName: adminName, errorMessage: '此App尚未有用户使用'});
-        }
-    });
-});
+////显示app详情页面
+//router.get('/queryDetail', function(req, res, next) {
+//    var adminEmail = req.session.passport.user.adminEmail;
+//    var adminName = req.session.passport.user.adminName;
+//    var appId = url.parse(req.url, true).query.appId;
+//    var mobilePromise = new model.Mobile().where('appId', '=', appId).query().select();
+//
+//    mobilePromise.then(function(model_fetch) {
+//        console.log(model_fetch);
+//        if(model_fetch) {
+//            res.render('appManage/queryDetail', { title: 'app详情', adminEmail: adminEmail, adminName: adminName, mobileInfoList: model_fetch});
+//        } else {
+//            res.render('appManage/queryDetail', { title: 'app详情', adminEmail: adminEmail, adminName: adminName, errorMessage: '此App尚未有用户使用'});
+//        }
+//    });
+//});
 
 //添加app, id用shortid生成
 router.post('/appAdd', function(req, res, next) {
@@ -100,18 +100,113 @@ router.get('/imagesAdd', function(req, res, next) {
     res.render('appManage/imagesAdd', {title: '上传图片', appId: appId, adminName: adminName});
 });
 
+//显示启动页上传页面
+router.get('/startAdd', function(req, res, next) {
+    var appId = url.parse(req.url, true).query.appId;
+    var adminName = req.session.passport.user.adminName;
+    new model.Start({ appId: appId}).fetch().then(function(model_fetch) {
+        if(model_fetch) {
+            var startContent = model_fetch.get('startContent');
+            var startDate = model_fetch.get('startDate');
+            res.render('appManage/imagesAdd', {
+                title: '启动页管理',
+                appId: appId,
+                adminName: adminName,
+                startContent: startContent,
+                startDate: startDate
+            });
+        } else {
+            res.render('appManage/imagesAdd', {
+                title: '启动页管理',
+                appId: appId,
+                adminName: adminName,
+                startContent: 'public\\img\\image.png'
+            });
+        }
+    }).catch(function(error) {
+        res.render('error', {
+            title: '出错啦',
+            message: error.message,
+            error: error
+        });
+    });
+});
+
+//显示引导页上传页面
+router.get('/guideAdd', function(req, res, next) {
+    var appId = url.parse(req.url, true).query.appId;
+    var adminName = req.session.passport.user.adminName;
+    new model.Guide({ appId: appId}).fetch().then(function(model_fetch) {
+        if(model_fetch) {
+            var guideContent = model_fetch.get('guideContent');
+            var guideDate = model_fetch.get('guideDate');
+            res.render('appManage/imagesAdd', {
+                title: '引导页管理',
+                appId: appId,
+                adminName: adminName,
+                guideContent: guideContent,
+                guideDate: guideDate
+            });
+        } else {
+            res.render('appManage/imagesAdd', {
+                title: '引导页管理',
+                appId: appId,
+                adminName: adminName,
+                guideContent: 'public\\img\\image.png;public\\img\\image.png'
+            });
+        }
+    }).catch(function(error) {
+        res.render('error', {
+            title: '出错啦',
+            message: error.message,
+            error: error
+        });
+    });
+});
+
+//显示轮播页上传页面
+router.get('/carouselAdd', function(req, res, next) {
+    var appId = url.parse(req.url, true).query.appId;
+    var adminName = req.session.passport.user.adminName;
+    new model.Carousel({ appId: appId}).fetch().then(function(model_fetch) {
+        if(model_fetch) {
+            var carouselContent = model_fetch.get('carouselContent');
+            var carouselDate = model_fetch.get('carouselDate');
+            res.render('appManage/imagesAdd', {
+                title: '轮播页管理',
+                appId: appId,
+                adminName: adminName,
+                carouselContent: carouselContent,
+                carouselDate: carouselDate
+            });
+        } else {
+            res.render('appManage/imagesAdd', {
+                title: '轮播页管理',
+                appId: appId,
+                adminName: adminName,
+                carouselContent: 'public\\img\\image.png;public\\img\\image.png'
+            });
+        }
+    }).catch(function(error) {
+        res.render('error', {
+            title: '出错啦',
+            message: error.message,
+            error: error
+        });
+    });
+});
+
 //添加启动页图片，把上传的单个图片的url保存在startContent中
 //然后保存在数据库中
 router.post('/startAdd/:appId', function (req, res, next) {
     var adminEmail = req.session.passport.user.adminEmail;
     var appId = req.params.appId;
-    console.log('appId:', appId);
-    upload.startUpload(req, res, function (err) {
-        if (err) {
+    upload.startUpload(req, res, function (error) {
+        if (error) {
             res.render('error', {
                 title: '出错啦',
-                message: err.message,
-                err: err
+                message: error.message,
+                error: error
             });
         } else {
             //因为appId不能重复，所以先通过appId查出重复的项，重复的项就获取id，来更新
@@ -129,16 +224,16 @@ router.post('/startAdd/:appId', function (req, res, next) {
                         //写入日志
                         operateLog.logWrite(adminEmail, '更新启动页图片,AppId:' + appId);
                         res.redirect(303, '/appManage/');
-                    })
+                    });
                 } else {
                     new model.Start({
                         startContent: req.file.path,
                         appId: appId
-                    }).save().then(function (model_save) {
+                    }).save().then(function(model_save) {
                         //写入日志
                         operateLog.logWrite(adminEmail, '添加启动页图片,AppId:' + appId);
                         res.redirect(303, '/appManage/');
-                    })
+                    });
                 }
             });
         }
@@ -150,9 +245,8 @@ router.post('/startAdd/:appId', function (req, res, next) {
 router.post('/guideAdd/:appId', function (req, res, next) {
     var adminEmail = req.session.passport.user.adminEmail;
     var appId = req.params.appId;
-    console.log('appId:', appId);
-    upload.guideUpload(req, res, function (err) {
-        if (err) {
+    upload.guideUpload(req, res, function (error) {
+        if (error) {
             res.redirect(303, 'error');
         } else {
             //因为appId不能重复，所以先通过appId查出重复的项，重复的项就获取id，来更新
@@ -195,9 +289,8 @@ router.post('/guideAdd/:appId', function (req, res, next) {
 router.post('/carouselAdd/:appId', function (req, res, next) {
     var adminEmail = req.session.passport.user.adminEmail;
     var appId = req.params.appId;
-    console.log('appId:', appId);
-    upload.carouselUpload(req, res, function (err) {
-        if (err) {
+    upload.carouselUpload(req, res, function (error) {
+        if (error) {
             res.redirect(303, 'error');
         } else {
             //因为appId不能重复，所以先通过appId查出重复的项，重复的项就获取id，来更新
@@ -273,36 +366,6 @@ router.get('/getImagesUrl', function(req, res, next) {
         res.json({success: false, errorMessage: 'can`t find this type'});
     }
 });
-
-//和IOS对接，接收app发来的系统版本，地理位置和手机型号信息，以及排行榜中的信息
-router.get('/sendMobileInfo', function(req, res, next) {
-    var appId = url.parse(req.url, true).query.appId;
-    var mobileVersion = url.parse(req.url, true).query.version;
-    var mobileLocation = url.parse(req.url, true).query.location;
-    var mobileModels = url.parse(req.url, true).query.models;
-    var userId = url.parse(req.url, true).query.userId;
-    var hardwareId = url.parse(req.url, true).query.hardwareId;
-    var rankContent = url.parse(req.url, true).query.rankContent;
-    new model.Mobile({
-        mobileVersion: mobileVersion,
-        mobileLocation: mobileLocation,
-        mobileModels: mobileModels,
-        appId: appId,
-        userId: userId,
-        hardwareId: hardwareId,
-        rankContent: rankContent,
-        rankDate: new Date()
-    }).save().then(function (model_save) {
-        if(model_save) {
-            res.json({ success: true, info: model_save});
-        } else {
-            res.json({ success: false, info: '没有任何信息录入数据库'});
-        }
-    }).catch(function(err){
-        res.json({ success: false, info: err});
-    });
-});
-
 
 
 //回调避免同步,把多个文件路径合成一个以;相隔的字符串

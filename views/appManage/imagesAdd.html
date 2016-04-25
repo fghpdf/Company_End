@@ -29,7 +29,7 @@
         <a class="item" href="#"><i class="users icon"></i>用户账户管理</a>
         <a class="active item" href="/appManage"><i class="mobile icon"></i>App管理</a>
         <a class="item" href="#"><i class="external icon"></i>推送管理</a>
-        <a class="item" href="/rankManage"><i class="qq icon"></i>社交管理</a>
+        <a class="item" href="/rankManage"><i class="qq icon"></i>排行榜管理</a>
         <a class="item" href="/hardwareManage"><i class="laptop icon"></i>设备管理</a>
         <div class="ui dropdown item">
           商城管理
@@ -51,39 +51,79 @@
         </div>
       </div>
     </div>
-    <div class="twelve wide centered column">
+    <% var domain = "http://localhost:3000" %>
+    <div class="eleven wide centered column">
       <div class="ui middle aligned aligned grid">
-        <div class="nine wide column">
-          <div class="ui three stackable cards">
-            <div class="ui card">
-              <div class="content">
-                <div class="header">AppId</div>
-                <div class="description" id="startAppId"><%= appId %></div>
-                <div class="description">仅可以选择一张图片</div>
-                <div id="startAddUpload">启动页图片</div>
-              </div>
-              <div id="startAddButton" class="ui bottom attached blue button"><i class="add icon"></i>添加启动页</div>
-            </div>
-            <div class="ui card">
-              <div class="content">
-                <div class="header">AppId</div>
-                <div class="description" id="guideAppId"><%= appId %></div>
-                <div class="description">仅可以选择一张图片</div>
-                <div id="guideAddUpload">引导页图片</div>
-              </div>
-              <div id="guideAddButton" class="ui bottom attached blue button"><i class="add icon"></i>添加引导页</div>
-            </div>
-            <div class="ui card">
-              <div class="content">
-                <div class="header">AppId</div>
-                <div class="description" id="carouselAppId"><%= appId %></div>
-                <div class="description">可以选择多张图片</div>
-                <div id="carouselAddUpload">轮播页图片</div>
-              </div>
-              <div id="carouselAddButton" class="ui bottom attached blue button"><i class="add icon"></i>添加轮播页</div>
-            </div>
+        <% if(title === '启动页管理') { %>
+        <div class="five wide centered column">
+          <div class="ui segment" style="margin-left: -100px">
+            <div class="ui top attached label" >启动页</div>
+            <img class="ui big rounded bordered image" id="preview" name="preview"
+                 src="<%= domain + startContent.substring(6).replace(/\\/g, '/') %>">
           </div>
+          <form class="ui form" action="/appManage/startAdd/<%= appId %>" method="post"
+                enctype="multipart/form-data" style="margin-left: -100px">
+            <div class="field">
+              <div class="ui left icon input" style="margin-left: 50px">
+                <label for="startImages" class="ui icon teal button">请上传图片</label>
+                <input id="startImages" name="startImages" type="file" required="required"
+                       style="display: none">
+                <button type="submit" class="ui right floated blue button" style="margin-left: 50px"><i class="add icon"></i>添加启动页</button>
+              </div>
+            </div>
+          </form>
         </div>
+        <% } %>
+        <% if(title === '引导页管理') {
+        var micUrl = guideContent.split(";"); %>
+        <div class="nine wide centered column">
+          <div class="ui horizontal segments" id="preview" style="margin-left: -100px">
+            <% for(var micNum = 0; micNum <= (micUrl.length - 1); micNum++) { %>
+            <div class="ui basic segment">
+              <div class="ui top attached label" >引导页<%= micNum + 1 %></div>
+              <img class="ui big rounded bordered image" name="preview"
+                   src="<%= domain + micUrl[micNum].substring(6).replace(/\\/g, '/') %>">
+            </div>
+            <% } %>
+          </div>
+          <form class="ui form" action="/appManage/guideAdd/<%= appId %>" method="post"
+                enctype="multipart/form-data" >
+            <div class="field">
+              <div class="ui left icon input" style="margin-left: 50px">
+                <label for="guideImages" class="ui icon teal button">请上传图片</label>
+                <input id="guideImages" name="guideImages" type="file" required="required"
+                       style="display: none" multiple="multiple">
+                <button type="submit" class="ui right floated blue button" style="margin-left: 50px"><i class="add icon"></i>添加引导页</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <% } %>
+        <% if(title === '轮播页管理') {
+        var micUrl = carouselContent.split(";"); %>
+        <div class="ten wide centered column">
+          <div class="ui horizontal segments" id="preview" style="margin-left: -100px">
+            <% for(var micNum = 0; micNum <= (micUrl.length - 1); micNum++) { %>
+            <div class="ui basic segment">
+              <div class="ui top attached label" >轮播页<%= micNum + 1 %></div>
+              <img class="ui big rounded bordered image" name="preview"
+                   src="<%= domain + micUrl[micNum].substring(6).replace(/\\/g, '/') %>">
+            </div>
+            <% } %>
+          </div>
+          <form class="ui form" action="/appManage/carouselAdd/<%= appId %>" method="post"
+                enctype="multipart/form-data" >
+            <div class="field">
+              <div class="ui left icon input" style="margin-left: 50px">
+                <label for="carouselImages" class="ui icon teal button">请上传图片</label>
+                <input id="carouselImages" name="carouselImages" type="file" required="required"
+                       style="display: none" multiple="multiple">
+                <button type="submit" class="ui right floated blue button" style="margin-left: 50px"><i class="add icon"></i>添加轮播页</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <% } %>
       </div>
     </div>
   </div>

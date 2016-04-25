@@ -12,6 +12,21 @@
           </a>
           <div class="right menu">
             <div class="item">
+              <div class="ui action mini input">
+                <input type="text" id="rankType" placeholder="请输入要添加的类型" value="">
+                <button class="ui right labeled icon button" onclick="getRankType();" ><i class="add icon"></i> 确认 </button>
+              </div>
+            </div>
+            <div class="ui dropdown item">
+              请选择需要查看的排行榜
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                <% for(var num = 0; rankType[num] !== undefined; num = num + 1) { %>
+                <a class="item" href="/rankManage/rank/<%= rankType[num].rankType %>"><%= rankType[num].rankType %></a>
+                <% } %>
+              </div>
+            </div>
+            <div class="item">
               <i class="user icon"></i><%= adminName %>
             </div>
             <a class="item" href="/logout">
@@ -29,7 +44,7 @@
         <a class="item" href="#"><i class="users icon"></i>用户账户管理</a>
         <a class="item" href="/appManage"><i class="mobile icon"></i>App管理</a>
         <a class="item" href="#"><i class="external icon"></i>推送管理</a>
-        <a class="active item" href="/rankManage"><i class="qq icon"></i>社交管理</a>
+        <a class="active item" href="/rankManage"><i class="qq icon"></i>排行榜管理</a>
         <a class="item" href="/hardwareManage"><i class="laptop icon"></i>设备管理</a>
         <div class="ui dropdown item">
           商城管理
@@ -59,31 +74,38 @@
         <p><%= errorMessage %></p>
       </div>
       <% } else { %>
-      <table class="ui small celled blue table">
-        <thead>
-        <tr>
-          <th>appId</th>
-          <th>用户Id</th>
-          <th>硬件Id</th>
-          <th>内容</th>
-          <th>上传时间</th>
-          <th>地理位置</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% var domain = "http://localhost:3000" %>
-        <% for(var num = 0; rankList[num] !== undefined; num = num + 1) { %>
-        <tr>
-          <td><%= rankList[num].appId %></td>
-          <td><%= rankList[num].userId %></td>
-          <td><%= rankList[num].hardwareId %></td>
-          <td><%= rankList[num].rankContent %></td>
-          <td><%= rankList[num].rankDate.toLocaleString() %></td>
-          <td><%= rankList[num].mobileLocation %></td>
-        </tr>
-        <% } %>
-        </tbody>
-      </table>
+      <div class="ui segments">
+        <div class="ui segment">
+          <table class="ui small celled blue table">
+            <thead>
+            <tr>
+              <th>appId</th>
+              <th>用户Id</th>
+              <th>硬件Id</th>
+              <th>内容</th>
+              <th>上传时间</th>
+              <th>地理位置</th>
+              <th>排行榜类型</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% var domain = "http://localhost:3000" %>
+            <% for(var num = 0; rankList[num] !== undefined; num = num + 1) { %>
+            <tr>
+              <td><%= rankList[num].appId %></td>
+              <td><%= rankList[num].userId %></td>
+              <td><%= rankList[num].hardwareId %></td>
+              <td><%= rankList[num].rankContent %></td>
+              <td><%= rankList[num].rankDate.toLocaleString() %></td>
+              <td><%= rankList[num].mobileLocation %></td>
+              <td><%= rankList[num].rankType %></td>
+            </tr>
+            <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
       <% } %>
     </div>
   </div>

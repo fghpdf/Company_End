@@ -47,4 +47,10 @@ $(document).ready(function() {
             $table.children().children().eq(num).children().eq(5).text(geocoderResult);
         });
     }
+
 });
+function getRankType() {
+    var $input = $("#rankType");
+    var rankType = $input.val();
+    location.href = "/rankManage/rankTypeAdd?rankType=" + rankType;
+}

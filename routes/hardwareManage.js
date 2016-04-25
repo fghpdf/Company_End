@@ -76,9 +76,6 @@ function getJWT_Token(callback) {
             var accessToken = result.access_token;
             callback({ accessToken: accessToken});
         } else {
-            console.log("error:", error);
-            console.log("statusCode: ", response.statusCode);
-            console.log("body", body);
             callback({ error: error});
         }
     });

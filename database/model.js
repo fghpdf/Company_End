@@ -47,9 +47,15 @@ var Carousel = db.Model.extend({
     idAttribute: 'id'
 });
 
-//手机信息表
-var Mobile = db.Model.extend({
-    tableName: 'mobile_info',
+//排行榜表
+var Rank = db.Model.extend({
+    tableName: 'rank',
+    idAttribute: 'id'
+});
+
+//排行榜类型表
+var RankType = db.Model.extend({
+    tableName: 'ranktype',
     idAttribute: 'id'
 });
 
@@ -94,9 +100,10 @@ module.exports = {
     Start: Start,
     Guide: Guide,
     Carousel: Carousel,
-    Mobile: Mobile,
+    Rank: Rank,
     Operate: Operate,
     FeedBack: FeedBack,
     Repairman: Repairman,
-    Repair: Repair
+    Repair: Repair,
+    RankType: RankType
 };

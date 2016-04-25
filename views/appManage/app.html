@@ -29,7 +29,7 @@
         <a class="item" href="#"><i class="users icon"></i>用户账户管理</a>
         <a class="active item" href="/appManage"><i class="mobile icon"></i>App管理</a>
         <a class="item" href="#"><i class="external icon"></i>推送管理</a>
-        <a class="item" href="/rankManage"><i class="qq icon"></i>社交管理</a>
+        <a class="item" href="/rankManage"><i class="qq icon"></i>排行榜管理</a>
         <a class="item" href="/hardwareManage"><i class="laptop icon"></i>设备管理</a>
         <div class="ui dropdown item">
           商城管理
@@ -67,8 +67,9 @@
           <td><%= appList[num].appId %></td>
           <td><%= appList[num].appName %></td>
           <td><%= appList[num].appInfo %></td>
-          <td><button id="addImages" class="ui tiny blue button">上传图片</button>
-          <button id="queryDetail" class="ui tiny blue button">查看详情</button></td>
+          <td><button id="addStart" class="ui tiny blue button">启动页管理</button>
+            <button id="addGuide" class="ui tiny blue button">引导页管理</button>
+            <button id="addCarousel" class="ui tiny blue button">轮播页管理</button></td>
         </tr>
         <% } %>
         </tbody>

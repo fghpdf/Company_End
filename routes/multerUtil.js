@@ -19,8 +19,6 @@ var appStorageArray = multer.diskStorage({
     filename: function(req, file, callback) {
         var appId = req.params.appId;
         var fileFormat = (file.originalname).split(".");
-        console.log('req:',req);
-        console.log(file);
         callback(null, file.fieldname + '-' + appId + '-' +  Date.now() + '.' + fileFormat[fileFormat.length - 1]);
     }
 });

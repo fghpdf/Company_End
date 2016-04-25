@@ -20,7 +20,7 @@ router.all('/repairManage', preset.isLoggedIn);
 router.get('/', function(req, res, next) {
   var adminEmail = req.session.passport.user.adminEmail;
   var adminName = req.session.passport.user.adminName;
-  var rankListPromise = new model.Mobile().query();
+  var rankListPromise = new model.Rank().query();
   var feedBackPromise = new model.FeedBack().query();
   rankListPromise.then(function(model_rankList) {
     feedBackPromise.then(function(model_feedBack) {
