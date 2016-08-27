@@ -30,16 +30,6 @@ CREATE TABLE `guide` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `guide`
---
-
-LOCK TABLES `guide` WRITE;
-/*!40000 ALTER TABLE `guide` DISABLE KEYS */;
-INSERT INTO `guide` VALUES (1,'2016-03-23 07:49:42','public\\images\\guideImages-1458719382882.jpg;public\\images\\guideImages-1458719382884.jpg','Nkgw3k5Tg'),(2,'2016-03-23 07:49:49','public\\images\\guideImages-1458719388989.jpg;public\\images\\guideImages-1458719388991.jpg;public\\images\\guideImages-1458719388991.jpg','VyoX0k9Tx');
-/*!40000 ALTER TABLE `guide` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -50,4 +40,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-25 17:52:59
+-- Dump completed on 2016-04-25 16:57:00

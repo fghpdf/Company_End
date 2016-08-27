@@ -28,18 +28,8 @@ CREATE TABLE `app` (
   `appName` varchar(100) NOT NULL,
   `appInfo` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `app`
---
-
-LOCK TABLES `app` WRITE;
-/*!40000 ALTER TABLE `app` DISABLE KEYS */;
-INSERT INTO `app` VALUES (1,'Nkgw3k5Tg','地球村','我并不知道是干嘛的'),(2,'VyoX0k9Tx','月球村','妈的智障！'),(3,'EkysRyq6l','火星村','艾玛！啊就是发呆'),(4,'EyqTC1cTe','益乐新村','我住的位置啊Σ(っ °Д °;)っ'),(5,'E1mBkeqax','太阳村','我快想不出来了'),(6,'Vyv3Bx5Te','九莲新村','那个地方很差啊(*≧m≦*)');
-/*!40000 ALTER TABLE `app` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -50,4 +40,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-25 17:52:57
+-- Dump completed on 2016-04-25 16:56:56

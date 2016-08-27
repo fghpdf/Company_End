@@ -24,24 +24,15 @@ DROP TABLE IF EXISTS `purchase`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `purchase` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `purchaseChannel` varchar(100) NOT NULL,
-  `purchaseCreateDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `purchaseChannel` varchar(100) DEFAULT NULL,
+  `purchaseCreateDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `purchaseFinishDate` datetime DEFAULT NULL,
-  `purchasePrice` varchar(100) NOT NULL,
+  `purchasePrice` int(11) NOT NULL,
   `purchaseStatus` tinyint(1) NOT NULL DEFAULT '0',
+  `userId` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `purchase`
---
-
-LOCK TABLES `purchase` WRITE;
-/*!40000 ALTER TABLE `purchase` DISABLE KEYS */;
-INSERT INTO `purchase` VALUES (2,'支付宝','2016-03-17 07:19:05',NULL,'78',0),(3,'微信','2016-03-17 07:20:10','2016-03-17 15:20:20','118',1);
-/*!40000 ALTER TABLE `purchase` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -52,4 +43,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-25 17:52:55
+-- Dump completed on 2016-04-25 16:56:54

@@ -48,7 +48,7 @@ router.get('/hardware', function(req, res, next) {
                         title: '硬件管理',
                         adminEmail: adminEmail,
                         adminName: adminName,
-                        errorMessage: error
+                        errorMessage: response.statusCode
                     });
                 }
             });
@@ -65,12 +65,13 @@ function getJWT_Token(callback) {
         },
         form: {
             "pid" : "00000000000",
-            "username" : "13572064152",
-            "password" : "940919",
+            "username" : "15869025220",
+            "password" : "5978587",
             "clientType" : "WEB"
         }
     };
     request.post(options, function(error, response, body) {
+        console.log(response);
         if (!error && response.statusCode == 200) {
             var result = JSON.parse(body);
             var accessToken = result.access_token;

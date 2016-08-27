@@ -29,9 +29,9 @@ CREATE TABLE `admin` (
   `Level` varchar(20) NOT NULL DEFAULT '2',
   `adminName` varchar(100) NOT NULL,
   `adminCreateDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `adminLoginDate` varchar(100) NOT NULL DEFAULT '-',
+  `adminLoginDate` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `admin` (
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` VALUES (1,'xiangxuan.qu@hekr.me','$2a$10$oZYXNbICvSeUeGuYAnSHce1tsVwzbBRPxYZxez6/bTBgigr42prWC','1','瞿祥轩','2016-03-24 05:50:34','2016-03-25 17:48:14.366'),(4,'yufei.dan@hekr.me','$2a$10$wMdHAGvCtrO/rk4CHrbMkeAqONfqQttHPzEJ/gw6V/GNj9m2sUprm','2','单宇飞','2016-03-24 07:19:52','2016-03-25 17:06:07.764'),(6,'jinbiao.hu@hekr.me','$2a$10$KBgyQIm6QWGUmhpdOmZNbubVmLhM2Mdp2jbHy00RyCqUtjmgWagGO','2','东邪','2016-03-24 08:27:14','-'),(7,'jiachen.yao@hekr.me','$2a$10$TzSbroAwAvLMpQppSfrwq.Bw4VyxYSnjUlWnvoyOyjS.Elren5bRq','2','姚嘉晨','2016-03-24 08:31:19','-');
+INSERT INTO `admin` VALUES (1,'xiangxuan.qu@hekr.me','$2a$10$oZYXNbICvSeUeGuYAnSHce1tsVwzbBRPxYZxez6/bTBgigr42prWC','1','瞿祥轩','2016-03-24 05:50:34','2016-04-25 08:14:40');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-25 17:52:56
+-- Dump completed on 2016-04-25 16:55:14

@@ -28,18 +28,8 @@ CREATE TABLE `carousel` (
   `carouselContent` varchar(300) NOT NULL,
   `appId` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `carousel`
---
-
-LOCK TABLES `carousel` WRITE;
-/*!40000 ALTER TABLE `carousel` DISABLE KEYS */;
-INSERT INTO `carousel` VALUES (1,'2016-03-23 08:03:02','public\\images\\carouselImages-1458720182732.jpg','Nkgw3k5Tg'),(2,'2016-03-23 08:03:10','public\\images\\carouselImages-1458720190765.jpg;public\\images\\carouselImages-1458720190767.jpg;public\\images\\carouselImages-1458720190769.jpg;public\\images\\carouselImages-1458720190778.jpg','VyoX0k9Tx');
-/*!40000 ALTER TABLE `carousel` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -50,4 +40,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-25 17:52:58
+-- Dump completed on 2016-04-25 16:56:59

@@ -2,39 +2,64 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44ba234f-660b-40ca-960a-4211c61aed51" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/img/image.png" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/npm-debug.log" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/images/startImages-Nkgw3k5Tg.png" afterPath="$PROJECT_DIR$/public/images/startImages-Nkgw3k5Tg.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/fghpdf.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/fghpdf.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/hardwareTest.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/account.sql" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/goods.mwb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/goods.sql" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/carouselImages-Nkgw3k5Tg-0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/carouselImages-Nkgw3k5Tg-1460542881056.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/carouselImages-Nkgw3k5Tg-1461177686545.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/carouselImages-Nkgw3k5Tg-1461177686639.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/carouselImages-Nkgw3k5Tg-1461182315094.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/carouselImages-Nkgw3k5Tg-1461182315285.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/carouselImages-Nkgw3k5Tg-1461182580280.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/carouselImages-Nkgw3k5Tg-1461182580378.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/carouselImages-Nkgw3k5Tg-1461183366557.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/carouselImages-Nkgw3k5Tg-1461183366654.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/carouselImages-Nkgw3k5Tg-1461234209504.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/carouselImages-Nkgw3k5Tg-1461234209606.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/carouselImages-Nkgw3k5Tg-1461234209632.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/carouselImages-Nkgw3k5Tg-1461234856878.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/carouselImages-Nkgw3k5Tg-1461234856880.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/carouselImages-Nkgw3k5Tg-1461234856882.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/carouselImages-Nkgw3k5Tg-1461234856897.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/carouselImages-Nkgw3k5Tg.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/commodityImages-1460201089352.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/commodityImages-1460201099389.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/commodityImages-1460615475878.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/commodityImages-8.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/guideImages-Nkgw3k5Tg.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/guideImages-Nkgw3k5Tg.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/guideImages-Nkgw3k5Tg.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/guideImages-VyoX0k9Tx.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/repairmanImages-1461139318670.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/repairmanImages-1461139388476.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/repairmanImages-1461139489101.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/repairmanImages-1461139620025.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/repairmanImages-1461139670709.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/repairmanImages-1461139879028.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/repairmanImages-1461139956335.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/repairmanImages-1461140002027.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/repairmanImages-1461140170038.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/repairmanImages-1461141665299.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/repairmanImages-1461142004635.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/repairmanImages-1461142087393.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/repairmanImages-1461142129091.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/repairmanImages-1461142882454.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/startImages-EyqTC1cTe.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/startImages-Nkgw3k5Tg.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sqlBackup/watercleaner_defray.sql" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sqlBackup/watercleaner_mobile_info.sql" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/model.js" afterPath="$PROJECT_DIR$/database/model.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/appManage.js" afterPath="$PROJECT_DIR$/public/javascripts/appManage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/rankManage.js" afterPath="$PROJECT_DIR$/public/javascripts/rankManage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/appManage.js" afterPath="$PROJECT_DIR$/routes/appManage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/hardwareManage.js" afterPath="$PROJECT_DIR$/routes/hardwareManage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/index.js" afterPath="$PROJECT_DIR$/routes/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/multerUtil.js" afterPath="$PROJECT_DIR$/routes/multerUtil.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/rankManage.js" afterPath="$PROJECT_DIR$/routes/rankManage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/adminManage/admin.html" afterPath="$PROJECT_DIR$/views/adminManage/admin.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/adminManage/adminAdd.html" afterPath="$PROJECT_DIR$/views/adminManage/adminAdd.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/appManage/app.html" afterPath="$PROJECT_DIR$/views/appManage/app.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/appManage/appAdd.html" afterPath="$PROJECT_DIR$/views/appManage/appAdd.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/appManage/imagesAdd.html" afterPath="$PROJECT_DIR$/views/appManage/imagesAdd.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/appManage/queryDetail.html" afterPath="$PROJECT_DIR$/views/appManage/queryDetail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/commodityManage/commodity.html" afterPath="$PROJECT_DIR$/views/commodityManage/commodity.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/commodityManage/commodityAdd.html" afterPath="$PROJECT_DIR$/views/commodityManage/commodityAdd.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/commodityManage/commodityUpdate.html" afterPath="$PROJECT_DIR$/views/commodityManage/commodityUpdate.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/commodityManage/detail.html" afterPath="$PROJECT_DIR$/views/commodityManage/detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/commodityManage/purchase.html" afterPath="$PROJECT_DIR$/views/commodityManage/purchase.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/feedBackManage/feedback.html" afterPath="$PROJECT_DIR$/views/feedBackManage/feedback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/hardwareManage/hardware.html" afterPath="$PROJECT_DIR$/views/hardwareManage/hardware.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/indexManage/index.html" afterPath="$PROJECT_DIR$/views/indexManage/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/operateManage/operateLog.html" afterPath="$PROJECT_DIR$/views/operateManage/operateLog.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/rankManage/rank.html" afterPath="$PROJECT_DIR$/views/rankManage/rank.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/repairManage/designateRepairman.html" afterPath="$PROJECT_DIR$/views/repairManage/designateRepairman.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/repairManage/repair.html" afterPath="$PROJECT_DIR$/views/repairManage/repair.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/repairManage/repairman.html" afterPath="$PROJECT_DIR$/views/repairManage/repairman.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/repairManage/repairmanAdd.html" afterPath="$PROJECT_DIR$/views/repairManage/repairmanAdd.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sqlBackup/watercleaner_admin.sql" afterPath="$PROJECT_DIR$/sqlBackup/watercleaner_admin.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sqlBackup/watercleaner_app.sql" afterPath="$PROJECT_DIR$/sqlBackup/watercleaner_app.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sqlBackup/watercleaner_carousel.sql" afterPath="$PROJECT_DIR$/sqlBackup/watercleaner_carousel.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sqlBackup/watercleaner_commodity.sql" afterPath="$PROJECT_DIR$/sqlBackup/watercleaner_commodity.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sqlBackup/watercleaner_guide.sql" afterPath="$PROJECT_DIR$/sqlBackup/watercleaner_guide.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sqlBackup/watercleaner_purchase.sql" afterPath="$PROJECT_DIR$/sqlBackup/watercleaner_purchase.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sqlBackup/watercleaner_start.sql" afterPath="$PROJECT_DIR$/sqlBackup/watercleaner_start.sql" />
     </list>
     <ignored path="login_model.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,7 +79,28 @@
     <favorites_list name="login_model" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="preset.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/configuration/preset.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="commodityManage.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/routes/commodityManage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.40956825">
+              <caret line="126" column="50" selection-start-line="126" selection-start-column="43" selection-end-line="126" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -68,8 +114,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/views/feedBackManage/header.html" />
-        <option value="$PROJECT_DIR$/public/stylesheets/body.css" />
         <option value="$PROJECT_DIR$/views/feedBackManage/footer.html" />
         <option value="$PROJECT_DIR$/views/indexManage/header.html" />
         <option value="$PROJECT_DIR$/views/rankManage/header.html" />
@@ -87,7 +131,6 @@
         <option value="$PROJECT_DIR$/public/javascripts/repairManage.js" />
         <option value="$PROJECT_DIR$/routes/repairManage.js" />
         <option value="$PROJECT_DIR$/routes/index.js" />
-        <option value="$PROJECT_DIR$/routes/hardwareManage.js" />
         <option value="$PROJECT_DIR$/routes/multerUtil.js" />
         <option value="$PROJECT_DIR$/views/adminManage/admin.html" />
         <option value="$PROJECT_DIR$/views/adminManage/adminAdd.html" />
@@ -119,6 +162,9 @@
         <option value="$PROJECT_DIR$/interview/b.js" />
         <option value="$PROJECT_DIR$/interview/sum.js" />
         <option value="$PROJECT_DIR$/interview/event.js" />
+        <option value="$PROJECT_DIR$/test/hardwareTest.js" />
+        <option value="$PROJECT_DIR$/routes/hardwareManage.js" />
+        <option value="$PROJECT_DIR$/readme.md" />
       </list>
     </option>
   </component>
@@ -132,7 +178,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-9" />
     <option name="y" value="-9" />
-    <option name="width" value="1938" />
+    <option name="width" value="1932" />
     <option name="height" value="1048" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -214,7 +260,49 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bin" />
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="login_model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HEKR_END" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sqlBackup" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="login_model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HEKR_END" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="routes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="login_model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HEKR_END" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="configuration" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -224,7 +312,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../pasture" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
@@ -245,10 +333,7 @@
       <recent name="E:\wordspace\javascript\HEKR_END\public\stylesheets" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.event.js">
-    <configuration default="false" name="purchaseCancel.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="purchaseCancel.js" working-dir="$PROJECT_DIR$/test">
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Node.js.hardwareTest.js">
     <configuration default="false" name="repairUploadTest.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="repairUploadTest.js" working-dir="$PROJECT_DIR$/test">
       <method />
     </configuration>
@@ -259,6 +344,9 @@
       <method />
     </configuration>
     <configuration default="false" name="event.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="event.js" working-dir="$PROJECT_DIR$/interview">
+      <method />
+    </configuration>
+    <configuration default="false" name="hardwareTest.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="hardwareTest.js" working-dir="$PROJECT_DIR$/test">
       <method />
     </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
@@ -310,19 +398,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Node.js.purchaseCancel.js" />
-      <item index="1" class="java.lang.String" itemvalue="Node.js.repairUploadTest.js" />
-      <item index="2" class="java.lang.String" itemvalue="Node.js.a.js" />
-      <item index="3" class="java.lang.String" itemvalue="Node.js.sum.js" />
-      <item index="4" class="java.lang.String" itemvalue="Node.js.event.js" />
+      <item index="0" class="java.lang.String" itemvalue="Node.js.repairUploadTest.js" />
+      <item index="1" class="java.lang.String" itemvalue="Node.js.a.js" />
+      <item index="2" class="java.lang.String" itemvalue="Node.js.sum.js" />
+      <item index="3" class="java.lang.String" itemvalue="Node.js.event.js" />
+      <item index="4" class="java.lang.String" itemvalue="Node.js.hardwareTest.js" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Node.js.event.js" />
-        <item index="1" class="java.lang.String" itemvalue="Node.js.sum.js" />
-        <item index="2" class="java.lang.String" itemvalue="Node.js.a.js" />
-        <item index="3" class="java.lang.String" itemvalue="Node.js.repairUploadTest.js" />
-        <item index="4" class="java.lang.String" itemvalue="Node.js.purchaseCancel.js" />
+        <item index="0" class="java.lang.String" itemvalue="Node.js.hardwareTest.js" />
+        <item index="1" class="java.lang.String" itemvalue="Node.js.event.js" />
+        <item index="2" class="java.lang.String" itemvalue="Node.js.sum.js" />
+        <item index="3" class="java.lang.String" itemvalue="Node.js.a.js" />
+        <item index="4" class="java.lang.String" itemvalue="Node.js.repairUploadTest.js" />
       </list>
     </recent_temporary>
   </component>
@@ -349,10 +437,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
-    <editor active="false" />
+    <frame x="-9" y="-9" width="1932" height="1048" extended-state="1" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24762407" sideWeight="0.42502818" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24735169" sideWeight="0.42502818" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973601" sideWeight="0.5749718" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24634421" sideWeight="0.5714286" order="6" side_tool="false" content_ui="tabs" />
@@ -402,22 +490,30 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/configuration/preset.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configuration/preset.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/hardwareManage/hardware.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/images/startImages-null.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/carouselImages-Nkgw3k5Tg.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/carouselImages-Nkgw3k5Tg-0.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/startImages-Nkgw3k5Tg.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -475,13 +571,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3324905">
           <caret line="66" column="69" selection-start-line="66" selection-start-column="69" selection-end-line="66" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/hardwareManage/hardware.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.109987356">
-          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -602,20 +691,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/www">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.045138888">
-          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/db.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17969662">
-          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/model.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.0793467">
@@ -641,13 +716,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/hardwareManage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.7199533">
-          <caret line="67" column="39" selection-start-line="67" selection-start-column="39" selection-end-line="67" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -714,41 +782,63 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test/hardwareTest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26643598">
+          <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/hardwareManage/hardware.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="60" column="2" selection-start-line="60" selection-start-column="2" selection-end-line="60" selection-end-column="2" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/db.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="28" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/www">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12835473">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/hardwareManage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30571762">
+          <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configuration/preset.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/commodityManage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="366" column="1" selection-start-line="366" selection-start-column="1" selection-end-line="366" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/interview/b.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/interview/a.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/interview/sum.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/interview/event.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35939324">
-          <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.40956825">
+          <caret line="126" column="50" selection-start-line="126" selection-start-column="43" selection-end-line="126" selection-end-column="50" />
           <folding />
         </state>
       </provider>
